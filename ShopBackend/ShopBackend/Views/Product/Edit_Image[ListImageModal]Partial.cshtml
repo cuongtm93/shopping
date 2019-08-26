@@ -1,0 +1,75 @@
+﻿<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Thư viện ảnh</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="btn btn-default">
+                            <i class="fa fa-level-up"></i>
+                        </div>
+                        <div class="btn btn-default">
+                            <i class="fa fa-refresh"></i>
+                        </div>
+                        <div class="btn btn-default">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                        <div class="btn btn-default">
+                            <i class="fa fa-folder"></i>
+                        </div>
+                        <div class="btn btn-default">
+                            <i class="fa fa-trash"></i>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="input-group">
+                            <input type="text" name="search" value="" placeholder="Search.." class="form-control">
+                            <span class="input-group-btn">
+                                <button type="button" data-toggle="tooltip" title="" id="button-search" class="btn btn-primary" data-original-title="Search"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin:10px 0 10px 0; padding : 0!important;" id="list_image_holder">
+                    
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancel</button>
+                <ul class="pagination pull-right" style="margin:0!important;">
+                    <li class="page-item"><a class="page-link" href="#"><<</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">>></a></li>
+                </ul>
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    </div>
+</div>
+<script>
+
+    // init List Image Modal;
+
+    working_folder = "/";
+    page = 1;
+
+    $(function () {
+        $(window).resize(function (event) {
+            $('#modal-default').position({
+                my: 'center',
+                at: 'center',
+                of: window,
+                collision: 'fit'
+            });
+        });
+    });
+</script>

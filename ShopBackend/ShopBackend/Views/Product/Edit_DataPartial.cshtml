@@ -1,0 +1,282 @@
+﻿@model ShopBackend.Data.oc_product
+<form class="form-horizontal">
+    <div class="box-body">
+        <button type="submit" class="btn btn-danger  pull-right" formaction="" formmethod="post">Save</button>
+        <div class="col-sm-2"></div>
+        <a href="javascript:window.history.back();">
+            <div type="submit" class="btn btn-info pull-right" style="margin-right:10px;">
+                <i class="fa fa-arrow-left"></i>
+            </div>
+        </a>
+    </div>
+    <!-- /.box-footer -->
+    <input type="hidden" name="case" value="product_data" />
+    <input type="hidden" name="product_id" value="@Model.product_id" />
+    <div class="box-body">
+        <div class="form-group">
+            <label class="col-sm-2 control-label required" for="input-model">Kiểu</label>
+            <div class="col-sm-10">
+                <input type="text" name="model" value="@Model.model" placeholder="Model" id="input-model" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-sku"><span data-toggle="tooltip" title="" data-original-title="Stock Keeping Unit">SKU</span></label>
+            <div class="col-sm-10">
+                <input type="text" name="sku" value="@Model.sku" placeholder="Stock Keeping Unit" id="input-sku" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-upc"><span data-toggle="tooltip" title="" data-original-title="Universal Product Code">UPC</span></label>
+            <div class="col-sm-10">
+                <input type="text" name="upc" value="@Model.upc" placeholder="UPC" id="input-upc" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-ean"><span data-toggle="tooltip" title="" data-original-title="European Article Number">EAN</span></label>
+            <div class="col-sm-10">
+                <input type="text" name="ean" value="@Model.ean" placeholder="EAN" id="input-ean" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-jan"><span data-toggle="tooltip" title="" data-original-title="Japanese Article Number">JAN</span></label>
+            <div class="col-sm-10">
+                <input type="text" name="jan" value="@Model.jan" placeholder="JAN" id="input-jan" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-isbn"><span data-toggle="tooltip" title="" data-original-title="International Standard Book Number">ISBN</span></label>
+            <div class="col-sm-10">
+                <input type="text" name="isbn" value="@Model.isbn" placeholder="ISBN" id="input-isbn" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-mpn"><span data-toggle="tooltip" title="" data-original-title="Manufacturer Part Number">MPN</span></label>
+            <div class="col-sm-10">
+                <input type="text" name="mpn" value="@Model.mpn" placeholder="MPN" id="input-mpn" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-location">Location</label>
+            <div class="col-sm-10">
+                <input type="text" name="location" value="@Model.location" placeholder="Location" id="input-location" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-price">Giá</label>
+            <div class="col-sm-10">
+                <input type="text" name="price" value="@Model.price" placeholder="Price" id="input-price" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-tax-class">Tax Class</label>
+            <div class="col-sm-10">
+                <select name="tax_class_id" id="input-tax-class" class="form-control">
+                    @if (Model.tax_class_id == 0)
+                    {
+                        <option value="0" selected="selected"> --- None --- </option>
+                    }
+                    else
+                    {
+                        <option value="0"> --- None --- </option>
+                    }
+
+                    @foreach (ShopBackend.Data.oc_tax_class oc_tax_class in ViewBag.Tax_Classes)
+                    {
+                        if (Model.tax_class_id == oc_tax_class.tax_class_id)
+                        {
+                            <option value="@oc_tax_class.tax_class_id" selected="selected">@oc_tax_class.title</option>
+                        }
+                        else
+                        {
+                            <option value="@oc_tax_class.tax_class_id">@oc_tax_class.title</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-quantity">Quantity</label>
+            <div class="col-sm-10">
+                <input type="text" name="quantity" value="@Model.quantity" placeholder="Quantity" id="input-quantity" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="" data-original-title="Force a minimum ordered amount">Minimum Quantity</span></label>
+            <div class="col-sm-10">
+                <input type="text" name="minimum" value="@Model.minimum" placeholder="Minimum Quantity" id="input-minimum" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-subtract">Subtract Stock</label>
+            <div class="col-sm-10">
+                <select name="subtract" id="input-subtract" class="form-control">
+                    @if (Model.subtract == 0)
+                    {
+
+                        <option value="1">Có</option>
+                        <option value="0" selected="selected">Không</option>
+                    }
+                    else
+                    {
+                        <option value="1" selected="selected">Có</option>
+                        <option value="0">Không</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-stock-status"><span data-toggle="tooltip" title="" data-original-title="Status shown when a product is out of stock">Out Of Stock Status</span></label>
+            <div class="col-sm-10">
+                <select name="stock_status_id" id="input-stock-status" class="form-control">
+
+                    @foreach (ShopBackend.Data.oc_stock_status stock_status in ViewBag.Stock_Statuses)
+                    {
+                        if (Model.stock_status_id == stock_status.stock_status_id)
+                        {
+                            <option value="@stock_status.stock_status_id" selected="selected">@stock_status.name</option>
+                        }
+                        else
+                        {
+                            <option value="@stock_status.stock_status_id">@stock_status.name</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Requires Shipping</label>
+            <div class="col-sm-10">
+                @if (Model.shipping == 1)
+                {
+                    <label class="radio-inline">
+                        <input type="radio" name="shipping" value="1" checked="checked">
+                        Yes
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="shipping" value="0">
+                        No
+                    </label>
+                }
+                else
+                {
+                    <label class="radio-inline">
+                        <input type="radio" name="shipping" value="1">
+                        Yes
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="shipping" value="0" checked="checked">
+                        No
+                    </label>
+                }
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-date-available">Date Available</label>
+            <div class="col-sm-3">
+                <div class="input-group date">
+                    <input type="text" name="date_available" value="@Model.date_available" placeholder="Date Available" id="input-date-available" class="form-control"> <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-length">Dimensions (L x W x H)</label>
+            <div class="col-sm-10">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input type="text" name="length" value="@Model.length" placeholder="Length" id="input-length" class="form-control">
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" name="width" value="@Model.width" placeholder="Width" id="input-width" class="form-control">
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" name="height" value="@Model.height" placeholder="Height" id="input-height" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-length-class">Length Class</label>
+            <div class="col-sm-10">
+                <select name="length_class_id" id="input-length-class" class="form-control">
+
+                    @foreach (ShopBackend.Data.oc_length_class_description oc_length_class_description in ViewBag.Length_Classes)
+                    {
+                        if (Model.length_class_id == oc_length_class_description.length_class_id)
+                        {
+                            <option value="@oc_length_class_description.length_class_id" selected="selected">@oc_length_class_description.title</option>
+                        }
+                        else
+                        {
+                            <option value="@oc_length_class_description.length_class_id">@oc_length_class_description.title</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-weight">Trọng lượng</label>
+            <div class="col-sm-10">
+                <input type="text" name="weight" value="@Model.weight" placeholder="Weight" id="input-weight" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-weight-class">Weight Class</label>
+            <div class="col-sm-10">
+                <select name="weight_class_id" id="input-weight-class" class="form-control">
+
+
+                    @foreach (ShopBackend.Data.oc_weight_class_description oc_weight_class in ViewBag.Weight_Classes)
+                    {
+                        if (Model.length_class_id == oc_weight_class.weight_class_id)
+                        {
+                            <option value="@oc_weight_class.weight_class_id" selected="selected">@oc_weight_class.title</option>
+                        }
+                        else
+                        {
+                            <option value="@oc_weight_class.weight_class_id">@oc_weight_class.title</option>
+                        }
+                    }
+
+
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-status">Status</label>
+            <div class="col-sm-10">
+                <select name="status" id="input-status" class="form-control">
+
+                    @if (Model.status == 1)
+                    {
+                        <option value="1" selected="selected">Enabled</option>
+                        <option value="0">Disabled</option>
+
+                    }
+                    else
+                    {
+                        <option value="1">Enabled</option>
+                        <option value="0" selected="selected">Disabled</option>
+                    }
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-sort-order">Sort Order</label>
+            <div class="col-sm-10">
+                <input type="text" name="sort_order" value="@Model.sort_order" placeholder="Sort Order" id="input-sort-order" class="form-control">
+            </div>
+        </div>
+    </div>
+    <!-- /.box-body -->
+
+</form>
+
+<script>
+    $(function () {
+        $( "#input-date-available" ).datepicker( "option", "dateFormat", 'dd-mm-yyyy' );
+    });
+</script>

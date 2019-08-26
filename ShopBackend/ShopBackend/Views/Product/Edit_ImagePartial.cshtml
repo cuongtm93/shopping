@@ -1,0 +1,87 @@
+﻿@model ShopBackend.Models.Edit_ImagePartiallViewmodel
+@{
+    var directory = System.IO.Path.GetDirectoryName(Model.Image);
+    directory = directory.Replace("\\", "\\\\");
+}
+<form class="form-horizontal">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Ảnh chính</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="image-controls">
+                <img src="~/image/@Model.Image" class="img-thumbnail product-image" alt="">
+                <div class="middle">
+                    <div class="btn btn-success" onclick='javascript:show_modal("@directory")'>
+                        <i class="fa fa-refresh"></i>
+                    </div>
+                    <div class="btn btn-danger">
+                        <i class="fa fa-remove"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Ảnh phụ</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table class="table table-bordered table-responsive table-image">
+                <thead>
+                    <tr>
+                        <th>Ảnh</th>
+                        <th>Vị trí hiển thị</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var image in Model.Other_images)
+                    {
+                        <tr>
+                            <td>
+                                <div class="image-controls">
+                                    <img src="~/image/@image.image" class="img-thumbnail product-image" alt="@image.sort_order">
+                                    <div class="middle">
+                                        <div class="btn btn-success" onclick="$('#modal-default').modal('toggle')">
+                                            <i class="fa fa-refresh"></i>
+                                        </div>
+                                        <div class="btn btn-danger">
+                                            <i class="fa fa-remove"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="form-control align-middle" name="sort_order" value="@image.sort_order" />
+                            </td>
+                            <td>
+                                <div class="btn btn-danger">
+                                    <i class="fa fa-remove"></i>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+@Html.Partial("Edit_Image[ListImageModal]Partial")
+
+<script>
+    function show_modal(folder) {
+        working_folder = folder;
+        $('#modal-default').modal('toggle');
+        $.ajax({
+            url: `/ListImageModal?dir=${folder}&page=${page}`,
+            type: 'GET',
+            success: function (res) {
+                console.log(res);
+                $('#list_image_holder').html(res);
+            }
+        });
+    }
+</script>

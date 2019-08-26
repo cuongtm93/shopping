@@ -1,0 +1,1693 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="shop2ModelStoreContainer" CdmEntityContainer="shop2Entities">
+    <EntitySetMapping Name="oc_address">
+      <EntityTypeMapping TypeName="shop2Model.oc_address">
+        <MappingFragment StoreEntitySet="oc_address">
+          <ScalarProperty Name="address_id" ColumnName="address_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="address_1" ColumnName="address_1" />
+          <ScalarProperty Name="address_2" ColumnName="address_2" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="postcode" ColumnName="postcode" />
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="zone_id" ColumnName="zone_id" />
+          <ScalarProperty Name="custom_field" ColumnName="custom_field" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_api">
+      <EntityTypeMapping TypeName="shop2Model.oc_api">
+        <MappingFragment StoreEntitySet="oc_api">
+          <ScalarProperty Name="api_id" ColumnName="api_id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="key" ColumnName="key" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+          <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_api_ip">
+      <EntityTypeMapping TypeName="shop2Model.oc_api_ip">
+        <MappingFragment StoreEntitySet="oc_api_ip">
+          <ScalarProperty Name="api_ip_id" ColumnName="api_ip_id" />
+          <ScalarProperty Name="api_id" ColumnName="api_id" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_api_session">
+      <EntityTypeMapping TypeName="shop2Model.oc_api_session">
+        <MappingFragment StoreEntitySet="oc_api_session">
+          <ScalarProperty Name="api_session_id" ColumnName="api_session_id" />
+          <ScalarProperty Name="api_id" ColumnName="api_id" />
+          <ScalarProperty Name="session_id" ColumnName="session_id" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+          <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_attribute">
+      <EntityTypeMapping TypeName="shop2Model.oc_attribute">
+        <MappingFragment StoreEntitySet="oc_attribute">
+          <ScalarProperty Name="attribute_id" ColumnName="attribute_id" />
+          <ScalarProperty Name="attribute_group_id" ColumnName="attribute_group_id" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_attribute_description">
+      <EntityTypeMapping TypeName="shop2Model.oc_attribute_description">
+        <MappingFragment StoreEntitySet="oc_attribute_description">
+          <ScalarProperty Name="attribute_id" ColumnName="attribute_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_attribute_group">
+      <EntityTypeMapping TypeName="shop2Model.oc_attribute_group">
+        <MappingFragment StoreEntitySet="oc_attribute_group">
+          <ScalarProperty Name="attribute_group_id" ColumnName="attribute_group_id" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_attribute_group_description">
+      <EntityTypeMapping TypeName="shop2Model.oc_attribute_group_description">
+        <MappingFragment StoreEntitySet="oc_attribute_group_description">
+          <ScalarProperty Name="attribute_group_id" ColumnName="attribute_group_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_banner">
+      <EntityTypeMapping TypeName="shop2Model.oc_banner">
+        <MappingFragment StoreEntitySet="oc_banner">
+          <ScalarProperty Name="banner_id" ColumnName="banner_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_banner_image">
+      <EntityTypeMapping TypeName="shop2Model.oc_banner_image">
+        <MappingFragment StoreEntitySet="oc_banner_image">
+          <ScalarProperty Name="banner_image_id" ColumnName="banner_image_id" />
+          <ScalarProperty Name="banner_id" ColumnName="banner_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_cart">
+      <EntityTypeMapping TypeName="shop2Model.oc_cart">
+        <MappingFragment StoreEntitySet="oc_cart">
+          <ScalarProperty Name="cart_id" ColumnName="cart_id" />
+          <ScalarProperty Name="api_id" ColumnName="api_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="session_id" ColumnName="session_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="recurring_id" ColumnName="recurring_id" />
+          <ScalarProperty Name="option" ColumnName="option" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_category">
+      <EntityTypeMapping TypeName="shop2Model.oc_category">
+        <MappingFragment StoreEntitySet="oc_category">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+          <ScalarProperty Name="top" ColumnName="top" />
+          <ScalarProperty Name="column" ColumnName="column" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+          <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_category_description">
+      <EntityTypeMapping TypeName="shop2Model.oc_category_description">
+        <MappingFragment StoreEntitySet="oc_category_description">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="meta_title" ColumnName="meta_title" />
+          <ScalarProperty Name="meta_description" ColumnName="meta_description" />
+          <ScalarProperty Name="meta_keyword" ColumnName="meta_keyword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_category_filter">
+      <EntityTypeMapping TypeName="shop2Model.oc_category_filter">
+        <MappingFragment StoreEntitySet="oc_category_filter">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="filter_id" ColumnName="filter_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_category_path">
+      <EntityTypeMapping TypeName="shop2Model.oc_category_path">
+        <MappingFragment StoreEntitySet="oc_category_path">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="path_id" ColumnName="path_id" />
+          <ScalarProperty Name="level" ColumnName="level" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_category_to_layout">
+      <EntityTypeMapping TypeName="shop2Model.oc_category_to_layout">
+        <MappingFragment StoreEntitySet="oc_category_to_layout">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+          <ScalarProperty Name="layout_id" ColumnName="layout_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_category_to_store">
+      <EntityTypeMapping TypeName="shop2Model.oc_category_to_store">
+        <MappingFragment StoreEntitySet="oc_category_to_store">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_country">
+      <EntityTypeMapping TypeName="shop2Model.oc_country">
+        <MappingFragment StoreEntitySet="oc_country">
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="iso_code_2" ColumnName="iso_code_2" />
+          <ScalarProperty Name="iso_code_3" ColumnName="iso_code_3" />
+          <ScalarProperty Name="address_format" ColumnName="address_format" />
+          <ScalarProperty Name="postcode_required" ColumnName="postcode_required" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_coupon">
+      <EntityTypeMapping TypeName="shop2Model.oc_coupon">
+        <MappingFragment StoreEntitySet="oc_coupon">
+          <ScalarProperty Name="coupon_id" ColumnName="coupon_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="logged" ColumnName="logged" />
+          <ScalarProperty Name="shipping" ColumnName="shipping" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="date_start" ColumnName="date_start" />
+          <ScalarProperty Name="date_end" ColumnName="date_end" />
+          <ScalarProperty Name="uses_total" ColumnName="uses_total" />
+          <ScalarProperty Name="uses_customer" ColumnName="uses_customer" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_coupon_category">
+      <EntityTypeMapping TypeName="shop2Model.oc_coupon_category">
+        <MappingFragment StoreEntitySet="oc_coupon_category">
+          <ScalarProperty Name="coupon_id" ColumnName="coupon_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_coupon_history">
+      <EntityTypeMapping TypeName="shop2Model.oc_coupon_history">
+        <MappingFragment StoreEntitySet="oc_coupon_history">
+          <ScalarProperty Name="coupon_history_id" ColumnName="coupon_history_id" />
+          <ScalarProperty Name="coupon_id" ColumnName="coupon_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_coupon_product">
+      <EntityTypeMapping TypeName="shop2Model.oc_coupon_product">
+        <MappingFragment StoreEntitySet="oc_coupon_product">
+          <ScalarProperty Name="coupon_product_id" ColumnName="coupon_product_id" />
+          <ScalarProperty Name="coupon_id" ColumnName="coupon_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_currency">
+      <EntityTypeMapping TypeName="shop2Model.oc_currency">
+        <MappingFragment StoreEntitySet="oc_currency">
+          <ScalarProperty Name="currency_id" ColumnName="currency_id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="symbol_left" ColumnName="symbol_left" />
+          <ScalarProperty Name="symbol_right" ColumnName="symbol_right" />
+          <ScalarProperty Name="decimal_place" ColumnName="decimal_place" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_custom_field">
+      <EntityTypeMapping TypeName="shop2Model.oc_custom_field">
+        <MappingFragment StoreEntitySet="oc_custom_field">
+          <ScalarProperty Name="custom_field_id" ColumnName="custom_field_id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="validation" ColumnName="validation" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_custom_field_customer_group">
+      <EntityTypeMapping TypeName="shop2Model.oc_custom_field_customer_group">
+        <MappingFragment StoreEntitySet="oc_custom_field_customer_group">
+          <ScalarProperty Name="custom_field_id" ColumnName="custom_field_id" />
+          <ScalarProperty Name="customer_group_id" ColumnName="customer_group_id" />
+          <ScalarProperty Name="required" ColumnName="required" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_custom_field_description">
+      <EntityTypeMapping TypeName="shop2Model.oc_custom_field_description">
+        <MappingFragment StoreEntitySet="oc_custom_field_description">
+          <ScalarProperty Name="custom_field_id" ColumnName="custom_field_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_custom_field_value">
+      <EntityTypeMapping TypeName="shop2Model.oc_custom_field_value">
+        <MappingFragment StoreEntitySet="oc_custom_field_value">
+          <ScalarProperty Name="custom_field_value_id" ColumnName="custom_field_value_id" />
+          <ScalarProperty Name="custom_field_id" ColumnName="custom_field_id" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_custom_field_value_description">
+      <EntityTypeMapping TypeName="shop2Model.oc_custom_field_value_description">
+        <MappingFragment StoreEntitySet="oc_custom_field_value_description">
+          <ScalarProperty Name="custom_field_value_id" ColumnName="custom_field_value_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="custom_field_id" ColumnName="custom_field_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_customer">
+      <EntityTypeMapping TypeName="shop2Model.oc_customer">
+        <MappingFragment StoreEntitySet="oc_customer">
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="customer_group_id" ColumnName="customer_group_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="fax" ColumnName="fax" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="salt" ColumnName="salt" />
+          <ScalarProperty Name="cart" ColumnName="cart" />
+          <ScalarProperty Name="wishlist" ColumnName="wishlist" />
+          <ScalarProperty Name="newsletter" ColumnName="newsletter" />
+          <ScalarProperty Name="address_id" ColumnName="address_id" />
+          <ScalarProperty Name="custom_field" ColumnName="custom_field" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="safe" ColumnName="safe" />
+          <ScalarProperty Name="token" ColumnName="token" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_customer_activity">
+      <EntityTypeMapping TypeName="shop2Model.oc_customer_activity">
+        <MappingFragment StoreEntitySet="oc_customer_activity">
+          <ScalarProperty Name="customer_activity_id" ColumnName="customer_activity_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="key" ColumnName="key" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_customer_affiliate">
+      <EntityTypeMapping TypeName="shop2Model.oc_customer_affiliate">
+        <MappingFragment StoreEntitySet="oc_customer_affiliate">
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="website" ColumnName="website" />
+          <ScalarProperty Name="tracking" ColumnName="tracking" />
+          <ScalarProperty Name="commission" ColumnName="commission" />
+          <ScalarProperty Name="tax" ColumnName="tax" />
+          <ScalarProperty Name="payment" ColumnName="payment" />
+          <ScalarProperty Name="cheque" ColumnName="cheque" />
+          <ScalarProperty Name="paypal" ColumnName="paypal" />
+          <ScalarProperty Name="bank_name" ColumnName="bank_name" />
+          <ScalarProperty Name="bank_branch_number" ColumnName="bank_branch_number" />
+          <ScalarProperty Name="bank_swift_code" ColumnName="bank_swift_code" />
+          <ScalarProperty Name="bank_account_name" ColumnName="bank_account_name" />
+          <ScalarProperty Name="bank_account_number" ColumnName="bank_account_number" />
+          <ScalarProperty Name="custom_field" ColumnName="custom_field" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_customer_approval">
+      <EntityTypeMapping TypeName="shop2Model.oc_customer_approval">
+        <MappingFragment StoreEntitySet="oc_customer_approval">
+          <ScalarProperty Name="customer_approval_id" ColumnName="customer_approval_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_customer_group">
+      <EntityTypeMapping TypeName="shop2Model.oc_customer_group">
+        <MappingFragment StoreEntitySet="oc_customer_group">
+          <ScalarProperty Name="customer_group_id" ColumnName="customer_group_id" />
+          <ScalarProperty Name="approval" ColumnName="approval" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_customer_group_description">
+      <EntityTypeMapping TypeName="shop2Model.oc_customer_group_description">
+        <MappingFragment StoreEntitySet="oc_customer_group_description">
+          <ScalarProperty Name="customer_group_id" ColumnName="customer_group_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_customer_history">
+      <EntityTypeMapping TypeName="shop2Model.oc_customer_history">
+        <MappingFragment StoreEntitySet="oc_customer_history">
+          <ScalarProperty Name="customer_history_id" ColumnName="customer_history_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_customer_ip">
+      <EntityTypeMapping TypeName="shop2Model.oc_customer_ip">
+        <MappingFragment StoreEntitySet="oc_customer_ip">
+          <ScalarProperty Name="customer_ip_id" ColumnName="customer_ip_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_customer_login">
+      <EntityTypeMapping TypeName="shop2Model.oc_customer_login">
+        <MappingFragment StoreEntitySet="oc_customer_login">
+          <ScalarProperty Name="customer_login_id" ColumnName="customer_login_id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+          <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_customer_online">
+      <EntityTypeMapping TypeName="shop2Model.oc_customer_online">
+        <MappingFragment StoreEntitySet="oc_customer_online">
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="referer" ColumnName="referer" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_customer_reward">
+      <EntityTypeMapping TypeName="shop2Model.oc_customer_reward">
+        <MappingFragment StoreEntitySet="oc_customer_reward">
+          <ScalarProperty Name="customer_reward_id" ColumnName="customer_reward_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="points" ColumnName="points" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_customer_search">
+      <EntityTypeMapping TypeName="shop2Model.oc_customer_search">
+        <MappingFragment StoreEntitySet="oc_customer_search">
+          <ScalarProperty Name="customer_search_id" ColumnName="customer_search_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="keyword" ColumnName="keyword" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="sub_category" ColumnName="sub_category" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="products" ColumnName="products" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_customer_transaction">
+      <EntityTypeMapping TypeName="shop2Model.oc_customer_transaction">
+        <MappingFragment StoreEntitySet="oc_customer_transaction">
+          <ScalarProperty Name="customer_transaction_id" ColumnName="customer_transaction_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_customer_wishlist">
+      <EntityTypeMapping TypeName="shop2Model.oc_customer_wishlist">
+        <MappingFragment StoreEntitySet="oc_customer_wishlist">
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_download">
+      <EntityTypeMapping TypeName="shop2Model.oc_download">
+        <MappingFragment StoreEntitySet="oc_download">
+          <ScalarProperty Name="download_id" ColumnName="download_id" />
+          <ScalarProperty Name="filename" ColumnName="filename" />
+          <ScalarProperty Name="mask" ColumnName="mask" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_download_description">
+      <EntityTypeMapping TypeName="shop2Model.oc_download_description">
+        <MappingFragment StoreEntitySet="oc_download_description">
+          <ScalarProperty Name="download_id" ColumnName="download_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_event">
+      <EntityTypeMapping TypeName="shop2Model.oc_event">
+        <MappingFragment StoreEntitySet="oc_event">
+          <ScalarProperty Name="event_id" ColumnName="event_id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="trigger" ColumnName="trigger" />
+          <ScalarProperty Name="action" ColumnName="action" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_extension">
+      <EntityTypeMapping TypeName="shop2Model.oc_extension">
+        <MappingFragment StoreEntitySet="oc_extension">
+          <ScalarProperty Name="extension_id" ColumnName="extension_id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="code" ColumnName="code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_extension_install">
+      <EntityTypeMapping TypeName="shop2Model.oc_extension_install">
+        <MappingFragment StoreEntitySet="oc_extension_install">
+          <ScalarProperty Name="extension_install_id" ColumnName="extension_install_id" />
+          <ScalarProperty Name="extension_download_id" ColumnName="extension_download_id" />
+          <ScalarProperty Name="filename" ColumnName="filename" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_extension_path">
+      <EntityTypeMapping TypeName="shop2Model.oc_extension_path">
+        <MappingFragment StoreEntitySet="oc_extension_path">
+          <ScalarProperty Name="extension_path_id" ColumnName="extension_path_id" />
+          <ScalarProperty Name="extension_install_id" ColumnName="extension_install_id" />
+          <ScalarProperty Name="path" ColumnName="path" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_filter">
+      <EntityTypeMapping TypeName="shop2Model.oc_filter">
+        <MappingFragment StoreEntitySet="oc_filter">
+          <ScalarProperty Name="filter_id" ColumnName="filter_id" />
+          <ScalarProperty Name="filter_group_id" ColumnName="filter_group_id" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_filter_description">
+      <EntityTypeMapping TypeName="shop2Model.oc_filter_description">
+        <MappingFragment StoreEntitySet="oc_filter_description">
+          <ScalarProperty Name="filter_id" ColumnName="filter_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="filter_group_id" ColumnName="filter_group_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_filter_group">
+      <EntityTypeMapping TypeName="shop2Model.oc_filter_group">
+        <MappingFragment StoreEntitySet="oc_filter_group">
+          <ScalarProperty Name="filter_group_id" ColumnName="filter_group_id" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_filter_group_description">
+      <EntityTypeMapping TypeName="shop2Model.oc_filter_group_description">
+        <MappingFragment StoreEntitySet="oc_filter_group_description">
+          <ScalarProperty Name="filter_group_id" ColumnName="filter_group_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_geo_zone">
+      <EntityTypeMapping TypeName="shop2Model.oc_geo_zone">
+        <MappingFragment StoreEntitySet="oc_geo_zone">
+          <ScalarProperty Name="geo_zone_id" ColumnName="geo_zone_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+          <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_googleshopping_category">
+      <EntityTypeMapping TypeName="shop2Model.oc_googleshopping_category">
+        <MappingFragment StoreEntitySet="oc_googleshopping_category">
+          <ScalarProperty Name="google_product_category" ColumnName="google_product_category" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_googleshopping_product">
+      <EntityTypeMapping TypeName="shop2Model.oc_googleshopping_product">
+        <MappingFragment StoreEntitySet="oc_googleshopping_product">
+          <ScalarProperty Name="product_advertise_google_id" ColumnName="product_advertise_google_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+          <ScalarProperty Name="has_issues" ColumnName="has_issues" />
+          <ScalarProperty Name="destination_status" ColumnName="destination_status" />
+          <ScalarProperty Name="impressions" ColumnName="impressions" />
+          <ScalarProperty Name="clicks" ColumnName="clicks" />
+          <ScalarProperty Name="conversions" ColumnName="conversions" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="conversion_value" ColumnName="conversion_value" />
+          <ScalarProperty Name="google_product_category" ColumnName="google_product_category" />
+          <ScalarProperty Name="condition" ColumnName="condition" />
+          <ScalarProperty Name="adult" ColumnName="adult" />
+          <ScalarProperty Name="multipack" ColumnName="multipack" />
+          <ScalarProperty Name="is_bundle" ColumnName="is_bundle" />
+          <ScalarProperty Name="age_group" ColumnName="age_group" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="size_type" ColumnName="size_type" />
+          <ScalarProperty Name="size_system" ColumnName="size_system" />
+          <ScalarProperty Name="size" ColumnName="size" />
+          <ScalarProperty Name="is_modified" ColumnName="is_modified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_googleshopping_product_status">
+      <EntityTypeMapping TypeName="shop2Model.oc_googleshopping_product_status">
+        <MappingFragment StoreEntitySet="oc_googleshopping_product_status">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+          <ScalarProperty Name="product_variation_id" ColumnName="product_variation_id" />
+          <ScalarProperty Name="destination_statuses" ColumnName="destination_statuses" />
+          <ScalarProperty Name="data_quality_issues" ColumnName="data_quality_issues" />
+          <ScalarProperty Name="item_level_issues" ColumnName="item_level_issues" />
+          <ScalarProperty Name="google_expiration_date" ColumnName="google_expiration_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_googleshopping_product_target">
+      <EntityTypeMapping TypeName="shop2Model.oc_googleshopping_product_target">
+        <MappingFragment StoreEntitySet="oc_googleshopping_product_target">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+          <ScalarProperty Name="advertise_google_target_id" ColumnName="advertise_google_target_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_googleshopping_target">
+      <EntityTypeMapping TypeName="shop2Model.oc_googleshopping_target">
+        <MappingFragment StoreEntitySet="oc_googleshopping_target">
+          <ScalarProperty Name="advertise_google_target_id" ColumnName="advertise_google_target_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+          <ScalarProperty Name="campaign_name" ColumnName="campaign_name" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="budget" ColumnName="budget" />
+          <ScalarProperty Name="feeds" ColumnName="feeds" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+          <ScalarProperty Name="roas" ColumnName="roas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_information">
+      <EntityTypeMapping TypeName="shop2Model.oc_information">
+        <MappingFragment StoreEntitySet="oc_information">
+          <ScalarProperty Name="information_id" ColumnName="information_id" />
+          <ScalarProperty Name="bottom" ColumnName="bottom" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_information_description">
+      <EntityTypeMapping TypeName="shop2Model.oc_information_description">
+        <MappingFragment StoreEntitySet="oc_information_description">
+          <ScalarProperty Name="information_id" ColumnName="information_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="meta_title" ColumnName="meta_title" />
+          <ScalarProperty Name="meta_description" ColumnName="meta_description" />
+          <ScalarProperty Name="meta_keyword" ColumnName="meta_keyword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_information_to_layout">
+      <EntityTypeMapping TypeName="shop2Model.oc_information_to_layout">
+        <MappingFragment StoreEntitySet="oc_information_to_layout">
+          <ScalarProperty Name="information_id" ColumnName="information_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+          <ScalarProperty Name="layout_id" ColumnName="layout_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_information_to_store">
+      <EntityTypeMapping TypeName="shop2Model.oc_information_to_store">
+        <MappingFragment StoreEntitySet="oc_information_to_store">
+          <ScalarProperty Name="information_id" ColumnName="information_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_language">
+      <EntityTypeMapping TypeName="shop2Model.oc_language">
+        <MappingFragment StoreEntitySet="oc_language">
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="locale" ColumnName="locale" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="directory" ColumnName="directory" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_layout">
+      <EntityTypeMapping TypeName="shop2Model.oc_layout">
+        <MappingFragment StoreEntitySet="oc_layout">
+          <ScalarProperty Name="layout_id" ColumnName="layout_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_layout_module">
+      <EntityTypeMapping TypeName="shop2Model.oc_layout_module">
+        <MappingFragment StoreEntitySet="oc_layout_module">
+          <ScalarProperty Name="layout_module_id" ColumnName="layout_module_id" />
+          <ScalarProperty Name="layout_id" ColumnName="layout_id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_layout_route">
+      <EntityTypeMapping TypeName="shop2Model.oc_layout_route">
+        <MappingFragment StoreEntitySet="oc_layout_route">
+          <ScalarProperty Name="layout_route_id" ColumnName="layout_route_id" />
+          <ScalarProperty Name="layout_id" ColumnName="layout_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+          <ScalarProperty Name="route" ColumnName="route" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_length_class">
+      <EntityTypeMapping TypeName="shop2Model.oc_length_class">
+        <MappingFragment StoreEntitySet="oc_length_class">
+          <ScalarProperty Name="length_class_id" ColumnName="length_class_id" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_length_class_description">
+      <EntityTypeMapping TypeName="shop2Model.oc_length_class_description">
+        <MappingFragment StoreEntitySet="oc_length_class_description">
+          <ScalarProperty Name="length_class_id" ColumnName="length_class_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="unit" ColumnName="unit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_location">
+      <EntityTypeMapping TypeName="shop2Model.oc_location">
+        <MappingFragment StoreEntitySet="oc_location">
+          <ScalarProperty Name="location_id" ColumnName="location_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="fax" ColumnName="fax" />
+          <ScalarProperty Name="geocode" ColumnName="geocode" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="open" ColumnName="open" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_manufacturer">
+      <EntityTypeMapping TypeName="shop2Model.oc_manufacturer">
+        <MappingFragment StoreEntitySet="oc_manufacturer">
+          <ScalarProperty Name="manufacturer_id" ColumnName="manufacturer_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_manufacturer_to_store">
+      <EntityTypeMapping TypeName="shop2Model.oc_manufacturer_to_store">
+        <MappingFragment StoreEntitySet="oc_manufacturer_to_store">
+          <ScalarProperty Name="manufacturer_id" ColumnName="manufacturer_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_marketing">
+      <EntityTypeMapping TypeName="shop2Model.oc_marketing">
+        <MappingFragment StoreEntitySet="oc_marketing">
+          <ScalarProperty Name="marketing_id" ColumnName="marketing_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="clicks" ColumnName="clicks" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_modification">
+      <EntityTypeMapping TypeName="shop2Model.oc_modification">
+        <MappingFragment StoreEntitySet="oc_modification">
+          <ScalarProperty Name="modification_id" ColumnName="modification_id" />
+          <ScalarProperty Name="extension_install_id" ColumnName="extension_install_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="author" ColumnName="author" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="xml" ColumnName="xml" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_module">
+      <EntityTypeMapping TypeName="shop2Model.oc_module">
+        <MappingFragment StoreEntitySet="oc_module">
+          <ScalarProperty Name="module_id" ColumnName="module_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="setting" ColumnName="setting" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_option">
+      <EntityTypeMapping TypeName="shop2Model.oc_option">
+        <MappingFragment StoreEntitySet="oc_option">
+          <ScalarProperty Name="option_id" ColumnName="option_id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_option_description">
+      <EntityTypeMapping TypeName="shop2Model.oc_option_description">
+        <MappingFragment StoreEntitySet="oc_option_description">
+          <ScalarProperty Name="option_id" ColumnName="option_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_option_value">
+      <EntityTypeMapping TypeName="shop2Model.oc_option_value">
+        <MappingFragment StoreEntitySet="oc_option_value">
+          <ScalarProperty Name="option_value_id" ColumnName="option_value_id" />
+          <ScalarProperty Name="option_id" ColumnName="option_id" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_option_value_description">
+      <EntityTypeMapping TypeName="shop2Model.oc_option_value_description">
+        <MappingFragment StoreEntitySet="oc_option_value_description">
+          <ScalarProperty Name="option_value_id" ColumnName="option_value_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="option_id" ColumnName="option_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_order">
+      <EntityTypeMapping TypeName="shop2Model.oc_order">
+        <MappingFragment StoreEntitySet="oc_order">
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="invoice_no" ColumnName="invoice_no" />
+          <ScalarProperty Name="invoice_prefix" ColumnName="invoice_prefix" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+          <ScalarProperty Name="store_name" ColumnName="store_name" />
+          <ScalarProperty Name="store_url" ColumnName="store_url" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="customer_group_id" ColumnName="customer_group_id" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="fax" ColumnName="fax" />
+          <ScalarProperty Name="custom_field" ColumnName="custom_field" />
+          <ScalarProperty Name="payment_firstname" ColumnName="payment_firstname" />
+          <ScalarProperty Name="payment_lastname" ColumnName="payment_lastname" />
+          <ScalarProperty Name="payment_company" ColumnName="payment_company" />
+          <ScalarProperty Name="payment_address_1" ColumnName="payment_address_1" />
+          <ScalarProperty Name="payment_address_2" ColumnName="payment_address_2" />
+          <ScalarProperty Name="payment_city" ColumnName="payment_city" />
+          <ScalarProperty Name="payment_postcode" ColumnName="payment_postcode" />
+          <ScalarProperty Name="payment_country" ColumnName="payment_country" />
+          <ScalarProperty Name="payment_country_id" ColumnName="payment_country_id" />
+          <ScalarProperty Name="payment_zone" ColumnName="payment_zone" />
+          <ScalarProperty Name="payment_zone_id" ColumnName="payment_zone_id" />
+          <ScalarProperty Name="payment_address_format" ColumnName="payment_address_format" />
+          <ScalarProperty Name="payment_custom_field" ColumnName="payment_custom_field" />
+          <ScalarProperty Name="payment_method" ColumnName="payment_method" />
+          <ScalarProperty Name="payment_code" ColumnName="payment_code" />
+          <ScalarProperty Name="shipping_firstname" ColumnName="shipping_firstname" />
+          <ScalarProperty Name="shipping_lastname" ColumnName="shipping_lastname" />
+          <ScalarProperty Name="shipping_company" ColumnName="shipping_company" />
+          <ScalarProperty Name="shipping_address_1" ColumnName="shipping_address_1" />
+          <ScalarProperty Name="shipping_address_2" ColumnName="shipping_address_2" />
+          <ScalarProperty Name="shipping_city" ColumnName="shipping_city" />
+          <ScalarProperty Name="shipping_postcode" ColumnName="shipping_postcode" />
+          <ScalarProperty Name="shipping_country" ColumnName="shipping_country" />
+          <ScalarProperty Name="shipping_country_id" ColumnName="shipping_country_id" />
+          <ScalarProperty Name="shipping_zone" ColumnName="shipping_zone" />
+          <ScalarProperty Name="shipping_zone_id" ColumnName="shipping_zone_id" />
+          <ScalarProperty Name="shipping_address_format" ColumnName="shipping_address_format" />
+          <ScalarProperty Name="shipping_custom_field" ColumnName="shipping_custom_field" />
+          <ScalarProperty Name="shipping_method" ColumnName="shipping_method" />
+          <ScalarProperty Name="shipping_code" ColumnName="shipping_code" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="order_status_id" ColumnName="order_status_id" />
+          <ScalarProperty Name="affiliate_id" ColumnName="affiliate_id" />
+          <ScalarProperty Name="commission" ColumnName="commission" />
+          <ScalarProperty Name="marketing_id" ColumnName="marketing_id" />
+          <ScalarProperty Name="tracking" ColumnName="tracking" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="currency_id" ColumnName="currency_id" />
+          <ScalarProperty Name="currency_code" ColumnName="currency_code" />
+          <ScalarProperty Name="currency_value" ColumnName="currency_value" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="forwarded_ip" ColumnName="forwarded_ip" />
+          <ScalarProperty Name="user_agent" ColumnName="user_agent" />
+          <ScalarProperty Name="accept_language" ColumnName="accept_language" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+          <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_order_history">
+      <EntityTypeMapping TypeName="shop2Model.oc_order_history">
+        <MappingFragment StoreEntitySet="oc_order_history">
+          <ScalarProperty Name="order_history_id" ColumnName="order_history_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="order_status_id" ColumnName="order_status_id" />
+          <ScalarProperty Name="notify" ColumnName="notify" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_order_option">
+      <EntityTypeMapping TypeName="shop2Model.oc_order_option">
+        <MappingFragment StoreEntitySet="oc_order_option">
+          <ScalarProperty Name="order_option_id" ColumnName="order_option_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="order_product_id" ColumnName="order_product_id" />
+          <ScalarProperty Name="product_option_id" ColumnName="product_option_id" />
+          <ScalarProperty Name="product_option_value_id" ColumnName="product_option_value_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_order_product">
+      <EntityTypeMapping TypeName="shop2Model.oc_order_product">
+        <MappingFragment StoreEntitySet="oc_order_product">
+          <ScalarProperty Name="order_product_id" ColumnName="order_product_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="tax" ColumnName="tax" />
+          <ScalarProperty Name="reward" ColumnName="reward" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_order_recurring">
+      <EntityTypeMapping TypeName="shop2Model.oc_order_recurring">
+        <MappingFragment StoreEntitySet="oc_order_recurring">
+          <ScalarProperty Name="order_recurring_id" ColumnName="order_recurring_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="reference" ColumnName="reference" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="product_quantity" ColumnName="product_quantity" />
+          <ScalarProperty Name="recurring_id" ColumnName="recurring_id" />
+          <ScalarProperty Name="recurring_name" ColumnName="recurring_name" />
+          <ScalarProperty Name="recurring_description" ColumnName="recurring_description" />
+          <ScalarProperty Name="recurring_frequency" ColumnName="recurring_frequency" />
+          <ScalarProperty Name="recurring_cycle" ColumnName="recurring_cycle" />
+          <ScalarProperty Name="recurring_duration" ColumnName="recurring_duration" />
+          <ScalarProperty Name="recurring_price" ColumnName="recurring_price" />
+          <ScalarProperty Name="trial" ColumnName="trial" />
+          <ScalarProperty Name="trial_frequency" ColumnName="trial_frequency" />
+          <ScalarProperty Name="trial_cycle" ColumnName="trial_cycle" />
+          <ScalarProperty Name="trial_duration" ColumnName="trial_duration" />
+          <ScalarProperty Name="trial_price" ColumnName="trial_price" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_order_recurring_transaction">
+      <EntityTypeMapping TypeName="shop2Model.oc_order_recurring_transaction">
+        <MappingFragment StoreEntitySet="oc_order_recurring_transaction">
+          <ScalarProperty Name="order_recurring_transaction_id" ColumnName="order_recurring_transaction_id" />
+          <ScalarProperty Name="order_recurring_id" ColumnName="order_recurring_id" />
+          <ScalarProperty Name="reference" ColumnName="reference" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_order_shipment">
+      <EntityTypeMapping TypeName="shop2Model.oc_order_shipment">
+        <MappingFragment StoreEntitySet="oc_order_shipment">
+          <ScalarProperty Name="order_shipment_id" ColumnName="order_shipment_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+          <ScalarProperty Name="shipping_courier_id" ColumnName="shipping_courier_id" />
+          <ScalarProperty Name="tracking_number" ColumnName="tracking_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_order_status">
+      <EntityTypeMapping TypeName="shop2Model.oc_order_status">
+        <MappingFragment StoreEntitySet="oc_order_status">
+          <ScalarProperty Name="order_status_id" ColumnName="order_status_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_order_total">
+      <EntityTypeMapping TypeName="shop2Model.oc_order_total">
+        <MappingFragment StoreEntitySet="oc_order_total">
+          <ScalarProperty Name="order_total_id" ColumnName="order_total_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_order_voucher">
+      <EntityTypeMapping TypeName="shop2Model.oc_order_voucher">
+        <MappingFragment StoreEntitySet="oc_order_voucher">
+          <ScalarProperty Name="order_voucher_id" ColumnName="order_voucher_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="voucher_id" ColumnName="voucher_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="from_name" ColumnName="from_name" />
+          <ScalarProperty Name="from_email" ColumnName="from_email" />
+          <ScalarProperty Name="to_name" ColumnName="to_name" />
+          <ScalarProperty Name="to_email" ColumnName="to_email" />
+          <ScalarProperty Name="voucher_theme_id" ColumnName="voucher_theme_id" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_product">
+      <EntityTypeMapping TypeName="shop2Model.oc_product">
+        <MappingFragment StoreEntitySet="oc_product">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="sku" ColumnName="sku" />
+          <ScalarProperty Name="upc" ColumnName="upc" />
+          <ScalarProperty Name="ean" ColumnName="ean" />
+          <ScalarProperty Name="jan" ColumnName="jan" />
+          <ScalarProperty Name="isbn" ColumnName="isbn" />
+          <ScalarProperty Name="mpn" ColumnName="mpn" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="stock_status_id" ColumnName="stock_status_id" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="manufacturer_id" ColumnName="manufacturer_id" />
+          <ScalarProperty Name="shipping" ColumnName="shipping" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="points" ColumnName="points" />
+          <ScalarProperty Name="tax_class_id" ColumnName="tax_class_id" />
+          <ScalarProperty Name="date_available" ColumnName="date_available" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="weight_class_id" ColumnName="weight_class_id" />
+          <ScalarProperty Name="length" ColumnName="length" />
+          <ScalarProperty Name="width" ColumnName="width" />
+          <ScalarProperty Name="height" ColumnName="height" />
+          <ScalarProperty Name="length_class_id" ColumnName="length_class_id" />
+          <ScalarProperty Name="subtract" ColumnName="subtract" />
+          <ScalarProperty Name="minimum" ColumnName="minimum" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="viewed" ColumnName="viewed" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+          <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_product_attribute">
+      <EntityTypeMapping TypeName="shop2Model.oc_product_attribute">
+        <MappingFragment StoreEntitySet="oc_product_attribute">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="attribute_id" ColumnName="attribute_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="text" ColumnName="text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_product_description">
+      <EntityTypeMapping TypeName="shop2Model.oc_product_description">
+        <MappingFragment StoreEntitySet="oc_product_description">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="tag" ColumnName="tag" />
+          <ScalarProperty Name="meta_title" ColumnName="meta_title" />
+          <ScalarProperty Name="meta_description" ColumnName="meta_description" />
+          <ScalarProperty Name="meta_keyword" ColumnName="meta_keyword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_product_discount">
+      <EntityTypeMapping TypeName="shop2Model.oc_product_discount">
+        <MappingFragment StoreEntitySet="oc_product_discount">
+          <ScalarProperty Name="product_discount_id" ColumnName="product_discount_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="customer_group_id" ColumnName="customer_group_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="priority" ColumnName="priority" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="date_start" ColumnName="date_start" />
+          <ScalarProperty Name="date_end" ColumnName="date_end" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_product_filter">
+      <EntityTypeMapping TypeName="shop2Model.oc_product_filter">
+        <MappingFragment StoreEntitySet="oc_product_filter">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="filter_id" ColumnName="filter_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_product_image">
+      <EntityTypeMapping TypeName="shop2Model.oc_product_image">
+        <MappingFragment StoreEntitySet="oc_product_image">
+          <ScalarProperty Name="product_image_id" ColumnName="product_image_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_product_option">
+      <EntityTypeMapping TypeName="shop2Model.oc_product_option">
+        <MappingFragment StoreEntitySet="oc_product_option">
+          <ScalarProperty Name="product_option_id" ColumnName="product_option_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="option_id" ColumnName="option_id" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="required" ColumnName="required" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_product_option_value">
+      <EntityTypeMapping TypeName="shop2Model.oc_product_option_value">
+        <MappingFragment StoreEntitySet="oc_product_option_value">
+          <ScalarProperty Name="product_option_value_id" ColumnName="product_option_value_id" />
+          <ScalarProperty Name="product_option_id" ColumnName="product_option_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="option_id" ColumnName="option_id" />
+          <ScalarProperty Name="option_value_id" ColumnName="option_value_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="subtract" ColumnName="subtract" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="price_prefix" ColumnName="price_prefix" />
+          <ScalarProperty Name="points" ColumnName="points" />
+          <ScalarProperty Name="points_prefix" ColumnName="points_prefix" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="weight_prefix" ColumnName="weight_prefix" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_product_recurring">
+      <EntityTypeMapping TypeName="shop2Model.oc_product_recurring">
+        <MappingFragment StoreEntitySet="oc_product_recurring">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="recurring_id" ColumnName="recurring_id" />
+          <ScalarProperty Name="customer_group_id" ColumnName="customer_group_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_product_related">
+      <EntityTypeMapping TypeName="shop2Model.oc_product_related">
+        <MappingFragment StoreEntitySet="oc_product_related">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="related_id" ColumnName="related_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_product_reward">
+      <EntityTypeMapping TypeName="shop2Model.oc_product_reward">
+        <MappingFragment StoreEntitySet="oc_product_reward">
+          <ScalarProperty Name="product_reward_id" ColumnName="product_reward_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="customer_group_id" ColumnName="customer_group_id" />
+          <ScalarProperty Name="points" ColumnName="points" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_product_special">
+      <EntityTypeMapping TypeName="shop2Model.oc_product_special">
+        <MappingFragment StoreEntitySet="oc_product_special">
+          <ScalarProperty Name="product_special_id" ColumnName="product_special_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="customer_group_id" ColumnName="customer_group_id" />
+          <ScalarProperty Name="priority" ColumnName="priority" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="date_start" ColumnName="date_start" />
+          <ScalarProperty Name="date_end" ColumnName="date_end" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_product_to_category">
+      <EntityTypeMapping TypeName="shop2Model.oc_product_to_category">
+        <MappingFragment StoreEntitySet="oc_product_to_category">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_product_to_download">
+      <EntityTypeMapping TypeName="shop2Model.oc_product_to_download">
+        <MappingFragment StoreEntitySet="oc_product_to_download">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="download_id" ColumnName="download_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_product_to_layout">
+      <EntityTypeMapping TypeName="shop2Model.oc_product_to_layout">
+        <MappingFragment StoreEntitySet="oc_product_to_layout">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+          <ScalarProperty Name="layout_id" ColumnName="layout_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_product_to_store">
+      <EntityTypeMapping TypeName="shop2Model.oc_product_to_store">
+        <MappingFragment StoreEntitySet="oc_product_to_store">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_recurring">
+      <EntityTypeMapping TypeName="shop2Model.oc_recurring">
+        <MappingFragment StoreEntitySet="oc_recurring">
+          <ScalarProperty Name="recurring_id" ColumnName="recurring_id" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="frequency" ColumnName="frequency" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="cycle" ColumnName="cycle" />
+          <ScalarProperty Name="trial_status" ColumnName="trial_status" />
+          <ScalarProperty Name="trial_price" ColumnName="trial_price" />
+          <ScalarProperty Name="trial_frequency" ColumnName="trial_frequency" />
+          <ScalarProperty Name="trial_duration" ColumnName="trial_duration" />
+          <ScalarProperty Name="trial_cycle" ColumnName="trial_cycle" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_recurring_description">
+      <EntityTypeMapping TypeName="shop2Model.oc_recurring_description">
+        <MappingFragment StoreEntitySet="oc_recurring_description">
+          <ScalarProperty Name="recurring_id" ColumnName="recurring_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_return">
+      <EntityTypeMapping TypeName="shop2Model.oc_return">
+        <MappingFragment StoreEntitySet="oc_return">
+          <ScalarProperty Name="return_id" ColumnName="return_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="product" ColumnName="product" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="opened" ColumnName="opened" />
+          <ScalarProperty Name="return_reason_id" ColumnName="return_reason_id" />
+          <ScalarProperty Name="return_action_id" ColumnName="return_action_id" />
+          <ScalarProperty Name="return_status_id" ColumnName="return_status_id" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="date_ordered" ColumnName="date_ordered" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+          <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_return_action">
+      <EntityTypeMapping TypeName="shop2Model.oc_return_action">
+        <MappingFragment StoreEntitySet="oc_return_action">
+          <ScalarProperty Name="return_action_id" ColumnName="return_action_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_return_history">
+      <EntityTypeMapping TypeName="shop2Model.oc_return_history">
+        <MappingFragment StoreEntitySet="oc_return_history">
+          <ScalarProperty Name="return_history_id" ColumnName="return_history_id" />
+          <ScalarProperty Name="return_id" ColumnName="return_id" />
+          <ScalarProperty Name="return_status_id" ColumnName="return_status_id" />
+          <ScalarProperty Name="notify" ColumnName="notify" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_return_reason">
+      <EntityTypeMapping TypeName="shop2Model.oc_return_reason">
+        <MappingFragment StoreEntitySet="oc_return_reason">
+          <ScalarProperty Name="return_reason_id" ColumnName="return_reason_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_return_status">
+      <EntityTypeMapping TypeName="shop2Model.oc_return_status">
+        <MappingFragment StoreEntitySet="oc_return_status">
+          <ScalarProperty Name="return_status_id" ColumnName="return_status_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_review">
+      <EntityTypeMapping TypeName="shop2Model.oc_review">
+        <MappingFragment StoreEntitySet="oc_review">
+          <ScalarProperty Name="review_id" ColumnName="review_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="author" ColumnName="author" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+          <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_seo_url">
+      <EntityTypeMapping TypeName="shop2Model.oc_seo_url">
+        <MappingFragment StoreEntitySet="oc_seo_url">
+          <ScalarProperty Name="seo_url_id" ColumnName="seo_url_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="query" ColumnName="query" />
+          <ScalarProperty Name="keyword" ColumnName="keyword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_session">
+      <EntityTypeMapping TypeName="shop2Model.oc_session">
+        <MappingFragment StoreEntitySet="oc_session">
+          <ScalarProperty Name="session_id" ColumnName="session_id" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="expire" ColumnName="expire" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_setting">
+      <EntityTypeMapping TypeName="shop2Model.oc_setting">
+        <MappingFragment StoreEntitySet="oc_setting">
+          <ScalarProperty Name="setting_id" ColumnName="setting_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="key" ColumnName="key" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="serialized" ColumnName="serialized" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_shipping_courier">
+      <EntityTypeMapping TypeName="shop2Model.oc_shipping_courier">
+        <MappingFragment StoreEntitySet="oc_shipping_courier">
+          <ScalarProperty Name="shipping_courier_id" ColumnName="shipping_courier_id" />
+          <ScalarProperty Name="shipping_courier_code" ColumnName="shipping_courier_code" />
+          <ScalarProperty Name="shipping_courier_name" ColumnName="shipping_courier_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_statistics">
+      <EntityTypeMapping TypeName="shop2Model.oc_statistics">
+        <MappingFragment StoreEntitySet="oc_statistics">
+          <ScalarProperty Name="statistics_id" ColumnName="statistics_id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_stock_status">
+      <EntityTypeMapping TypeName="shop2Model.oc_stock_status">
+        <MappingFragment StoreEntitySet="oc_stock_status">
+          <ScalarProperty Name="stock_status_id" ColumnName="stock_status_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_store">
+      <EntityTypeMapping TypeName="shop2Model.oc_store">
+        <MappingFragment StoreEntitySet="oc_store">
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="ssl" ColumnName="ssl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_tax_class">
+      <EntityTypeMapping TypeName="shop2Model.oc_tax_class">
+        <MappingFragment StoreEntitySet="oc_tax_class">
+          <ScalarProperty Name="tax_class_id" ColumnName="tax_class_id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+          <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_tax_rate">
+      <EntityTypeMapping TypeName="shop2Model.oc_tax_rate">
+        <MappingFragment StoreEntitySet="oc_tax_rate">
+          <ScalarProperty Name="tax_rate_id" ColumnName="tax_rate_id" />
+          <ScalarProperty Name="geo_zone_id" ColumnName="geo_zone_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="rate" ColumnName="rate" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+          <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_tax_rate_to_customer_group">
+      <EntityTypeMapping TypeName="shop2Model.oc_tax_rate_to_customer_group">
+        <MappingFragment StoreEntitySet="oc_tax_rate_to_customer_group">
+          <ScalarProperty Name="tax_rate_id" ColumnName="tax_rate_id" />
+          <ScalarProperty Name="customer_group_id" ColumnName="customer_group_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_tax_rule">
+      <EntityTypeMapping TypeName="shop2Model.oc_tax_rule">
+        <MappingFragment StoreEntitySet="oc_tax_rule">
+          <ScalarProperty Name="tax_rule_id" ColumnName="tax_rule_id" />
+          <ScalarProperty Name="tax_class_id" ColumnName="tax_class_id" />
+          <ScalarProperty Name="tax_rate_id" ColumnName="tax_rate_id" />
+          <ScalarProperty Name="based" ColumnName="based" />
+          <ScalarProperty Name="priority" ColumnName="priority" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_theme">
+      <EntityTypeMapping TypeName="shop2Model.oc_theme">
+        <MappingFragment StoreEntitySet="oc_theme">
+          <ScalarProperty Name="theme_id" ColumnName="theme_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+          <ScalarProperty Name="theme" ColumnName="theme" />
+          <ScalarProperty Name="route" ColumnName="route" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_translation">
+      <EntityTypeMapping TypeName="shop2Model.oc_translation">
+        <MappingFragment StoreEntitySet="oc_translation">
+          <ScalarProperty Name="translation_id" ColumnName="translation_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="route" ColumnName="route" />
+          <ScalarProperty Name="key" ColumnName="key" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_upload">
+      <EntityTypeMapping TypeName="shop2Model.oc_upload">
+        <MappingFragment StoreEntitySet="oc_upload">
+          <ScalarProperty Name="upload_id" ColumnName="upload_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="filename" ColumnName="filename" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_user">
+      <EntityTypeMapping TypeName="shop2Model.oc_user">
+        <MappingFragment StoreEntitySet="oc_user">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="user_group_id" ColumnName="user_group_id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="salt" ColumnName="salt" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_user_group">
+      <EntityTypeMapping TypeName="shop2Model.oc_user_group">
+        <MappingFragment StoreEntitySet="oc_user_group">
+          <ScalarProperty Name="user_group_id" ColumnName="user_group_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="permission" ColumnName="permission" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_voucher">
+      <EntityTypeMapping TypeName="shop2Model.oc_voucher">
+        <MappingFragment StoreEntitySet="oc_voucher">
+          <ScalarProperty Name="voucher_id" ColumnName="voucher_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="from_name" ColumnName="from_name" />
+          <ScalarProperty Name="from_email" ColumnName="from_email" />
+          <ScalarProperty Name="to_name" ColumnName="to_name" />
+          <ScalarProperty Name="to_email" ColumnName="to_email" />
+          <ScalarProperty Name="voucher_theme_id" ColumnName="voucher_theme_id" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_voucher_history">
+      <EntityTypeMapping TypeName="shop2Model.oc_voucher_history">
+        <MappingFragment StoreEntitySet="oc_voucher_history">
+          <ScalarProperty Name="voucher_history_id" ColumnName="voucher_history_id" />
+          <ScalarProperty Name="voucher_id" ColumnName="voucher_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_voucher_theme">
+      <EntityTypeMapping TypeName="shop2Model.oc_voucher_theme">
+        <MappingFragment StoreEntitySet="oc_voucher_theme">
+          <ScalarProperty Name="voucher_theme_id" ColumnName="voucher_theme_id" />
+          <ScalarProperty Name="image" ColumnName="image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_voucher_theme_description">
+      <EntityTypeMapping TypeName="shop2Model.oc_voucher_theme_description">
+        <MappingFragment StoreEntitySet="oc_voucher_theme_description">
+          <ScalarProperty Name="voucher_theme_id" ColumnName="voucher_theme_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_weight_class">
+      <EntityTypeMapping TypeName="shop2Model.oc_weight_class">
+        <MappingFragment StoreEntitySet="oc_weight_class">
+          <ScalarProperty Name="weight_class_id" ColumnName="weight_class_id" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_weight_class_description">
+      <EntityTypeMapping TypeName="shop2Model.oc_weight_class_description">
+        <MappingFragment StoreEntitySet="oc_weight_class_description">
+          <ScalarProperty Name="weight_class_id" ColumnName="weight_class_id" />
+          <ScalarProperty Name="language_id" ColumnName="language_id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="unit" ColumnName="unit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_zone">
+      <EntityTypeMapping TypeName="shop2Model.oc_zone">
+        <MappingFragment StoreEntitySet="oc_zone">
+          <ScalarProperty Name="zone_id" ColumnName="zone_id" />
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oc_zone_to_geo_zone">
+      <EntityTypeMapping TypeName="shop2Model.oc_zone_to_geo_zone">
+        <MappingFragment StoreEntitySet="oc_zone_to_geo_zone">
+          <ScalarProperty Name="zone_to_geo_zone_id" ColumnName="zone_to_geo_zone_id" />
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="zone_id" ColumnName="zone_id" />
+          <ScalarProperty Name="geo_zone_id" ColumnName="geo_zone_id" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+          <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_product_desc_view">
+      <EntityTypeMapping TypeName="shop2Model.product_product_desc_view">
+        <MappingFragment StoreEntitySet="product_product_desc_view">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+          <ScalarProperty Name="viewed" ColumnName="viewed" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+          <ScalarProperty Name="minimum" ColumnName="minimum" />
+          <ScalarProperty Name="subtract" ColumnName="subtract" />
+          <ScalarProperty Name="length_class_id" ColumnName="length_class_id" />
+          <ScalarProperty Name="height" ColumnName="height" />
+          <ScalarProperty Name="width" ColumnName="width" />
+          <ScalarProperty Name="length" ColumnName="length" />
+          <ScalarProperty Name="weight_class_id" ColumnName="weight_class_id" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="date_available" ColumnName="date_available" />
+          <ScalarProperty Name="tax_class_id" ColumnName="tax_class_id" />
+          <ScalarProperty Name="points" ColumnName="points" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="shipping" ColumnName="shipping" />
+          <ScalarProperty Name="manufacturer_id" ColumnName="manufacturer_id" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="stock_status_id" ColumnName="stock_status_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="mpn" ColumnName="mpn" />
+          <ScalarProperty Name="isbn" ColumnName="isbn" />
+          <ScalarProperty Name="jan" ColumnName="jan" />
+          <ScalarProperty Name="ean" ColumnName="ean" />
+          <ScalarProperty Name="upc" ColumnName="upc" />
+          <ScalarProperty Name="sku" ColumnName="sku" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

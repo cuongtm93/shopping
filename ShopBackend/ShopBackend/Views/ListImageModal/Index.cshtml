@@ -1,0 +1,30 @@
+﻿@{
+
+    Layout = null;
+}
+
+@foreach (string item in ViewBag.folders)
+{
+    var folder_name = @item.Substring(item.LastIndexOf("\\") + 1);
+    <div class="col-sm-3 gallery_item" typeof="folder" path="@item" short_name="@folder_name">
+        <img src="~/image/folder.png" style="max-width:100%" />
+        <div class="form-group center">
+            <input type="checkbox" name="path[]" value="path" title="Chọn tệp" class="file_checkbox" />
+            <label title="@item"> @folder_name...</label>
+        </div>
+    </div>
+}
+
+@foreach (string item in ViewBag.files)
+{
+    var file_name = @item.Substring(item.LastIndexOf("\\") + 1);
+    <div class="col-sm-3 gallery_item" typeof="file" path="@item" short_name="@file_name">
+        <img src="~/image/@item" style="max-width:100%" />
+        <div class="form-group center">
+            <input type="checkbox" name="path[]" value="path" title="Chọn tệp" class="file_checkbox" />
+            <label title="@item"> @file_name...</label>
+        </div>
+    </div>
+}
+
+

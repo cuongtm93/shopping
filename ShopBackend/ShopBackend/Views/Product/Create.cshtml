@@ -1,0 +1,44 @@
+﻿@model ShopBackend.Models.Product_Create_Viewmodel
+@{
+    ViewBag.Title = "Thêm sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section content_header{
+    <h1>
+        Thêm sản phẩm
+        <small>Thêm sản phẩm vào cửa hàng</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Danh mục</a></li>
+        <li class="active">Sản phẩm</li>
+    </ol>
+}
+
+@section content_main{
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab_general" data-toggle="tab">Tổng quan</a></li>
+        <li><a href="#tab_data" data-toggle="tab">Thông số</a></li>
+        <li><a href="#tab_property" data-toggle="tab">Thuộc tính</a></li>
+        <li><a href="#tab_image" data-toggle="tab">Hình ảnh</a></li>
+    </ul>
+    <div class="panel-body">
+        <div class="tab-content">
+
+            <div class="tab-pane fade in active" id="tab_general">
+                @Html.Partial("Edit_GeneralPartial", Model.Oc_product_description)
+            </div>
+            <div class="tab-pane fade" id="tab_data">
+                @Html.Partial("Edit_DataPartial",Model.Oc_Product)
+            </div>
+            <div class="tab-pane fade" id="tab_property">
+                @Html.Partial("Edit_PropertyPartial")
+            </div>
+            <div class="tab-pane fade" id="tab_image">
+                @Html.Partial("Edit_ImagePartial")
+            </div>
+
+        </div>
+    </div>
+}
+
