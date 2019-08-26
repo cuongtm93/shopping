@@ -1230,7 +1230,6 @@
     <Content Include="Views\Error\_404.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Manufacturer\Index.cshtml" />
-    <Content Include="Views\Product\Edit_Image[ListImageModal]Partial.cshtml" />
     <Content Include="Views\ListImageModal\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

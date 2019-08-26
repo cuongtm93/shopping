@@ -8,8 +8,8 @@ namespace ShopBackend.Helpers
 {
     public class ImageGalleryHelper
     {
-        private static string ROOT_DIR => HttpContext.Current.Request.PhysicalApplicationPath + "image\\";
-        private const string FILTER = "(*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+        public static string ROOT_DIR => HttpContext.Current.Request.PhysicalApplicationPath + "image\\";
+        public const string FILTER = "(*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
 
         public static string GetRelativePathTo(FileSystemInfo from, FileSystemInfo to)
         {

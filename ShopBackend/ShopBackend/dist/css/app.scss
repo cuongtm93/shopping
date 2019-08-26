@@ -32,10 +32,13 @@
     }
 }
 
+/*
+    Ảnh sản phẩm
+*/
 .image-controls {
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
 
     &:hover {
         .product-image {
@@ -59,17 +62,20 @@
     text-align: center;
 }
 
+/*
+    Ảnh trong file-folder
+*/
 .gallery_item {
-    border: 1pt solid #808080;
+    border: 1pt solid #ffffff;
 
     &:hover {
-        border: 1pt solid red;
+        border: 1pt solid #808080;
     }
 
-    /*img {
+    img {
         width: 100% !important;
         height: 100px !important;
-    }*/
+    }
 }
 
 .file_checkbox {
@@ -85,8 +91,6 @@
     border-radius: 1px;
     -webkit-appearance: none;
     -moz-appearance: none;
-    appearance: none;
-
 
     &:checked::after {
         border: none;
@@ -104,4 +108,11 @@
     width: 90%;
     //border: 3px solid green;
     //padding: 10px;
+}
+.page-link{
+    &:hover{
+        cursor : pointer;
+        text-decoration : solid;
+        color : red!important;
+    }
 }

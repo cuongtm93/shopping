@@ -1,30 +1,47 @@
 ﻿@{
 
     Layout = null;
+    var items = ViewBag.Items as Dictionary<string, string>;
+
+    string short_string(string long_string)
+    {
+        if (long_string.Length <= 5)
+        {
+            return long_string;
+        }
+        else
+        {
+            return long_string.Substring(0, 5) + "...";
+        }
+    }
+
 }
+<form id="form_selected_files">
+    @foreach (var item in items)
+    {
 
-@foreach (string item in ViewBag.folders)
-{
-    var folder_name = @item.Substring(item.LastIndexOf("\\") + 1);
-    <div class="col-sm-3 gallery_item" typeof="folder" path="@item" short_name="@folder_name">
-        <img src="~/image/folder.png" style="max-width:100%" />
-        <div class="form-group center">
-            <input type="checkbox" name="path[]" value="path" title="Chọn tệp" class="file_checkbox" />
-            <label title="@item"> @folder_name...</label>
-        </div>
-    </div>
-}
+        if (item.Value == "file")
+        {
+            var file_name = @item.Key.Substring(item.Key.LastIndexOf("\\") + 1);
+            <div class="col-sm-3 gallery_item" typeof="file" path="@item.Key" short_name="@file_name">
+                <img src="~/image/@item.Key" style="max-width:100%" />
+                <div class="form-group center">
+                    <input type="checkbox" name="path[]" value="@item.Key" title="Chọn tệp" class="file_checkbox" />
+                    <label title="@item.Key"> @short_string(file_name)</label>
+                </div>
+            </div>
+        }
 
-@foreach (string item in ViewBag.files)
-{
-    var file_name = @item.Substring(item.LastIndexOf("\\") + 1);
-    <div class="col-sm-3 gallery_item" typeof="file" path="@item" short_name="@file_name">
-        <img src="~/image/@item" style="max-width:100%" />
-        <div class="form-group center">
-            <input type="checkbox" name="path[]" value="path" title="Chọn tệp" class="file_checkbox" />
-            <label title="@item"> @file_name...</label>
-        </div>
-    </div>
-}
-
-
+        if (item.Value == "folder")
+        {
+            var folder_name = @item.Key.Substring(item.Key.LastIndexOf("\\") + 1);
+            <div class="col-sm-3 gallery_item" typeof="folder" path="@item.Key" short_name="@folder_name">
+                <img src="~/image/folder.png" style="max-width:100%" />
+                <div class="form-group center">
+                    <input type="checkbox" name="path[]" value="@item.Key" title="Chọn tệp" class="file_checkbox" />
+                    <label title="@item.Key"> @short_string(folder_name)</label>
+                </div>
+            </div>
+        }
+    }
+</form>

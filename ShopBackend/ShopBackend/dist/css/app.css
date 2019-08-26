@@ -1,4 +1,5 @@
-﻿.form-group .control-label.required:before {
+﻿@charset "UTF-8";
+.form-group .control-label.required:before {
   content: "* ";
   color: red; }
 
@@ -17,10 +18,13 @@
   text-align: center !important;
   vertical-align: middle !important; }
 
+/*
+    Ảnh sản phẩm
+*/
 .image-controls {
   position: relative;
-  width: 100px;
-  height: 100px; }
+  width: 150px;
+  height: 150px; }
   .image-controls:hover .product-image, .image-controls:hover .product-other-images {
     opacity: 0.3; }
   .image-controls:hover .middle {
@@ -36,14 +40,16 @@
   -ms-transform: translate(-50%, -50%);
   text-align: center; }
 
+/*
+    Ảnh trong file-folder
+*/
 .gallery_item {
-  border: 1pt solid #808080;
-  /*img {
-        width: 100% !important;
-        height: 100px !important;
-    }*/ }
+  border: 1pt solid #ffffff; }
   .gallery_item:hover {
-    border: 1pt solid red; }
+    border: 1pt solid #808080; }
+  .gallery_item img {
+    width: 100% !important;
+    height: 100px !important; }
 
 .file_checkbox {
   margin: 2px 0 0;
@@ -57,8 +63,7 @@
   border: 1px solid transparent 0;
   border-radius: 1px;
   -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none; }
+  -moz-appearance: none; }
   .file_checkbox:checked::after {
     border: none;
     position: absolute;
@@ -70,3 +75,8 @@
 .center {
   margin: auto;
   width: 90%; }
+
+.page-link:hover {
+  cursor: pointer;
+  text-decoration: solid;
+  color: red !important; }

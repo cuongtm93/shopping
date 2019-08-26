@@ -40,12 +40,13 @@
                 <tbody>
                     @foreach (var image in Model.Other_images)
                     {
+                        var _dir_ = Path.GetDirectoryName(image.image).Replace(@"\", @"\\");
                         <tr>
                             <td>
                                 <div class="image-controls">
                                     <img src="~/image/@image.image" class="img-thumbnail product-image" alt="@image.sort_order">
                                     <div class="middle">
-                                        <div class="btn btn-success" onclick="$('#modal-default').modal('toggle')">
+                                        <div class="btn btn-success" onclick='javascript:show_modal("@_dir_")'>
                                             <i class="fa fa-refresh"></i>
                                         </div>
                                         <div class="btn btn-danger">
@@ -69,19 +70,153 @@
         </div>
     </div>
 </form>
-@Html.Partial("Edit_Image[ListImageModal]Partial")
+
+<!-- begin modal -->
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <form id="upload_form" action="~/ListImageModal/Upload" method="post" enctype="multipart/form-data">
+                    <input type="file" style="visibility:hidden" name="file_upload" id="file_upload" accept="image/png, image/jpeg" onchange="upload_file()" />
+                </form>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Thư viện ảnh</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="btn btn-default">
+                            <i class="fa fa-level-up"></i>
+                        </div>
+                        <div class="btn btn-default" onclick="goto_page(page)">
+                            <i class="fa fa-refresh"></i>
+                        </div>
+                        <div class="btn btn-default" onclick="$('#file_upload').trigger('click')">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                        <div class="btn btn-default">
+                            <i class="fa fa-folder"></i>
+                        </div>
+                        <div class="btn btn-default" onclick="delete_selected_files()">
+                            <i class="fa fa-trash"></i>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="input-group">
+                            <input type="text" name="search" value="" placeholder="Search.." class="form-control">
+                            <span class="input-group-btn">
+                                <button type="button" data-toggle="tooltip" title="" id="button-search" class="btn btn-primary" data-original-title="Search"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin:10px 0 10px 0; padding : 0!important;" id="list_image_holder">
+
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancel</button>
+                <ul class="pagination pull-right" style="margin:0!important;">
+                    <li class="page-item"><a class="page-link" onclick="goto_page(page-1)"><<</a></li>
+                    <li class="page-item"><a class="page-link">1</a></li>
+                    <li class="page-item"><a class="page-link" onclick="goto_page(2)">2</a></li>
+                    <li class="page-item"><a class="page-link">3</a></li>
+                    <li class="page-item"><a class="page-link" onclick="goto_page(page+1)">>></a></li>
+                </ul>
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    </div>
+</div>
 
 <script>
+
+    // init List Image Modal;
+
+    working_folder = "/";
+    page = 1;
+
+    $(function () {
+        $(window).resize(function (event) {
+            $('#modal-default').position({
+                my: 'center',
+                at: 'center',
+                of: window,
+                collision: 'fit'
+            });
+        });
+    });
+</script>
+
+<!-- end modal -->
+
+<script>
+    function delete_selected_files() {
+        let _checkboxes = $('input[name="path[]"]');
+        var data = [];
+        for (var i = 0; i < _checkboxes.length; i++) {
+            if (_checkboxes[i].checked === true) {
+                data.push(_checkboxes[i].value);
+            }
+        }
+        console.log(JSON.stringify({
+            'data': data
+        }));
+        $.ajax({
+            url: 'ListImageModal/DeleteFiles',
+            type: 'POST',
+            data: {
+                'selected_relative_paths': data
+            },
+            success: function (res) {
+                if (res.m === 'ok') {
+                    console.log('Đã xoá thành công');
+                    goto_page(page); // refresh
+                    console.log(res);
+                }
+            }
+        });
+    }
     function show_modal(folder) {
         working_folder = folder;
+        console.log(`folder=${folder}`);
+        console.log(`Đang xoá`);
+        page = 1;
+        goto_page(page);
         $('#modal-default').modal('toggle');
+    }
+    function goto_page(_page) {
+        if (_page <= 0) _page = 1;
+        folder = working_folder;
+        page = _page;
+        $('#list_image_holder').html("Đang cập nhật");
         $.ajax({
             url: `/ListImageModal?dir=${folder}&page=${page}`,
             type: 'GET',
             success: function (res) {
-                console.log(res);
                 $('#list_image_holder').html(res);
             }
         });
+    }
+    function upload_file() {
+        let _form_data = new FormData();
+        _form_data.append('file_upload', $('input[type=file]')[0].files[0]);
+        _form_data.append('dir_upload', working_folder);
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/ListImageModal/Upload');
+        xhr.send(_form_data);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var result = JSON.parse(xhr.responseText);
+                if (result.m === 'File uploaded successfully') {
+                    console.log('Upload thành công');
+                    goto_page(page); // refresh
+                }
+            }
+        }
     }
 </script>
