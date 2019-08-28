@@ -582,6 +582,7 @@
     </Compile>
     <Compile Include="Helpers\ImageGalleryHelper.cs" />
     <Compile Include="Models\Edit_ImagePartiallViewmodel.cs" />
+    <Compile Include="Models\Home_IndexViewmodel.cs" />
     <Compile Include="Models\Product_Create_Viewmodel.cs" />
     <Compile Include="Models\Product_Index_Viewmodel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
