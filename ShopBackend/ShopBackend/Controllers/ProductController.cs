@@ -24,29 +24,71 @@ namespace ShopBackend.Controllers
             db = new shop2Entities();
             db.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
         }
+
+        [HttpPost]
+        public JsonResult Change_Main_Product_Image(int product_id, string new_image_path)
+        {
+            var product = db.oc_product.Find(product_id);
+            product.image = new_image_path;
+            db.SaveChanges();
+            return Json(new { m = "ok" });
+        }
+        [HttpPost]
+        public JsonResult Reset_Main_Product_Image(int product_id)
+        {
+            const string DEFAULT_PRODUCT_IMAGE_PATH = "no_image.png";
+            var product = db.oc_product.Find(product_id);
+            product.image = DEFAULT_PRODUCT_IMAGE_PATH;
+            db.SaveChanges();
+            return Json(new { m = "ok" });
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="product_id"></param>
+        /// <param name="product_minor_image_id"> Có dạng _id , ví dụ _28 </param>
+        /// <param name="new_image_path"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public JsonResult Change_Minor_Product_Image(int product_id, string product_minor_image_id, string new_image_path)
+        {
+            int real_product_minor_image_id = int.Parse(product_minor_image_id.Substring(1));
+            var product_minor_image = db.oc_product_image.Find(real_product_minor_image_id);
+            product_minor_image.image = new_image_path;
+            db.SaveChanges();
+            return Json(new { m = "ok" });
+        }
+        [HttpPost]
+        public JsonResult Remove_Minor_Product_Image(int product_id, string product_minor_image_path)
+        {
+            var selected_images = db.oc_product_image.Where(r => r.product_id == product_id && r.image == product_minor_image_path);
+            db.oc_product_image.RemoveRange(selected_images);
+            db.SaveChanges();
+            return Json(new { m = "ok" });
+        }
         // GET: Product
         public ActionResult Index(int? page)
         {
 
-            var raw = from tbl1 in db.oc_product
-                      join tbl2 in db.oc_product_description on tbl1.product_id equals tbl2.product_id
-                      orderby tbl1.date_added
-                      select new
-                      {
-                          tbl1.product_id,
-                          tbl1.image,
-                          tbl2.name,
-                          tbl1.model,
-                          tbl1.quantity,
-                          tbl1.status
-                      };
+            var product_details = from tbl1 in db.oc_product
+                                  join tbl2 in db.oc_product_description on tbl1.product_id equals tbl2.product_id
+                                  orderby tbl1.date_added
+                                  select new
+                                  {
+                                      tbl1.product_id,
+                                      tbl1.image,
+                                      tbl2.name,
+                                      tbl1.model,
+                                      tbl1.quantity,
+                                      tbl1.status
+                                  };
 
             if (!page.HasValue) page = 1;
-            var data = raw.OrderBy(r => r.product_id).ToPagedList(page.Value, PAGE_SIZE);
-            var model = new List<Models.Product_Index_Viewmodel>();
-            foreach (var item in data)
+            var product_details_paged = product_details.OrderBy(r => r.product_id).ToPagedList(page.Value, PAGE_SIZE);
+            var model = new List<Product_Index_Viewmodel>();
+            foreach (var item in product_details_paged)
             {
-                model.Add(new Models.Product_Index_Viewmodel()
+                model.Add(new Product_Index_Viewmodel()
                 {
                     product_id = item.product_id,
                     image = item.image,
@@ -57,10 +99,12 @@ namespace ShopBackend.Controllers
                 });
             }
             ViewBag.Page = page;
-            ViewBag.PageCount = data.PageCount;
-            if (page > data.PageCount && data.PageCount > 0)
+            int PageCount = product_details_paged.PageCount;
+            ViewBag.PageCount = PageCount;
+            bool hasPage = PageCount > 0;
+            if (page > PageCount && hasPage)
             {
-                var lastPage = data.PageCount;
+                var lastPage = PageCount;
                 return RedirectToAction("Index", new { page = lastPage });
             }
             return View(model);
@@ -79,6 +123,12 @@ namespace ShopBackend.Controllers
             {
                 Oc_product_description = new oc_product_description(),
                 Oc_Product = new oc_product(),
+                Images = new Edit_ImagePartialViewmodel()
+                {
+                    Image = "\\",
+                    Other_images = new List<oc_product_image>().ToArray(),
+                    Product_id = 0
+                },
                 Length_Classes = db.oc_length_class_description.ToList(),
                 Weight_Classes = db.oc_weight_class_description.ToList(),
                 Tax_Classes = db.oc_tax_class.ToList(),
@@ -125,18 +175,20 @@ namespace ShopBackend.Controllers
         // GET: Product/Edit/5
         public ActionResult Edit(int id, string tab = "tab_general")
         {
-            var product = db.oc_product.Find(id);
+            var product_details = db.oc_product.Find(id);
             var model = new Product_Create_Viewmodel()
             {
                 Oc_product_description = db.oc_product_description.Find(id, 1),
-                Oc_Product = product,
+                Oc_Product = product_details,
                 Tax_Classes = db.oc_tax_class.ToList(),
                 Weight_Classes = db.oc_weight_class_description.ToList(),
                 Length_Classes = db.oc_length_class_description.ToList(),
                 Stock_Statuses = db.oc_stock_status.ToList(),
-                Images = new Edit_ImagePartiallViewmodel()
+
+                Images = new Edit_ImagePartialViewmodel()
                 {
-                    Image = product.image,
+                    Product_id = product_details.product_id,
+                    Image = product_details.image,
                     Other_images = db.oc_product_image.Where(r => r.product_id == id).ToArray()
                 }
             };
@@ -146,16 +198,9 @@ namespace ShopBackend.Controllers
             ViewBag.Weight_Classes = model.Weight_Classes;
             ViewBag.Length_Classes = model.Length_Classes;
 
-            var enable_tab = new Dictionary<string, string>();
-            var tabs = new string[] { "tab_general", "tab_data", "tab_property", "tab_image", };
-            foreach (var _tab in tabs)
-            {
-                var q = Request.QueryString.ToString().ToLower();
-                var _value = _tab == tab ? "in active" : "";
-                enable_tab.Add(_tab, _value);
-            }
-
-            ViewData["enable_tab"] = enable_tab;
+            const string DEFAULT_TAB = "tab_general";
+            var allowed_tabs = new string[] { DEFAULT_TAB, "tab_data", "tab_property", "tab_image", };
+            ViewBag.enabled_tab = allowed_tabs.Contains(tab) ? tab : DEFAULT_TAB;
             return View(model);
         }
 

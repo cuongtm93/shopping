@@ -29,13 +29,13 @@
                 @Html.Partial("Edit_GeneralPartial", Model.Oc_product_description)
             </div>
             <div class="tab-pane fade" id="tab_data">
-                @Html.Partial("Edit_DataPartial",Model.Oc_Product)
+                @Html.Partial("Edit_DataPartial", Model.Oc_Product)
             </div>
             <div class="tab-pane fade" id="tab_property">
                 @Html.Partial("Edit_PropertyPartial")
             </div>
             <div class="tab-pane fade" id="tab_image">
-                @Html.Partial("Edit_ImagePartial")
+                @Html.Partial("Edit_ImagePartial", Model.Images)
             </div>
 
         </div>

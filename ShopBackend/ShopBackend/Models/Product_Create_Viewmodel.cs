@@ -14,6 +14,6 @@ namespace ShopBackend.Models
         public List<oc_stock_status> Stock_Statuses { get; set; }
         public List<oc_weight_class_description> Weight_Classes { get; set; }
         public List<oc_length_class_description> Length_Classes { get; set; }
-        public Edit_ImagePartiallViewmodel Images { get; internal set; }
+        public Edit_ImagePartialViewmodel Images { get; internal set; }
     }
 }

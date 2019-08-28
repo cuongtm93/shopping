@@ -3,15 +3,16 @@
     Layout = null;
     var items = ViewBag.Items as Dictionary<string, string>;
 
+    const int MAX_LONG_STRING_LENGTH = 8;
     string short_string(string long_string)
     {
-        if (long_string.Length <= 5)
+        if (long_string.Length <= MAX_LONG_STRING_LENGTH)
         {
             return long_string;
         }
         else
         {
-            return long_string.Substring(0, 5) + "...";
+            return long_string.Substring(0, MAX_LONG_STRING_LENGTH) + "...";
         }
     }
 
@@ -23,11 +24,11 @@
         if (item.Value == "file")
         {
             var file_name = @item.Key.Substring(item.Key.LastIndexOf("\\") + 1);
-            <div class="col-sm-3 gallery_item" typeof="file" path="@item.Key" short_name="@file_name">
-                <img src="~/image/@item.Key" style="max-width:100%" />
+            <div class="col-sm-3 gallery_item" typeof="file" path="@item.Key" short_name="@file_name" title="@item.Key">
+                <img src="~/image/@item.Key" style="max-width:100%" onclick="on_image_selected('@item.Key.Replace(@"\",@"\\")');$('#modal-default').modal('toggle');" />
                 <div class="form-group center">
                     <input type="checkbox" name="path[]" value="@item.Key" title="Chọn tệp" class="file_checkbox" />
-                    <label title="@item.Key"> @short_string(file_name)</label>
+                    <label> @short_string(file_name)</label>
                 </div>
             </div>
         }
@@ -35,11 +36,11 @@
         if (item.Value == "folder")
         {
             var folder_name = @item.Key.Substring(item.Key.LastIndexOf("\\") + 1);
-            <div class="col-sm-3 gallery_item" typeof="folder" path="@item.Key" short_name="@folder_name">
+            <div class="col-sm-3 gallery_item" typeof="folder" path="@item.Key" short_name="@folder_name" onclick="open_folder($(this).attr('path'));" title="@item.Key">
                 <img src="~/image/folder.png" style="max-width:100%" />
                 <div class="form-group center">
                     <input type="checkbox" name="path[]" value="@item.Key" title="Chọn tệp" class="file_checkbox" />
-                    <label title="@item.Key"> @short_string(folder_name)</label>
+                    <label> <span style="color:blue">@short_string(folder_name)</span></label>
                 </div>
             </div>
         }

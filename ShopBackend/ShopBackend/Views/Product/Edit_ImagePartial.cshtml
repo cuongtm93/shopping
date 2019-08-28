@@ -1,9 +1,9 @@
-﻿@model ShopBackend.Models.Edit_ImagePartiallViewmodel
+﻿@model ShopBackend.Models.Edit_ImagePartialViewmodel
 @{
     var directory = System.IO.Path.GetDirectoryName(Model.Image);
     directory = directory.Replace("\\", "\\\\");
 }
-<form class="form-horizontal">
+<div class="form-horizontal">
     <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">Ảnh chính</h3>
@@ -11,12 +11,12 @@
         <!-- /.box-header -->
         <div class="box-body">
             <div class="image-controls">
-                <img src="~/image/@Model.Image" class="img-thumbnail product-image" alt="">
+                <img src="~/image/@Model.Image" class="img-thumbnail product-image" alt="" id="main_image">
                 <div class="middle">
-                    <div class="btn btn-success" onclick='javascript:show_modal("@directory")'>
+                    <div class="btn btn-success" onclick='javascript:show_modal("@directory", "main_image")'>
                         <i class="fa fa-refresh"></i>
                     </div>
-                    <div class="btn btn-danger">
+                    <div class="btn btn-danger" onclick="reset_main_product_image(product_id)">
                         <i class="fa fa-remove"></i>
                     </div>
                 </div>
@@ -41,25 +41,28 @@
                     @foreach (var image in Model.Other_images)
                     {
                         var _dir_ = Path.GetDirectoryName(image.image).Replace(@"\", @"\\");
-                        <tr>
+                        var _id_ = "_" + image.product_image_id;
+                        var _minor_image_box_id = "minor_" + _id_;
+                        var _minor_sortorder_id = "sort_order_" + _minor_image_box_id;
+                        <tr id="@_minor_image_box_id">
                             <td>
                                 <div class="image-controls">
-                                    <img src="~/image/@image.image" class="img-thumbnail product-image" alt="@image.sort_order">
+                                    <img src="~/image/@image.image" class="img-thumbnail product-image" alt="@image.sort_order" id='@_id_'>
                                     <div class="middle">
-                                        <div class="btn btn-success" onclick='javascript:show_modal("@_dir_")'>
+                                        <div class="btn btn-success" onclick='javascript:show_modal("@_dir_","@_id_")'>
                                             <i class="fa fa-refresh"></i>
                                         </div>
-                                        <div class="btn btn-danger">
+                                        <div class="btn btn-danger" onclick="remove_minor_product_image('@_minor_image_box_id','@image.image.Replace(@"\",@"\\")')">
                                             <i class="fa fa-remove"></i>
                                         </div>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <input class="form-control align-middle" name="sort_order" value="@image.sort_order" />
+                                <input class="form-control align-middle" name="@_minor_sortorder_id" value="@image.sort_order" />
                             </td>
                             <td>
-                                <div class="btn btn-danger">
+                                <div class="btn btn-danger" onclick="remove_minor_product_image('@_minor_image_box_id','@image.image.Replace(@"\",@"\\")')">
                                     <i class="fa fa-remove"></i>
                                 </div>
                             </td>
@@ -69,7 +72,7 @@
             </table>
         </div>
     </div>
-</form>
+</div>
 
 <!-- begin modal -->
 <div class="modal fade" id="modal-default">
@@ -82,18 +85,18 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Thư viện ảnh</h4>
+                <h4 class="modal-title">Thư mục <span id="working_folder"></span></h4>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-sm-5">
-                        <div class="btn btn-default">
+                        <div class="btn btn-default" onclick="go_up_directory();" title="Di chuyển lên thư mục cha">
                             <i class="fa fa-level-up"></i>
                         </div>
-                        <div class="btn btn-default" onclick="goto_page(page)">
+                        <div class="btn btn-default" onclick="goto_page(page)" title="refresh thư mục">
                             <i class="fa fa-refresh"></i>
                         </div>
-                        <div class="btn btn-default" onclick="$('#file_upload').trigger('click')">
+                        <div class="btn btn-default" onclick="$('#file_upload').trigger('click')" id="file_upload_icon" onmouseover="file_upload_icon_hover()">
                             <i class="fa fa-plus"></i>
                         </div>
                         <div class="btn btn-default">
@@ -133,28 +136,124 @@
     </div>
 </div>
 
-<script>
 
-    // init List Image Modal;
-
-    working_folder = "/";
-    page = 1;
-
-    $(function () {
-        $(window).resize(function (event) {
-            $('#modal-default').position({
-                my: 'center',
-                at: 'center',
-                of: window,
-                collision: 'fit'
-            });
-        });
-    });
-</script>
 
 <!-- end modal -->
 
 <script>
+    product_id = @Model.Product_id;
+
+    $(document).ready(function () {
+        $( "input[name^='sort_order_']" ).keyup(function(event) {
+            if (event.keyCode === 13) {
+                //alert($(this).attr('name'));
+
+            }
+        });
+        $( "input[name^='sort_order_']" ).focusout(function(event) {
+
+        });
+    });
+
+    function update_minor_order(box_id, path) {
+        //$.ajax({
+        //    url: 'Product/Reset_Main_Product_Image',
+        //    type: 'POST',
+        //    data: {
+        //        'product_id': product_id,
+        //    },
+        //    success: function (res) {
+        //        if (res.m === 'ok') {
+        //            var img = $("#main_image");
+        //            img.attr("src", `image/no_image.png`);
+        //        }
+        //    }
+        //});
+    }
+    function remove_minor_product_image(box_id, path) {
+        $.ajax({
+                url: 'Product/Remove_Minor_Product_Image',
+                type: 'POST',
+                data: {
+                    'product_id': product_id,
+                    'product_minor_image_path': path
+                },
+                success: function (res) {
+                    if (res.m === 'ok') {
+                        $('#' + box_id).remove();
+                        console.log(`xoá ảnh phụ ${path} thành công`);
+                    }
+                }
+        });
+        console.log('Đã xoá ảnh phụ cho  product_id ' + product_id);
+    }
+    function reset_main_product_image() {
+        $.ajax({
+            url: 'Product/Reset_Main_Product_Image',
+            type: 'POST',
+            data: {
+                'product_id': product_id,
+            },
+            success: function (res) {
+                if (res.m === 'ok') {
+                    var img = $("#main_image");
+                    img.attr("src", `image/no_image.png`);
+                }
+            }
+        });
+    }
+    function on_image_selected(_new_selected_image) {
+        console.log(selecting_id);
+        selected_image = _new_selected_image;
+        var img = (selecting_id === "main_image") ? $("#main_image") : $('#' + selecting_id);
+        img.attr("src", `image/${selected_image}`);
+
+        if (selecting_id === "main_image") {
+            $.ajax({
+                url: 'Product/Change_Main_Product_Image',
+                type: 'POST',
+                data: {
+                    'product_id': product_id,
+                    'new_image_path': selected_image
+                },
+                success: function (res) {
+                    if (res.m === 'ok') {
+                        console.log(`Đã cập nhật ảnh cho ${product_id} thành công`);
+                    }
+                }
+            });
+            console.log('Sửa ảnh chính cho product_id ' + selected_image);
+        } else {
+            $.ajax({
+                url: 'Product/Change_Minor_Product_Image',
+                type: 'POST',
+                data: {
+                    'product_id': product_id,
+                    'product_minor_image_id': selecting_id, // ví dụ _28
+                    'new_image_path': selected_image
+                },
+                success: function (res) {
+                    if (res.m === 'ok') {
+                        console.log(`Đã cập nhật ảnh cho ${product_id} thành công`);
+                    }
+                }
+            });
+            console.log('Sửa ảnh phụ cho product_id ' + product_id);
+        }
+        selected_image = '';
+        selecting_id = '';
+    }
+    function file_upload_icon_hover() {
+        $("#file_upload_icon").attr("title", "Tải ảnh vào thư mục : " + working_folder);
+    }
+    function go_up_directory() {
+        change_working_folder(parent_path(working_folder));
+        goto_page(page);
+    }
+    function change_working_folder(_new) {
+        working_folder = _new;
+        $('#working_folder').html(`\{${_new}\}`);
+    }
     function delete_selected_files() {
         let _checkboxes = $('input[name="path[]"]');
         var data = [];
@@ -181,13 +280,19 @@
             }
         });
     }
-    function show_modal(folder) {
-        working_folder = folder;
+    function show_modal(folder, _new_selecting_id) {
+        console.log(_new_selecting_id);
+        selecting_id = _new_selecting_id;
+        change_working_folder(folder);
         console.log(`folder=${folder}`);
-        console.log(`Đang xoá`);
         page = 1;
         goto_page(page);
         $('#modal-default').modal('toggle');
+    }
+    function open_folder(_folder) {
+        change_working_folder(_folder);
+        page = 1;
+        goto_page(page); // refresh;
     }
     function goto_page(_page) {
         if (_page <= 0) _page = 1;
@@ -202,6 +307,10 @@
             }
         });
     }
+    function parent_path(_relative_path) {
+        var _result = _relative_path.substring(0, _relative_path.lastIndexOf('\\'));
+        return (_result == '') ? '\\' : _result;
+    }
     function upload_file() {
         let _form_data = new FormData();
         _form_data.append('file_upload', $('input[type=file]')[0].files[0]);
@@ -213,10 +322,30 @@
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var result = JSON.parse(xhr.responseText);
                 if (result.m === 'File uploaded successfully') {
+                    $('input[type=file]').val(''); // reset input file
                     console.log('Upload thành công');
                     goto_page(page); // refresh
                 }
             }
         }
     }
+</script>
+
+<script>
+
+    // init List Image Modal;
+
+    change_working_folder("/");
+    page = 1;
+
+    $(function () {
+        $(window).resize(function (event) {
+            $('#modal-default').position({
+                my: 'center',
+                at: 'center',
+                of: window,
+                collision: 'fit'
+            });
+        });
+    });
 </script>

@@ -3,7 +3,18 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    Dictionary<string,string> enable = ViewData["enable_tab"] as Dictionary<string,string>;
+    Dictionary<string, string> enable = ViewData["enable_tab"] as Dictionary<string, string>;
+    string in_active(string tab)
+    {
+        if (tab == ViewBag.enabled_tab)
+        {
+            return "in active";
+        }
+        else
+        {
+            return string.Empty;
+        }
+    }
 }
 @section content_header{
     <h1>
@@ -26,19 +37,27 @@
     <div class="panel-body">
         <div class="tab-content">
 
-            <div class='tab-pane fade @enable["tab_general"]' id="tab_general">
+            <div class='tab-pane fade @in_active("tab_general")' id="tab_general">
                 @Html.Partial("Edit_GeneralPartial", Model.Oc_product_description)
             </div>
-            <div class='tab-pane fade @enable["tab_data"]' id="tab_data">
+            <div class='tab-pane fade @in_active("tab_data")' id="tab_data">
                 @Html.Partial("Edit_DataPartial", Model.Oc_Product)
             </div>
-            <div class='tab-pane fade @enable["tab_property"]' id="tab_property">
+            <div class='tab-pane fade @in_active("tab_property")' id="tab_property">
                 @Html.Partial("Edit_PropertyPartial")
             </div>
-            <div class='tab-pane fade @enable["tab_image"]' id="tab_image">
+            <div class='tab-pane fade @in_active("tab_image")' id="tab_image">
                 @Html.Partial("Edit_ImagePartial", Model.Images)
             </div>
-
         </div>
     </div>
+    <script>
+        var enabled_tab = '@ViewBag.enabled_tab';
+        function activaTab(tab) {
+            $('.nav-tabs a[href="#' + tab + '"]').tab('show');
+        };
+        $(document).ready(function () {
+            activaTab(enabled_tab);
+        })
+    </script>
 }

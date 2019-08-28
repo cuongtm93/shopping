@@ -5,7 +5,7 @@ using System.Web;
 using ShopBackend.Data;
 namespace ShopBackend.Models
 {
-    public class Edit_ImagePartiallViewmodel
+    public class Edit_ImagePartialViewmodel
     {
         public int Product_id { get; set; }
         public string Image { get; set; }
