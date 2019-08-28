@@ -37,7 +37,7 @@
                         <th>Hành động</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="minor_image_tbody">
                     @foreach (var image in Model.Other_images)
                     {
                         var _dir_ = Path.GetDirectoryName(image.image).Replace(@"\", @"\\");
@@ -69,6 +69,18 @@
                         </tr>
                     }
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="btn btn-success" onclick="add_more_minor_image()">
+                                <i class="fa fa-plus"></i>
+                                Thêm
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>
@@ -154,7 +166,47 @@
 
         });
     });
-
+    function add_more_minor_image() {
+        $.ajax({
+            url: 'Product/add_more_minor_image',
+            type: 'POST',
+            data: {
+                'product_id': product_id,
+            },
+            success: function (res) {
+                var created_image_id = res.created;
+                if (res.m === 'ok') {
+                    let r1 = `<tr id="minor__${created_image_id}">`;
+                    let r2 = `<td>`;
+                    let r3 = `<div class="image-controls">`;
+                    let r4 = `<img src="/image/no_image.png" class="img-thumbnail product-image" alt="0" id="_${created_image_id}">`;
+                    let r5 = `<div class="middle">`;
+                    let r6 = `<div class="btn btn-success" onclick="javascript:show_modal('\\\\','_${created_image_id}')">`;
+                    let r7 = `<i class="fa fa-refresh"></i>`;
+                    let r8 = `</div>`;
+                    let r9 = `<div class="btn btn-danger" onclick="remove_minor_product_image('minor__${created_image_id}','no_image.png')">`;
+                    let r10 = `<i class="fa fa-remove"></i>`;
+                    let r11 = `</div>`;
+                    let r12=`</div>`;
+                    let r13 = `</div>`;
+                    let r14 = `</td>`;
+                    let r15 = `<td>`;
+                    let r16 = `<input class="form-control align-middle" name="sort_order_minor__${created_image_id}" value="0">`;
+                    let r17 = `</td>`;
+                    let r18=`<td>`;
+                    let r19 = `<div class="btn btn-danger" onclick="remove_minor_product_image('minor__${created_image_id}','no_image.png')">`;
+                    let r20 = `<i class="fa fa-remove"></i>`;
+                    let r21 = `</div></td></tr>`;
+                    var new_row =
+                        r1 + r2 + r3 + r4 + r5 + r6 + r7
+                        + r8 + r9 + r10 + r11 + r12 + r13 + r14
+                        + r15 + r16 + r17 + r18 + r19 + r20 + r21;
+                    $('#minor_image_tbody').append(new_row);
+                    console.log(new_row);
+                }
+            }
+        });
+    }
     function update_minor_order(box_id, path) {
         //$.ajax({
         //    url: 'Product/Reset_Main_Product_Image',

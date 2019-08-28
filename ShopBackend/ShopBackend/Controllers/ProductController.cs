@@ -26,6 +26,19 @@ namespace ShopBackend.Controllers
         }
 
         [HttpPost]
+        public JsonResult add_more_minor_image(int product_id)
+        {
+            var created = db.oc_product_image.Add(new oc_product_image()
+            {
+                image = "no_image.png",
+                product_id = product_id,
+                sort_order = 0,
+            });
+            db.SaveChanges();
+            return Json(new { m = "ok" , created = created.product_image_id });
+        }
+
+        [HttpPost]
         public JsonResult Change_Main_Product_Image(int product_id, string new_image_path)
         {
             var product = db.oc_product.Find(product_id);
