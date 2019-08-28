@@ -112,13 +112,13 @@ namespace ShopBackend.Controllers
                 });
             }
             ViewBag.Page = page;
-            int PageCount = product_details_paged.PageCount;
-            ViewBag.PageCount = PageCount;
-            bool hasPage = PageCount > 0;
-            if (page > PageCount && hasPage)
+            int page_count = product_details_paged.PageCount;
+            ViewBag.PageCount = page_count;
+            bool has_page = page_count > 0;
+            if (page > page_count && has_page)
             {
-                var lastPage = PageCount;
-                return RedirectToAction("Index", new { page = lastPage });
+                var last_page = page_count;
+                return RedirectToAction("Index", new { page = last_page });
             }
             return View(model);
         }
@@ -138,7 +138,7 @@ namespace ShopBackend.Controllers
                 Oc_Product = new oc_product(),
                 Images = new Edit_ImagePartialViewmodel()
                 {
-                    Image = "\\",
+                    Image = "no_image.png",
                     Other_images = new List<oc_product_image>().ToArray(),
                     Product_id = 0
                 },
