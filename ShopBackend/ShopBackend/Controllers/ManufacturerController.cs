@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ShopBackend.Data;
+using ShopBackend.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,26 @@ namespace ShopBackend.Controllers
 {
     public class ManufacturerController : Controller
     {
+        private readonly shop2Entities db;
+        public ManufacturerController()
+        {
+            db = new shop2Entities();
+        }
         // GET: Manufacturer
         public ActionResult Index()
         {
-            return View();
+            var model = new Manufacturer_IndexViewmodel()
+            {
+                Manufacturers = db.oc_manufacturer
+                .Where(r => r.status == 1).ToList()
+                .Select(r => new Manufacturer()
+                {
+                    Mame = r.name,
+                    Manufacturer_id = r.manufacturer_id,
+                    Sort_order = r.sort_order
+                }).ToList()
+            };
+            return View(model);
         }
 
         // GET: Manufacturer/Details/5
@@ -72,17 +90,17 @@ namespace ShopBackend.Controllers
 
         // POST: Manufacturer/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                var manufacturers_id = collection["manufacturers"];
+                db.Database.ExecuteSqlCommand($"update shop.oc_manufacturer set status=0 where manufacturer_id in ({manufacturers_id})");
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
     }

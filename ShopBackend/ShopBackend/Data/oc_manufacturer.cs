@@ -18,5 +18,6 @@ namespace ShopBackend.Data
         public string name { get; set; }
         public string image { get; set; }
         public int sort_order { get; set; }
+        public Nullable<decimal> status { get; set; }
     }
 }

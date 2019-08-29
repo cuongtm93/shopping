@@ -1,4 +1,4 @@
-﻿
+﻿@model ShopBackend.Models.Manufacturer_IndexViewmodel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,5 +16,65 @@
 }
 
 @section content_main{
-    danh mục
+    <form class="form-horizontal" action="Manufacturer/Delete" method="post">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Danh mục nhà sản xuất</h3>
+                <div class="pull-right">
+                    <a href="Manufacturer/Create">
+                        <div class="btn btn-success">
+                            <i class="fa fa-fw fa-plus"></i>Thêm
+                        </div>
+                    </a>
+                    <button type="submit" class="btn btn-danger"><i class="fa fa-fw fa-remove"></i> Xoá </button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table class="table table-bordered table-hover">
+                    <tbody>
+                    <thead class="thead-dark">
+                        <tr>
+                            <th style="width:100px;">
+                                <input type="checkbox" id="selectAll" />
+                            </th>
+                            <th>Nhà sản xuất</th>
+                            <th style="width:100px;">Thứ tự </th>
+                            <th style="width: 100px;">Lệnh</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var manufacturer in Model.Manufacturers)
+                        {
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="manufacturers" value="@manufacturer.Manufacturer_id" />
+                                </td>
+                                <td>@manufacturer.Mame</td>
+                                <td>@manufacturer.Sort_order</td>
+                                <td>
+                                    <a href="/Manufacturer/Edit/@manufacturer.Manufacturer_id" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <!-- Pagination -->
+            </div>
+        </div>
+    </form>
+}
+
+@section scripts{
+    <script>
+        $("#selectAll").click(function () {
+            $("input[type=checkbox]").prop('checked', $(this).prop('checked'));
+        });
+    </script>
 }

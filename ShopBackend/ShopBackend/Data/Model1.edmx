@@ -762,6 +762,7 @@
           <Property Name="name" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="image" Type="nvarchar" MaxLength="255" />
           <Property Name="sort_order" Type="int" Nullable="false" />
+          <Property Name="status" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="oc_manufacturer_to_store">
           <Key>
@@ -2570,6 +2571,7 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <Property Name="name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="sort_order" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="oc_manufacturer_to_store">
           <Key>
@@ -4383,6 +4385,7 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <EntitySetMapping Name="oc_manufacturer">
             <EntityTypeMapping TypeName="shop2Model.oc_manufacturer">
               <MappingFragment StoreEntitySet="oc_manufacturer">
+                <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="manufacturer_id" ColumnName="manufacturer_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="image" ColumnName="image" />
