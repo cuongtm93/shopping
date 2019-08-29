@@ -8,7 +8,8 @@ namespace ShopBackend.Models
     public struct Manufacturer
     {
         public int Manufacturer_id { get; set; }
-        public string Mame { get; set; }
+        public string Image { get; set; }
+        public string Name { get; set; }
         public int Sort_order { get; set; }
     }
 

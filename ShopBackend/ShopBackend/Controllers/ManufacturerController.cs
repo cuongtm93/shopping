@@ -24,7 +24,8 @@ namespace ShopBackend.Controllers
                 .Where(r => r.status == 1).ToList()
                 .Select(r => new Manufacturer()
                 {
-                    Mame = r.name,
+                    Image = r.image,
+                    Name = r.name,
                     Manufacturer_id = r.manufacturer_id,
                     Sort_order = r.sort_order
                 }).ToList()

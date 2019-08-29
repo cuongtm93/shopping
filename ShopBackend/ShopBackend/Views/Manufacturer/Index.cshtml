@@ -38,6 +38,7 @@
                             <th style="width:100px;">
                                 <input type="checkbox" id="selectAll" />
                             </th>
+                            <th>Biểu tượng</th>
                             <th>Nhà sản xuất</th>
                             <th style="width:100px;">Thứ tự </th>
                             <th style="width: 100px;">Lệnh</th>
@@ -51,7 +52,12 @@
                                 <td>
                                     <input type="checkbox" name="manufacturers" value="@manufacturer.Manufacturer_id" />
                                 </td>
-                                <td>@manufacturer.Mame</td>
+                                <td>
+                                    <div class="img-thumbnail">
+                                        <img src="~/image/@manufacturer.Image" style="max-width:50px;height:auto" />
+                                    </div>
+                                </td>
+                                <td>@manufacturer.Name</td>
                                 <td>@manufacturer.Sort_order</td>
                                 <td>
                                     <a href="/Manufacturer/Edit/@manufacturer.Manufacturer_id" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit">
