@@ -583,6 +583,8 @@
     <Compile Include="Helpers\ImageGalleryHelper.cs" />
     <Compile Include="Models\Edit_ImagePartiallViewmodel.cs" />
     <Compile Include="Models\Home_IndexViewmodel.cs" />
+    <Compile Include="Models\Manufacturer_EditViewmodel.cs" />
+    <Compile Include="Models\Manufacturer_CreateViewmodel.cs" />
     <Compile Include="Models\Manufacturer_IndexViewmodel.cs" />
     <Compile Include="Models\Product_Create_Viewmodel.cs" />
     <Compile Include="Models\Product_Index_Viewmodel.cs" />
@@ -1233,6 +1235,8 @@
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Manufacturer\Index.cshtml" />
     <Content Include="Views\ListImageModal\Index.cshtml" />
+    <Content Include="Views\Manufacturer\Create.cshtml" />
+    <Content Include="Views\Manufacturer\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

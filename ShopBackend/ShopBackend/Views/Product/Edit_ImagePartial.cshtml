@@ -295,17 +295,10 @@
         selected_image = '';
         selecting_id = '';
     }
-    function file_upload_icon_hover() {
-        $("#file_upload_icon").attr("title", "Tải ảnh vào thư mục : " + working_folder);
-    }
-    function go_up_directory() {
-        change_working_folder(parent_path(working_folder));
-        goto_page(page);
-    }
-    function change_working_folder(_new) {
-        working_folder = _new;
-        $('#working_folder').html(`\{${_new}\}`);
-    }
+
+    /*
+     * Modal functions begin
+     */
     function delete_selected_files() {
         let _checkboxes = $('input[name="path[]"]');
         var data = [];
@@ -331,6 +324,17 @@
                 }
             }
         });
+    }
+    function file_upload_icon_hover() {
+        $("#file_upload_icon").attr("title", "Tải ảnh vào thư mục : " + working_folder);
+    }
+    function go_up_directory() {
+        change_working_folder(parent_path(working_folder));
+        goto_page(page);
+    }
+    function change_working_folder(_new) {
+        working_folder = _new;
+        $('#working_folder').html(`\{${_new}\}`);
     }
     function show_modal(folder, _new_selecting_id) {
         console.log(_new_selecting_id);
@@ -381,6 +385,10 @@
             }
         }
     }
+
+    /*
+     * Modal functions end
+     */
 </script>
 
 <script>

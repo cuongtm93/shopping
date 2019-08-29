@@ -1,0 +1,223 @@
+﻿@model ShopBackend.Models.Manufacturer_CreateViewmodel
+@{
+    ViewBag.Title = "Thêm nhà sản xuất";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section content_header{
+    <h1>
+        Thêm nhà sản xuất
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Danh mục</a></li>
+        <li class="active">Nhà sản xuất</li>
+    </ol>
+}
+
+@section content_main{
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form action="Manufacturer/Create" method="post" enctype="multipart/form-data" id="form-manufacturer" class="form-horizontal">
+                <div class="box-body">
+                    <button type="submit" class="btn btn-danger  pull-right" formaction="" formmethod="post">Save</button>
+                    <div class="col-sm-2"></div>
+                    <a href="javascript:window.history.back();">
+                        <div type="submit" class="btn btn-info pull-right" style="margin-right:10px;">
+                            <i class="fa fa-arrow-left"></i>
+                        </div>
+                    </a>
+                </div>
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab-general" data-toggle="tab" aria-expanded="true">Thông tin chung</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab-general">
+                        <div class="form-group required" style="margin-top:10px">
+                            <label class="col-sm-2 control-label" for="input-name">Nhà sản xuất</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="name" value="@Model.name" placeholder="Manufacturer Name" id="input-name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="input-image">Ảnh</label>
+                            <div class="col-sm-10" onclick="show_modal('\\', 'input-image');">
+                                <div href="#" id="thumb-image" data-toggle="image" class="img-thumbnail">
+                                    <img src="~/image/@Model.image" alt="" title="@Model.image" id="input-image" style="max-width:200px;height:auto;">
+                                </div>
+                                <input type="hidden" name="image" value="@Model.image" id="input-image">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="input-sort-order">Thứ tự</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="sort_order" value="@Model.sort_order" placeholder="Sort Order" id="input-sort-order" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="tab-pane" id="tab-seo">
+                        <div class="alert alert-info" style="margin-top:10px">
+                            <i class="fa fa-info-circle">                            </i>
+                            Vui lòng không dùng khoảng trống mà hãy thay thế bằng dấu - và đảm bảo rằng SEO URL là duy nhất
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <td class="text-left">Stores</td>
+                                        <td class="text-left">Keyword</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-left">Default</td>
+                                        <td class="text-left">
+                                            <div class="input-group col-sm-12">
+                                                <input type="text" name="manufacturer_seo_url" value="@Model.manufacturer_seo_url" placeholder="Keyword" class="form-control">
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>*@
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <form id="upload_form" action="~/ListImageModal/Upload" method="post" enctype="multipart/form-data">
+                        <input type="file" style="visibility:hidden" name="file_upload" id="file_upload" accept="image/png, image/jpeg" onchange="upload_file()" />
+                    </form>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Thư mục <span id="working_folder"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="btn btn-default" onclick="go_up_directory();" title="Di chuyển lên thư mục cha">
+                                <i class="fa fa-level-up"></i>
+                            </div>
+                            <div class="btn btn-default" onclick="goto_page(page)" title="refresh thư mục">
+                                <i class="fa fa-refresh"></i>
+                            </div>
+                            <div class="btn btn-default" onclick="$('#file_upload').trigger('click')" id="file_upload_icon" onmouseover="file_upload_icon_hover()">
+                                <i class="fa fa-plus"></i>
+                            </div>
+                            <div class="btn btn-default">
+                                <i class="fa fa-folder"></i>
+                            </div>
+                            <div class="btn btn-default" onclick="delete_selected_files()">
+                                <i class="fa fa-trash"></i>
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <input type="text" name="search" value="" placeholder="Search.." class="form-control">
+                                <span class="input-group-btn">
+                                    <button type="button" data-toggle="tooltip" title="" id="button-search" class="btn btn-primary" data-original-title="Search"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin:10px 0 10px 0; padding : 0!important;" id="list_image_holder">
+
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancel</button>
+                    <ul class="pagination pull-right" style="margin:0!important;">
+                        <li class="page-item"><a class="page-link" onclick="goto_page(page-1)"><<</a></li>
+                        <li class="page-item"><a class="page-link">1</a></li>
+                        <li class="page-item"><a class="page-link" onclick="goto_page(2)">2</a></li>
+                        <li class="page-item"><a class="page-link">3</a></li>
+                        <li class="page-item"><a class="page-link" onclick="goto_page(page+1)">>></a></li>
+                    </ul>
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+        </div>
+    </div>
+}
+
+@section scripts{
+    <script>
+        change_working_folder("/");
+        const FIRST_PAGE = 1;
+        page = FIRST_PAGE;
+        function on_image_selected(_new_selected_image) {
+            selected_image = _new_selected_image;
+            var img = $('#' + selecting_id);
+            img.attr("src", `image/${selected_image}`);
+            $('input[name="image"]').val(selected_image);
+        }
+        function file_upload_icon_hover() {
+            $("#file_upload_icon").attr("title", "Tải ảnh vào thư mục : " + working_folder);
+        }
+        function go_up_directory() {
+            change_working_folder(parent_path(working_folder));
+            goto_page(page);
+        }
+        function change_working_folder(_new) {
+            working_folder = _new;
+            $('#working_folder').html(`\{${_new}\}`);
+        }
+        function show_modal(folder, _new_selecting_id) {
+            console.log(_new_selecting_id);
+            selecting_id = _new_selecting_id;
+            change_working_folder(folder);
+            console.log(`folder=${folder}`);
+            page = 1;
+            goto_page(page);
+            $('#modal-default').modal('toggle');
+        }
+        function open_folder(_folder) {
+            change_working_folder(_folder);
+            page = 1;
+            goto_page(page); // refresh;
+        }
+        function goto_page(_page) {
+            if (_page <= 0) _page = FIRST_PAGE;
+            folder = working_folder;
+            page = _page;
+            $('#list_image_holder').html("Đang cập nhật");
+            $.ajax({
+                url: `/ListImageModal?dir=${folder}&page=${page}`,
+                type: 'GET',
+                success: function (res) {
+                    $('#list_image_holder').html(res);
+                }
+            });
+        }
+        function parent_path(_relative_path) {
+            var _result = _relative_path.substring(0, _relative_path.lastIndexOf('\\'));
+            return (_result == '') ? '\\' : _result;
+        }
+        function upload_file() {
+            let _form_data = new FormData();
+            _form_data.append('file_upload', $('input[type=file]')[0].files[0]);
+            _form_data.append('dir_upload', working_folder);
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/ListImageModal/Upload');
+            xhr.send(_form_data);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var result = JSON.parse(xhr.responseText);
+                    if (result.m === 'File uploaded successfully') {
+                        $('input[type=file]').val(''); // reset input file
+                        console.log('Upload thành công');
+                        goto_page(page); // refresh
+                    }
+                }
+            }
+        }
+    </script>
+}

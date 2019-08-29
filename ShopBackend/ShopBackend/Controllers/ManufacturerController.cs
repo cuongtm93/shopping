@@ -41,17 +41,41 @@ namespace ShopBackend.Controllers
         // GET: Manufacturer/Create
         public ActionResult Create()
         {
-            return View();
+            var model = new Manufacturer_CreateViewmodel()
+            {
+                image = "no_image.png",
+                sort_order = 0,
+                name = ""
+            };
+            return View(model);
         }
 
         // POST: Manufacturer/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Manufacturer_CreateViewmodel model)
         {
             try
             {
-                // TODO: Add insert logic here
 
+                if (ModelState.IsValid)
+                {
+                    if (string.IsNullOrEmpty(model.name))
+                    {
+                        model.name = "";
+                    }
+                    if (string.IsNullOrEmpty(model.image))
+                    {
+                        model.image = "no_image.png";
+                    }
+                    db.oc_manufacturer.Add(new oc_manufacturer()
+                    {
+                        image = model.image,
+                        name  = model.name,
+                        sort_order = model.sort_order,
+                        status = 1,
+                    });
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch
@@ -63,17 +87,29 @@ namespace ShopBackend.Controllers
         // GET: Manufacturer/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var manufacturer = db.oc_manufacturer.Find(id);
+            var model = new Manufacturer_EditViewmodel()
+            {
+                image = manufacturer.image,
+                name =manufacturer.name,
+                sort_order = manufacturer.sort_order,
+                manufacturer_id = id
+            };
+            return View(model);
         }
 
         // POST: Manufacturer/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Manufacturer_EditViewmodel model)
         {
             try
             {
-                // TODO: Add update logic here
-
+                var manufacturer = db.oc_manufacturer.Find(id);
+                manufacturer.image = model.image;
+                manufacturer.name = model.name;
+                manufacturer.sort_order = model.sort_order;
+                manufacturer.status = 1;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
