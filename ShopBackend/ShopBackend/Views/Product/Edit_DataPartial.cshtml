@@ -229,7 +229,7 @@
 
                     @foreach (ShopBackend.Data.oc_weight_class_description oc_weight_class in ViewBag.Weight_Classes)
                     {
-                        if (Model.length_class_id == oc_weight_class.weight_class_id)
+                        if (Model.weight_class_id == oc_weight_class.weight_class_id)
                         {
                             <option value="@oc_weight_class.weight_class_id" selected="selected">@oc_weight_class.title</option>
                         }

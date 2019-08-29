@@ -1,4 +1,5 @@
-﻿@model ShopBackend.Models.Product_Create_Viewmodel
+﻿@model ShopBackend.Data.oc_product_description
+
 @{
     ViewBag.Title = "Thêm sản phẩm";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,29 +17,94 @@
 }
 
 @section content_main{
+    <script>
+        @*product = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));*@
+    </script>
     <ul class="nav nav-tabs">
         <li class="active"><a href="#tab_general" data-toggle="tab">Tổng quan</a></li>
-        <li><a href="#tab_data" data-toggle="tab">Thông số</a></li>
-        <li><a href="#tab_property" data-toggle="tab">Thuộc tính</a></li>
-        <li><a href="#tab_image" data-toggle="tab">Hình ảnh</a></li>
     </ul>
     <div class="panel-body">
         <div class="tab-content">
+            <form id="create_product_form" action="Product/Create" method="post">
+                <div class="row">
+                    <div class="pull-right" style="margin-right:40px;">
+                        <button class="btn btn-success" type="submit" value="submit">
+                            <i class="fa fa-plus"></i> Thêm
+                        </button>
+                    </div>
+                </div>
+                <div class="tab-pane fade in active" id="tab_general">
+                    <!-- /.box-footer -->
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label required">Tên sản phẩm</label>
 
-            <div class="tab-pane fade in active" id="tab_general">
-                @Html.Partial("Edit_GeneralPartial", Model.Oc_product_description)
-            </div>
-            <div class="tab-pane fade" id="tab_data">
-                @Html.Partial("Edit_DataPartial", Model.Oc_Product)
-            </div>
-            <div class="tab-pane fade" id="tab_property">
-                @Html.Partial("Edit_PropertyPartial")
-            </div>
-            <div class="tab-pane fade" id="tab_image">
-                @Html.Partial("Edit_ImagePartial", Model.Images)
-            </div>
+                            <div class="col-sm-10">
+                                <input type="text" required class="form-control" name="name" placeholder="Tên sản phẩm" value="@Model.name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Mô tả</label>
 
+                            <div class="col-sm-10">
+                                <div class="box box-info">
+                                    <div class="box-header">
+                                        <h3 class="box-title">
+                                            
+                                        </h3>
+                                        <!-- tools box -->
+                                        <div class="pull-right box-tools">
+                                            <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                        <!-- /. tools -->
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body pad" style="">
+                                        <textarea id="editor1" rows="10" cols="80" name="description">@Html.Raw(@Model.description)</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label required">Tiêu đề thẻ meta</label>
+
+                            <div class="col-sm-10">
+                                <textarea rows="5" class="form-control" name="meta_title" placeholder="Tiêu đề thẻ meta">@Model.meta_title</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Mô tả thẻ meta</label>
+
+                            <div class="col-sm-10">
+                                <textarea rows="5" class="form-control" name="meta_description" placeholder="Mô tả thẻ meta">@Model.meta_description</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Từ khoá trong thẻ meta</label>
+
+                            <div class="col-sm-10">
+                                <textarea rows="5" class="form-control" name="meta_keyword" placeholder="Mô tả thẻ meta, cách nhau bằng dấu phẩy">@Model.meta_keyword</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </form>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+
+            $(function () {
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace('editor1')
+                //bootstrap WYSIHTML5 - text editor
+                $('.textarea').wysihtml5()
+            })
+        });
+    </script>
 }
 

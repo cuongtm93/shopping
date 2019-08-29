@@ -35,7 +35,7 @@ namespace ShopBackend.Controllers
                 sort_order = 0,
             });
             db.SaveChanges();
-            return Json(new { m = "ok" , created = created.product_image_id });
+            return Json(new { m = "ok", created = created.product_image_id });
         }
 
         [HttpPost]
@@ -82,9 +82,11 @@ namespace ShopBackend.Controllers
         // GET: Product
         public ActionResult Index(int? page)
         {
-
+            const int NOT_DELETED = 1;
+            const int FIRST_PAGE = 1;
             var product_details = from tbl1 in db.oc_product
                                   join tbl2 in db.oc_product_description on tbl1.product_id equals tbl2.product_id
+                                  where tbl1.status == NOT_DELETED
                                   orderby tbl1.date_added
                                   select new
                                   {
@@ -96,7 +98,7 @@ namespace ShopBackend.Controllers
                                       tbl1.status
                                   };
 
-            if (!page.HasValue) page = 1;
+            if (!page.HasValue) page = FIRST_PAGE;
             var product_details_paged = product_details.OrderBy(r => r.product_id).ToPagedList(page.Value, PAGE_SIZE);
             var model = new List<Product_Index_Viewmodel>();
             foreach (var item in product_details_paged)
@@ -132,32 +134,16 @@ namespace ShopBackend.Controllers
         // GET: Product/Create
         public ActionResult Create()
         {
-            var model = new Product_Create_Viewmodel()
+            var model = new oc_product_description()
             {
-                Oc_product_description = new oc_product_description(),
-                Oc_Product = new oc_product(),
-                Images = new Edit_ImagePartialViewmodel()
-                {
-                    Image = "no_image.png",
-                    Other_images = new List<oc_product_image>().ToArray(),
-                    Product_id = 0
-                },
-                Length_Classes = db.oc_length_class_description.ToList(),
-                Weight_Classes = db.oc_weight_class_description.ToList(),
-                Tax_Classes = db.oc_tax_class.ToList(),
-                Stock_Statuses = db.oc_stock_status.ToList(),
+                language_id = 1
             };
-
-            ViewBag.Tax_Classes = model.Tax_Classes;
-            ViewBag.Length_Classes = model.Length_Classes;
-            ViewBag.Weight_Classes = model.Weight_Classes;
-            ViewBag.Stock_Statuses = model.Stock_Statuses;
             return View(model);
         }
 
         // POST: Product/Create
         [HttpPost, ValidateInput(false)]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(oc_product_description model)
         {
             try
             {
@@ -165,19 +151,50 @@ namespace ShopBackend.Controllers
                 var n_product = new oc_product()
                 {
                     date_added = DateTime.Now,
-
+                    image = "no_image.png",
+                    date_available = DateTime.Now,
+                    model = "",
+                    date_modified = DateTime.Now,
+                    ean = "",
+                    height = default,
+                    isbn = "",
+                    jan = "",
+                    length = default,
+                    length_class_id = db.oc_length_class.First().length_class_id,
+                    location = "",
+                    manufacturer_id = db.oc_manufacturer.First().manufacturer_id,
+                    minimum = default,
+                    mpn = "",
+                    points = default,
+                    price = default,
+                    width = default,
+                    quantity = default,
+                    shipping = default,
+                    sku = "",
+                    sort_order = default,
+                    status = 1,
+                    subtract = default,
+                    stock_status_id = default,
+                    tax_class_id = default,
+                    upc = "",
+                    weight = default,
+                    weight_class_id = db.oc_weight_class.First().weight_class_id
                 };
 
                 var n_product_id = db.oc_product.Add(n_product).product_id;
-
                 db.SaveChanges();
-
-                // Thêm product_description 
-                var n_oc_product_description = new oc_product_description()
-                {
-
-                };
-                return RedirectToAction("Index");
+                var n_product_description = model;
+                n_product_description.meta_title = (model.meta_title == null ? "" : model.meta_title);
+                n_product_description.meta_keyword = model.meta_keyword == null ? "" : model.meta_keyword;
+                n_product_description.name = model.name == null ? "" : model.name;
+                n_product_description.description = model.description == null ? "" : model.description;
+                n_product_description.meta_description = model.meta_description == null ? "" : model.meta_description;
+                n_product_description.product_id = n_product.product_id;
+                n_product_description.language_id = db.oc_language.First().language_id;
+                n_product_description.tag = "";
+                db.oc_product_description.Add(n_product_description);
+                db.SaveChanges();
+                return RedirectToAction("Edit", new { id = n_product.product_id, tab = "tab_image" });
             }
             catch (Exception ex)
             {
@@ -286,12 +303,14 @@ namespace ShopBackend.Controllers
                         product.weight_class_id = int.Parse(collection["weight_class_id"]);
                         product.width = decimal.Parse(collection["width"]);
                         product.subtract = short.Parse(collection["subtract"]);
+                        product.date_modified = DateTime.Now;
                         db.SaveChanges();
                         break;
                     default:
                         break;
                 }
-                return RedirectToAction("Index");
+                return Redirect(Request.UrlReferrer.ToString());
+
             }
             catch (Exception ex)
             {
@@ -314,7 +333,7 @@ namespace ShopBackend.Controllers
             {
                 // TODO: Add delete logic here
                 string _list_checked_product_id = collection["checked"];
-                var result = db.Database.ExecuteSqlCommand($"delete from shop.oc_product where product_id in ({_list_checked_product_id})");
+                var result1 = db.Database.ExecuteSqlCommand($"update shop.oc_product set status=0 where product_id in ({_list_checked_product_id})");
                 db.SaveChanges();
                 return Redirect(Request.UrlReferrer.ToString());
             }
