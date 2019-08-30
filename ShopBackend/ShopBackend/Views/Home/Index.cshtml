@@ -9,8 +9,8 @@
         Thông tin ứng dụng
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
+        <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Trang chủ</li>
     </ol>
 }
 
@@ -87,18 +87,18 @@
                                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Khách hàng</th>
                                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Trạng thái</th>
                                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Ngày tạo</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Số lượng</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Số tiền</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var item in Model.Lastest_Orders)
+                                        @foreach (var lastest_order in Model.Lastest_Orders)
                                         {
-                                            <tr role="row" class="odd">
-                                                <td>@item.Order_id</td>
-                                                <td>@item.Customer_name</td>
-                                                <td>@item.Status</td>
-                                                <td>@item.Date_Added</td>
-                                                <td>@item.Total VNĐ</td>
+                                            <tr role="row" class="odd clickable-row" data-href="/Order/Details/@lastest_order.Order_id">
+                                                <td>@lastest_order.Order_id</td>
+                                                <td>@lastest_order.Customer_name</td>
+                                                <td>@lastest_order.Status</td>
+                                                <td>@lastest_order.Date_Added</td>
+                                                <td>@lastest_order.Total VNĐ</td>
                                             </tr>
                                         }
                                     </tbody>
@@ -111,4 +111,14 @@
             </div>
         </div>
     </div>
+}
+@section scripts{
+    <script>
+        jQuery(document).ready(function($) {
+            $(".clickable-row").click(function() {
+                window.location = $(this).data("href");
+            });
+        });
+
+    </script>
 }

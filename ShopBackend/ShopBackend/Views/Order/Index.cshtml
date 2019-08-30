@@ -25,19 +25,19 @@
                         <thead>
                             <tr>
                                 <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);"></td>
-                                <td class="text-right"> <a href="" class="desc">Mã đơn hàng</a> </td>
-                                <td class="text-left"> <a href="">Khách hàng</a> </td>
-                                <td class="text-left"> <a href="">Trạng thái</a> </td>
-                                <td class="text-right"> <a href="">Thành tiền</a> </td>
-                                <td class="text-left"> <a href="">Ngày tạo</a> </td>
-                                <td class="text-left"> <a href="">Ngày sửa</a> </td>
-                                <td class="text-right">Hành động</td>
+                                <td class="text-left"> Mã đơn hàng </td>
+                                <td class="text-left"> Khách hàng </td>
+                                <td class="text-left"> Trạng thái </td>
+                                <td class="text-left">Thành tiền </td>
+                                <td class="text-left"> Ngày tạo </td>
+                                <td class="text-left"> Ngày sửa </td>
+                                <td class="text-right"> Hành động</td>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var order in Model.Orders)
                             {
-                                <tr>
+                                <tr class="_order_index_tr">
                                     <td class="text-center">
                                         <input type="checkbox" name="selected[]" value="1">
                                         <input type="hidden" name="shipping_code[]" value="flat.flat">
@@ -48,8 +48,8 @@
                                     <td class="text-right">@order.total VNĐ</td>
                                     <td class="text-left">@order.date_added</td>
                                     <td class="text-left">@order.date_modified</td>
-                                    <td class="text-right">
-                                        <div style="min-width: 120px;">
+                                    <td class="text-right" style="text-align : right !important">
+                                        <div style="min-width: 30px;">
                                             <div class="btn-group">
                                                 <a href="/Order/Details/@order.order_id" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="View">
                                                     <i class="fa fa-eye"></i>
@@ -86,7 +86,7 @@
             </div>
         </div>
 
-        
+
     </div>
 }
 

@@ -80,3 +80,10 @@
   cursor: pointer;
   text-decoration: solid;
   color: red !important; }
+
+.clickable-row:hover {
+  cursor: pointer; }
+
+._order_index_tr td {
+  text-align: left;
+  vertical-align: middle !important; }
