@@ -10,7 +10,10 @@ namespace ShopBackend.Controllers
     public class AccountController : Controller
     {
         private readonly shop2Entities db;
-
+        ~AccountController()
+        {
+            db.Dispose();
+        }
         public AccountController()
         {
             db = new shop2Entities();

@@ -14,7 +14,10 @@ namespace ShopBackend.Controllers
     public class HomeController : Controller
     {
         private readonly shop2Entities db;
-
+        ~HomeController()
+        {
+            db.Dispose();
+        }
         public HomeController()
         {
             db = new shop2Entities();

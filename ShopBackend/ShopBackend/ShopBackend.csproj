@@ -146,6 +146,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListImageModalController.cs" />
     <Compile Include="Controllers\ManufacturerController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Data\Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -586,6 +587,7 @@
     <Compile Include="Models\Manufacturer_EditViewmodel.cs" />
     <Compile Include="Models\Manufacturer_CreateViewmodel.cs" />
     <Compile Include="Models\Manufacturer_IndexViewmodel.cs" />
+    <Compile Include="Models\Order_IndexViewmodel.cs" />
     <Compile Include="Models\Product_Create_Viewmodel.cs" />
     <Compile Include="Models\Product_Index_Viewmodel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1237,6 +1239,8 @@
     <Content Include="Views\ListImageModal\Index.cshtml" />
     <Content Include="Views\Manufacturer\Create.cshtml" />
     <Content Include="Views\Manufacturer\Edit.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

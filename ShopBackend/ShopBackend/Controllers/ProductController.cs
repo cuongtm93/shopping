@@ -18,7 +18,10 @@ namespace ShopBackend.Controllers
     {
         private shop2Entities db;
         const int PAGE_SIZE = 5;
-
+        ~ProductController()
+        {
+            db.Dispose();
+        }
         public ProductController()
         {
             db = new shop2Entities();

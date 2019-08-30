@@ -11,6 +11,10 @@ namespace ShopBackend.Controllers
     public class ManufacturerController : Controller
     {
         private readonly shop2Entities db;
+        ~ManufacturerController()
+        {
+            db.Dispose();
+        }
         public ManufacturerController()
         {
             db = new shop2Entities();
