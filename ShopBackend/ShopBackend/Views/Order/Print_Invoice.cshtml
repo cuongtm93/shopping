@@ -1,0 +1,111 @@
+﻿@model ShopBackend.Models.Order_PrintInvoiceViewmodel
+@{
+    ViewBag.Title = "Print_Invoice";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Hoá đơn</title>
+    <base href="http://localhost/upload/admin/" />
+    <link href="view/javascript/bootstrap/css/bootstrap.css" rel="stylesheet" media="all" />
+    <script type="text/javascript" src="view/javascript/jquery/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="view/javascript/bootstrap/js/bootstrap.min.js"></script>
+    <link href="view/javascript/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+    <link type="text/css" href="view/stylesheet/stylesheet.css" rel="stylesheet" media="all" />
+</head>
+<body>
+    <div class="container">
+        <div style="page-break-after: always;">
+            <h1>Hoá đơn #@Model.order_id</h1>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td colspan="2">Chi tiết hoá đơn</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="width: 50%;">
+                            <address>
+                                <strong>@Model.store_name</strong><br />
+                                @Model.store_address
+                            </address>
+                            <b>SĐT</b> @Model.store_phone<br />
+                            <b>E-Mail</b> @Model.store_email<br />
+                            <b>Web Site:</b> <a href="@Model.store_website">@Model.store_website</a>
+                        </td>
+                        <td style="width: 50%;">
+                            <b>Ngày tạo</b> @Model.date_added.ToString("dd/MM/yyyy")<br />
+                            <b>Mã hoá đơn </b> @Model.invoice_prefix<br />
+                            <b>Mã đơn hàng:</b> @Model.order_id<br />
+                            <b>Phương thức thanh toán</b> @Model.payment_method<br />
+                            <b>Phương thức vận chuyển</b> @Model.shipping_method<br />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td style="width: 50%;"><b>Địa chỉ thanh toán</b></td>
+                        <td style="width: 50%;"><b>Địa chỉ giao hàng</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <address>
+                                @Model.full_name<br/>@Model.payment_address1<br/>@Model.payment_city<br/>@Model.payment_country
+                            </address>
+                        </td>
+                        <td>
+                            <address>
+                                @Model.full_name<br/>@Model.shipping_address1<br/>@Model.shipping_country<br/>@Model.shipping_country
+                            </address>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td><b>Tên sản phẩm</b></td>
+                        <td><b>Model</b></td>
+                        <td class="text-right"><b>Số lượng</b></td>
+                        <td class="text-right"><b>Đơn giá</b></td>
+                        <td class="text-right"><b>Thành tiền</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order_product in Model.order_products)
+                    {
+                        <tr>
+                            <td>@order_product.name </td>
+                            <td>@order_product.model</td>
+                            <td class="text-right">@order_product.quantity</td>
+                            <td class="text-right">@Decimal.ToInt32(order_product.price) VNĐ</td>
+                            <td class="text-right">@Decimal.ToInt32(order_product.quantity * order_product.price) VNĐ</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td class="text-right" colspan="4"><b>Tổng tiền hàng</b></td>
+                        <td class="text-right">@Model.order_products_total VNĐ</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right" colspan="4"><b>Phí vận chuyển</b></td>
+                        <td class="text-right">@(Model.total - Model.order_products_total) VNĐ</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right" colspan="4"><b>Số tiền phải trả</b></td>
+                        <td class="text-right">@Model.total VNĐ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

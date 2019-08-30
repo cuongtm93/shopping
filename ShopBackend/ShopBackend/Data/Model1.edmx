@@ -1386,6 +1386,9 @@
           <Property Name="name" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="url" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="ssl" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="255" />
+          <Property Name="email" Type="nvarchar" MaxLength="255" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="oc_tax_class">
           <Key>
@@ -3198,6 +3201,9 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <Property Name="name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ssl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="oc_tax_class">
           <Key>
@@ -3518,7 +3524,7 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <EntitySet Name="oc_zone_to_geo_zone" EntityType="Self.oc_zone_to_geo_zone" />
           <EntitySet Name="product_product_desc_view" EntityType="shop2Model.product_product_desc_view" />
           <FunctionImport Name="Order_Details" ReturnType="Collection(shop2Model.Order_Details_Result)">
-            <Parameter Name="order_id" Mode="In" Type="Int32" />
+          <Parameter Name="order_id" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="product_product_desc_view">
@@ -3606,6 +3612,8 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <Property Type="String" Name="shipping_country" Nullable="false" MaxLength="128" />
           <Property Type="String" Name="payment_city" Nullable="false" MaxLength="128" />
           <Property Type="String" Name="payment_country" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="store_id" Nullable="false" />
+          <Property Type="String" Name="invoice_prefix" Nullable="false" MaxLength="26" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -5063,6 +5071,9 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <EntitySetMapping Name="oc_store">
             <EntityTypeMapping TypeName="shop2Model.oc_store">
               <MappingFragment StoreEntitySet="oc_store">
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="store_id" ColumnName="store_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="url" ColumnName="url" />
@@ -5322,6 +5333,8 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
                 <ScalarProperty Name="shipping_country" ColumnName="shipping_country" />
                 <ScalarProperty Name="payment_city" ColumnName="payment_city" />
                 <ScalarProperty Name="payment_country" ColumnName="payment_country" />
+                <ScalarProperty Name="store_id" ColumnName="store_id" />
+                <ScalarProperty Name="invoice_prefix" ColumnName="invoice_prefix" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -18,5 +18,8 @@ namespace ShopBackend.Data
         public string name { get; set; }
         public string url { get; set; }
         public string ssl { get; set; }
+        public string address { get; set; }
+        public string email { get; set; }
+        public string phone { get; set; }
     }
 }

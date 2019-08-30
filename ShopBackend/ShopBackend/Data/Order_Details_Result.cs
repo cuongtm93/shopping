@@ -30,5 +30,7 @@ namespace ShopBackend.Data
         public string shipping_country { get; set; }
         public string payment_city { get; set; }
         public string payment_country { get; set; }
+        public int store_id { get; set; }
+        public string invoice_prefix { get; set; }
     }
 }

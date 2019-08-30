@@ -24,6 +24,44 @@ namespace ShopBackend.Controllers
             db.SaveChanges();
             return RedirectToAction("Details", new { id = model.order_id });
         }
+
+        public ActionResult Print_Invoice(int id)
+        {
+            var order_products = db.oc_order_product.Where(r => r.order_id == id).ToList();
+            var order_products_total = order_products.Sum(r => r.price * r.quantity);
+
+            var model = db.Order_Details(id).Select(r => new Order_PrintInvoiceViewmodel()
+            {
+                date_added = r.date_added,
+                invoice_prefix = r.invoice_prefix,
+                email = r.email,
+                full_name = r.fullname,
+                order_id = r.order_id,
+                store_id = r.store_id,
+                payment_address1 = r.payment_address_1,
+                payment_address2 = r.payment_address_2,
+                payment_method = r.payment_method,
+                payment_city = r.payment_city,
+                payment_country = r.payment_country,
+                shipping_address1 = r.shipping_address_1,
+                shipping_address2 = r.shipping_address_2,
+                shipping_city = r.shipping_city,
+                shipping_country = r.shipping_country,
+                shipping_method = r.shipping_method,
+                store_name = r.store_name,
+                telephone = r.telephone,
+                total = (int)r.total,
+                order_products_total = (int)order_products_total,
+                order_products = order_products,
+            }).SingleOrDefault();
+
+            var store= db.oc_store.SingleOrDefault(r => r.store_id == model.store_id);
+            model.store_address = store.address;
+            model.store_phone = store.phone;
+            model.store_email = store.email;
+            model.store_website = store.url;
+            return View(model);
+        }
         // GET: Order
         public ActionResult Index()
         {
