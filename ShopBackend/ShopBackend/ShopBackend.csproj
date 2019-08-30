@@ -571,6 +571,9 @@
     <Compile Include="Data\oc_zone_to_geo_zone.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Order_Details_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\product_product_desc_view.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -587,6 +590,7 @@
     <Compile Include="Models\Manufacturer_EditViewmodel.cs" />
     <Compile Include="Models\Manufacturer_CreateViewmodel.cs" />
     <Compile Include="Models\Manufacturer_IndexViewmodel.cs" />
+    <Compile Include="Models\Order_DetailsViewmodel.cs" />
     <Compile Include="Models\Order_IndexViewmodel.cs" />
     <Compile Include="Models\Product_Create_Viewmodel.cs" />
     <Compile Include="Models\Product_Index_Viewmodel.cs" />

@@ -1636,6 +1636,9 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <Property Name="date_modified" Type="datetime2" Precision="0" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
+        <Function Name="Order_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="order_id" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="shop2ModelStoreContainer">
           <EntitySet Name="oc_address" EntityType="Self.oc_address" Schema="shop" store:Type="Tables" />
           <EntitySet Name="oc_api" EntityType="Self.oc_api" Schema="shop" store:Type="Tables" />
@@ -3514,6 +3517,9 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <EntitySet Name="oc_zone" EntityType="Self.oc_zone" />
           <EntitySet Name="oc_zone_to_geo_zone" EntityType="Self.oc_zone_to_geo_zone" />
           <EntitySet Name="product_product_desc_view" EntityType="shop2Model.product_product_desc_view" />
+          <FunctionImport Name="Order_Details" ReturnType="Collection(shop2Model.Order_Details_Result)">
+            <Parameter Name="order_id" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="product_product_desc_view">
           <Key>
@@ -3582,6 +3588,25 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <Property Name="date_modified" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
+        <ComplexType Name="Order_Details_Result">
+          <Property Type="Int32" Name="order_id" Nullable="false" />
+          <Property Type="String" Name="store_name" Nullable="false" MaxLength="64" />
+          <Property Type="DateTime" Name="date_added" Nullable="false" />
+          <Property Type="String" Name="payment_method" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="shipping_method" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="fullname" Nullable="false" MaxLength="64" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="96" />
+          <Property Type="String" Name="telephone" Nullable="false" MaxLength="32" />
+          <Property Type="Decimal" Name="total" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="String" Name="shipping_address_1" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="shipping_address_2" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="payment_address_1" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="payment_address_2" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="shipping_city" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="shipping_country" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="payment_city" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="payment_country" Nullable="false" MaxLength="128" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5277,6 +5302,29 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Order_Details" FunctionName="shop2Model.Store.Order_Details">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="shop2Model.Order_Details_Result">
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="store_name" ColumnName="store_name" />
+                <ScalarProperty Name="date_added" ColumnName="date_added" />
+                <ScalarProperty Name="payment_method" ColumnName="payment_method" />
+                <ScalarProperty Name="shipping_method" ColumnName="shipping_method" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="shipping_address_1" ColumnName="shipping_address_1" />
+                <ScalarProperty Name="shipping_address_2" ColumnName="shipping_address_2" />
+                <ScalarProperty Name="payment_address_1" ColumnName="payment_address_1" />
+                <ScalarProperty Name="payment_address_2" ColumnName="payment_address_2" />
+                <ScalarProperty Name="shipping_city" ColumnName="shipping_city" />
+                <ScalarProperty Name="shipping_country" ColumnName="shipping_country" />
+                <ScalarProperty Name="payment_city" ColumnName="payment_city" />
+                <ScalarProperty Name="payment_country" ColumnName="payment_country" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
