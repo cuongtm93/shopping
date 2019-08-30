@@ -1,0 +1,364 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section content_header{
+    <h1>
+        Chi tiết đơn hàng
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Danh mục</a></li>
+        <li class="active">Đơn hàng</li>
+    </ol>
+}
+
+@section content_main{
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-shopping-cart"></i> Order Details</h3>
+                </div>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td style="width: 1%;"><button data-toggle="tooltip" title="" class="btn btn-info btn-xs" data-original-title="Store"><i class="fa fa-shopping-cart fa-fw"></i></button></td>
+                            <td><a href="http://localhost/upload/" target="_blank">Your Store</a></td>
+                        </tr>
+                        <tr>
+                            <td><button data-toggle="tooltip" title="" class="btn btn-info btn-xs" data-original-title="Date Added"><i class="fa fa-calendar fa-fw"></i></button></td>
+                            <td>29/08/2019</td>
+                        </tr>
+                        <tr>
+                            <td><button data-toggle="tooltip" title="" class="btn btn-info btn-xs" data-original-title="Payment Method"><i class="fa fa-credit-card fa-fw"></i></button></td>
+                            <td>Cash On Delivery</td>
+                        </tr>
+                        <tr>
+                            <td><button data-toggle="tooltip" title="" class="btn btn-info btn-xs" data-original-title="Shipping Method"><i class="fa fa-truck fa-fw"></i></button></td>
+                            <td>Flat Shipping Rate</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-user"></i> Customer Details</h3>
+                </div>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td style="width: 1%;"><button data-toggle="tooltip" title="" class="btn btn-info btn-xs" data-original-title="Customer"><i class="fa fa-user fa-fw"></i></button></td>
+                            <td> <a href="http://localhost/upload/admin/index.php?route=customer/customer/edit&amp;user_token=z52kVmMSsFziiI9G3XEsgAwmzfmNXfqH&amp;customer_id=1" target="_blank">tran manh cuong tran manh cuong</a> </td>
+                        </tr>
+                        <tr>
+                            <td><button data-toggle="tooltip" title="" class="btn btn-info btn-xs" data-original-title="Customer Group"><i class="fa fa-group fa-fw"></i></button></td>
+                            <td>Default</td>
+                        </tr>
+                        <tr>
+                            <td><button data-toggle="tooltip" title="" class="btn btn-info btn-xs" data-original-title="E-Mail"><i class="fa fa-envelope-o fa-fw"></i></button></td>
+                            <td><a href="mailto:developer.tranmanhcuong@gmail.com">developer.tranmanhcuong@gmail.com</a></td>
+                        </tr>
+                        <tr>
+                            <td><button data-toggle="tooltip" title="" class="btn btn-info btn-xs" data-original-title="Telephone"><i class="fa fa-phone fa-fw"></i></button></td>
+                            <td>014546144</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-cog"></i> Options</h3>
+                </div>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Invoice</td>
+                            <td id="invoice" class="text-right"></td>
+                            <td style="width: 1%;" class="text-center">
+                                <button id="button-invoice" data-loading-text="Loading..." data-toggle="tooltip" title="" class="btn btn-success btn-xs" data-original-title="Generate"><i class="fa fa-cog"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Reward Points</td>
+                            <td class="text-right">0</td>
+                            <td class="text-center">
+                                <button disabled="disabled" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Affiliate
+                            </td>
+                            <td class="text-right">$0.00</td>
+                            <td class="text-center">
+                                <button disabled="disabled" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-info-circle"></i> Order (#1)</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td style="width: 50%;" class="text-left">Payment Address</td>
+                        <td style="width: 50%;" class="text-left">Shipping Address</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-left">tran manh cuong tran manh cuong<br>v 5l8 34t5e 43t34t 3t34t3 4t3t3t<br>cant o 25815151<br>Dong Thap<br>Viet Nam</td>
+                        <td class="text-left">tran manh cuong tran manh cuong<br>v 5l8 34t5e 43t34t 3t34t3 4t3t3t<br>cant o 25815151<br>Dong Thap<br>Viet Nam</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td class="text-left">Product</td>
+                        <td class="text-left">Model</td>
+                        <td class="text-right">Quantity</td>
+                        <td class="text-right">Unit Price</td>
+                        <td class="text-right">Total</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td class="text-left"><a href="http://localhost/upload/admin/index.php?route=catalog/product/edit&amp;user_token=z52kVmMSsFziiI9G3XEsgAwmzfmNXfqH&amp;product_id=40">iPhone</a> </td>
+                        <td class="text-left">product 11</td>
+                        <td class="text-right">1</td>
+                        <td class="text-right">$101.00</td>
+                        <td class="text-right">$101.00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="text-right">Sub-Total</td>
+                        <td class="text-right">$101.00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="text-right">Flat Shipping Rate</td>
+                        <td class="text-right">$5.00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="text-right">Total</td>
+                        <td class="text-right">$106.00</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-comment-o"></i> Order History</h3>
+        </div>
+        <div class="panel-body">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab-history" data-toggle="tab">History</a></li>
+                <li><a href="#tab-additional" data-toggle="tab">Additional</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab-history">
+                    <div id="history">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <td class="text-left">Date Added</td>
+                                        <td class="text-left">Comment</td>
+                                        <td class="text-left">Status</td>
+                                        <td class="text-left">Customer Notified</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-left">29/08/2019</td>
+                                        <td class="text-left"></td>
+                                        <td class="text-left">Processing</td>
+                                        <td class="text-left">No</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left">29/08/2019</td>
+                                        <td class="text-left"></td>
+                                        <td class="text-left">Pending</td>
+                                        <td class="text-left">No</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left">29/08/2019</td>
+                                        <td class="text-left"></td>
+                                        <td class="text-left">Pending</td>
+                                        <td class="text-left">No</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left">29/08/2019</td>
+                                        <td class="text-left"></td>
+                                        <td class="text-left">Pending</td>
+                                        <td class="text-left">No</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 text-left"></div>
+                            <div class="col-sm-6 text-right">Showing 1 to 4 of 4 (1 Pages)</div>
+                        </div>
+                    </div>
+                    <br>
+                    <fieldset>
+                        <legend>Add Order History</legend>
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-order-status">Order Status</label>
+                                <div class="col-sm-10">
+                                    <select name="order_status_id" id="input-order-status" class="form-control">
+
+
+
+
+                                        <option value="7">Canceled</option>
+
+
+
+
+                                        <option value="9">Canceled Reversal</option>
+
+
+
+
+                                        <option value="13">Chargeback</option>
+
+
+
+
+                                        <option value="5">Complete</option>
+
+
+
+
+                                        <option value="8">Denied</option>
+
+
+
+
+                                        <option value="14">Expired</option>
+
+
+
+
+                                        <option value="10">Failed</option>
+
+
+
+
+                                        <option value="1">Pending</option>
+
+
+
+
+                                        <option value="15">Processed</option>
+
+
+
+
+                                        <option value="2" selected="selected">Processing</option>
+
+
+
+
+                                        <option value="11">Refunded</option>
+
+
+
+
+                                        <option value="12">Reversed</option>
+
+
+
+
+                                        <option value="3">Shipped</option>
+
+
+
+
+                                        <option value="16">Voided</option>
+
+
+
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-override"><span data-toggle="tooltip" title="" data-original-title="If the customers order is being blocked from changing the order status due to an anti-fraud extension enable override.">Override</span></label>
+                                <div class="col-sm-10">
+                                    <div class="checkbox">
+                                        <input type="checkbox" name="override" value="1" id="input-override">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-notify">Notify Customer</label>
+                                <div class="col-sm-10">
+                                    <div class="checkbox">
+                                        <input type="checkbox" name="notify" value="1" id="input-notify">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-comment">Comment</label>
+                                <div class="col-sm-10">
+                                    <textarea name="comment" rows="8" id="input-comment" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </fieldset>
+                    <div class="text-right">
+                        <button id="button-history" data-loading-text="Loading..." class="btn btn-primary"><i class="fa fa-plus-circle"></i> Add History</button>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab-additional">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td colspan="2">Browser</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>IP Address</td>
+                                    <td>::1</td>
+                                </tr>
+                                <tr>
+                                    <td>User Agent</td>
+                                    <td>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36</td>
+                                </tr>
+                                <tr>
+                                    <td>Accept Language</td>
+                                    <td>vi-VN,vi;q=0.9,fr-FR;q=0.8,fr;q=0.7,en-US;q=0.6,en;q=0.5,de;q=0.4,pt;q=0.3,mt;q=0.2,sm;q=0.1,ru;q=0.1,en-GB;q=0.1,zh-CN;q=0.1,zh;q=0.1</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
