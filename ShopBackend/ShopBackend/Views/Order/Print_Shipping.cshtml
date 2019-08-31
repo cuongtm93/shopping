@@ -1,0 +1,95 @@
+﻿@model ShopBackend.Models.Order_PrintShippingViewmodel
+@{
+    ViewBag.Title = "Phiếu chuyển hàng";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Phiếu chuyển hàng</title>
+    <base href="http://localhost/upload/admin/" />
+    <link href="view/javascript/bootstrap/css/bootstrap.css" rel="stylesheet" media="all" />
+    <script type="text/javascript" src="view/javascript/jquery/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="view/javascript/bootstrap/js/bootstrap.min.js"></script>
+    <link href="view/javascript/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+    <link type="text/css" href="view/stylesheet/stylesheet.css" rel="stylesheet" media="all" />
+</head>
+<body>
+    <div class="container">
+        <div style="page-break-after: always;">
+            <h1>Phiếu chuyển hàng #@Model.order_id</h1>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td colspan="2">Chi tiết đơn hàng</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <address>
+                                <strong>@Model.store_name</strong><br />
+                                @Model.store_address
+                            </address>
+                            <b>Telephone</b> @Model.store_phone<br />
+                            <b>E-Mail</b> @Model.store_email<br />
+                            <b>Web Site:</b> <a href="@Model.store_website">@Model.store_website</a>
+                        </td>
+                        <td style="width: 50%;">
+                            <b>Date Added</b> @Model.date_added.ToString("dd/MM/yyy")<br />
+                            <b>Invoice No.</b> @Model.invoice_prefix<br />
+                            <b>Order ID:</b> @Model.order_id<br />
+                            <b>Shipping Method</b> @Model.shipping_method<br />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td style="width: 50%;"><b>Địa chỉ giao hàng</b></td>
+                        <td style="width: 50%;"><b>Liên hệ</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Model.customer_full_name<br />@Model.shipping_address1<br />@Model.shipping_city<br />@Model.shipping_city</td>
+                        <td>
+                            @Model.customer_email<br />
+                            SĐT : @Model.customer_telephone
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td><b>Địa chỉ</b></td>
+                        <td><b>Hàng</b></td>
+                        <td><b>Khối lượng</b></td>
+                        <td><b>Model</b></td>
+                        <td class="text-right"><b>Số lượng</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in Model.Products)
+                    {
+                        <tr>
+                            <td>@product.location</td>
+                            <td>
+                                @product.name
+                            </td>
+                            <td>@decimal.Round(product.weight,1) @product.weight_unit</td>
+                            <td>@product.model</td>
+                            <td class="text-right">@product.quantity</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+

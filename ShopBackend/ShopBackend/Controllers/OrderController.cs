@@ -25,6 +25,67 @@ namespace ShopBackend.Controllers
             return RedirectToAction("Details", new { id = model.order_id });
         }
 
+        public ActionResult Print_Shipping(int id)
+        {
+            var model = db.Order_Details(id).Select(r => new Order_PrintShippingViewmodel()
+            {
+                customer_email = r.email,
+                customer_full_name = r.fullname,
+                customer_telephone = r.telephone,
+                date_added = r.date_added,
+                invoice_prefix = r.invoice_prefix,
+                order_id = r.order_id,
+                payment_address1 = r.payment_address_1,
+                payment_address2 = r.payment_address_2,
+                payment_city = r.payment_city,
+                payment_country = r.payment_country,
+                payment_method = r.payment_method,
+                shipping_address1 = r.shipping_address_1,
+                shipping_address2 = r.shipping_address_2,
+                shipping_city = r.shipping_city,
+                shipping_country = r.shipping_country,
+                shipping_method  = r.shipping_method,
+                store_id = r.store_id
+            }).SingleOrDefault();
+
+            var store = db.oc_store.Single(r => r.store_id == model.store_id);
+
+            model.store_name = store.name;
+            model.store_address = store.address;
+            model.store_phone = store.phone;
+            model.store_email = store.email;
+            model.store_website = store.url;
+            var products_without_weight_unit = from product in db.oc_product
+                                               join order_product in db.oc_order_product
+                                               on product.product_id equals order_product.product_id
+                                               where order_product.order_id == id
+                                               select new
+                                               {
+                                                   product.location,
+                                                   order_product.name,
+                                                   product.weight,
+                                                   product.weight_class_id,
+                                                   product.model,
+                                                   order_product.quantity
+                                               };
+
+            var products = from product in products_without_weight_unit
+                           join weight_class_description in db.oc_weight_class_description
+                           on product.weight_class_id equals weight_class_description.weight_class_id
+                           select new Order_PrintShipping_Products()
+                           {
+                               location = product.location,
+                               model = product.model,
+                               name = product.name,
+                               quantity = product.quantity,
+                               weight = product.weight,
+                               weight_unit = weight_class_description.unit
+                           };
+
+            model.Products = products.ToList();
+
+            return View(model);
+        }
         public ActionResult Print_Invoice(int id)
         {
             var order_products = db.oc_order_product.Where(r => r.order_id == id).ToList();
@@ -55,7 +116,7 @@ namespace ShopBackend.Controllers
                 order_products = order_products,
             }).SingleOrDefault();
 
-            var store= db.oc_store.SingleOrDefault(r => r.store_id == model.store_id);
+            var store = db.oc_store.SingleOrDefault(r => r.store_id == model.store_id);
             model.store_address = store.address;
             model.store_phone = store.phone;
             model.store_email = store.email;
@@ -141,7 +202,7 @@ namespace ShopBackend.Controllers
                 order_products_total = (int)order_products_total,
                 order_products = order_products,
                 order_history_records = order_history_records.ToList(),
-                order_statuses  = db.oc_order_status.ToList()
+                order_statuses = db.oc_order_status.ToList()
             }).SingleOrDefault();
 
             return View(model);

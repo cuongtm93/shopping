@@ -593,6 +593,7 @@
     <Compile Include="Models\Order_DetailsViewmodel.cs" />
     <Compile Include="Models\Order_IndexViewmodel.cs" />
     <Compile Include="Models\Order_PrintInvoiceViewmodel.cs" />
+    <Compile Include="Models\Order_PrintShippingViewmodel.cs" />
     <Compile Include="Models\Product_Create_Viewmodel.cs" />
     <Compile Include="Models\Product_Index_Viewmodel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1248,6 +1249,7 @@
     <Content Include="Views\Order\Details.cshtml" />
     <Content Include="Views\Order\Print_Invoice.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\Order\Print_Shipping.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
