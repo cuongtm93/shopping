@@ -13,10 +13,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/22/2018 22:35:38</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
-      <publishTime>10/09/2013 16:29:20</publishTime>
+      <publishTime>09/10/2013 16:29:20</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.pdb">
-      <publishTime>10/09/2013 16:29:20</publishTime>
+      <publishTime>09/10/2013 16:29:20</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>10/23/2017 13:15:18</publishTime>
@@ -25,7 +25,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/23/2017 13:15:20</publishTime>
     </File>
     <File Include="bin/HtmlSanitizer.dll">
-      <publishTime>02/06/2019 13:36:56</publishTime>
+      <publishTime>06/02/2019 13:36:56</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>05/24/2018 13:38:22</publishTime>
@@ -181,10 +181,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/24/2018 13:38:24</publishTime>
     </File>
     <File Include="bin/ShopBackend.dll">
-      <publishTime>08/31/2019 07:10:29</publishTime>
+      <publishTime>09/01/2019 04:38:04</publishTime>
     </File>
     <File Include="bin/ShopBackend.pdb">
-      <publishTime>08/31/2019 07:10:29</publishTime>
+      <publishTime>09/01/2019 04:38:04</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>11/28/2018 13:04:24</publishTime>
@@ -193,7 +193,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/28/2018 12:59:46</publishTime>
     </File>
     <File Include="bin/System.Web.Optimization.dll">
-      <publishTime>11/02/2014 15:26:04</publishTime>
+      <publishTime>02/11/2014 15:26:04</publishTime>
     </File>
     <File Include="bin/System.Web.Razor.dll">
       <publishTime>11/28/2018 13:00:12</publishTime>
@@ -2029,13 +2029,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/29/2019 22:48:32</publishTime>
     </File>
     <File Include="Views/Order/Details.cshtml">
-      <publishTime>08/31/2019 03:04:29</publishTime>
+      <publishTime>09/01/2019 04:35:39</publishTime>
     </File>
     <File Include="Views/Order/Index.cshtml">
       <publishTime>08/31/2019 03:15:05</publishTime>
     </File>
     <File Include="Views/Order/Print_Invoice.cshtml">
       <publishTime>08/31/2019 02:20:22</publishTime>
+    </File>
+    <File Include="Views/Order/Print_Shipping.cshtml">
+      <publishTime>09/01/2019 04:27:50</publishTime>
     </File>
     <File Include="Views/Product/Create.cshtml">
       <publishTime>08/29/2019 17:57:22</publishTime>
@@ -2044,10 +2047,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/28/2019 16:33:02</publishTime>
     </File>
     <File Include="Views/Product/Edit_DataPartial.cshtml">
-      <publishTime>08/29/2019 18:37:58</publishTime>
+      <publishTime>08/31/2019 11:22:58</publishTime>
     </File>
     <File Include="Views/Product/Edit_GeneralPartial.cshtml">
-      <publishTime>08/27/2019 06:14:24</publishTime>
+      <publishTime>08/31/2019 11:22:58</publishTime>
     </File>
     <File Include="Views/Product/Edit_ImagePartial.cshtml">
       <publishTime>08/29/2019 20:28:28</publishTime>
@@ -2056,7 +2059,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2019 22:36:43</publishTime>
     </File>
     <File Include="Views/Product/Index.cshtml">
-      <publishTime>08/26/2019 01:41:35</publishTime>
+      <publishTime>08/31/2019 11:22:58</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>08/24/2019 16:09:48</publishTime>
