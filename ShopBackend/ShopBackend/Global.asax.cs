@@ -10,6 +10,12 @@ namespace ShopBackend
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            // default route for IIS
+             if (Request.AppRelativeCurrentExecutionFilePath == "~/")
+                Response.Redirect("~/Home");
+        }
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
