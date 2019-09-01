@@ -1,4 +1,6 @@
-﻿@model ShopBackend.Models.Order_IndexViewmodel
+﻿@using ShopBackend.Models;
+@using Gobln.Pager;
+@model Page<Order_IndexViewmodel>
 @{
     ViewBag.Title = "Danh sách đơn hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -35,7 +37,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var order in Model.Orders)
+                            @foreach (var order in Model)
                             {
                                 <tr class="_order_index_tr">
                                     <td class="text-center">
@@ -80,13 +82,18 @@
                     </table>
                 </div>
             </form>
-            <div class="row">
-                <div class="col-sm-6 text-left"></div>
-                <div class="col-sm-6 text-right">Showing 1 to 1 of 1 (1 Pages)</div>
+            <div class="box-footer clearfix">
+                <ul class="pagination col-ms-9 pull-right">
+                    @Html.Partial("~/Views/Components/Pagination.cshtml", new Components_PaginationViewmodel()
+                    {
+                        href = "Order/?page=",
+                        total_page_count = Model.TotalPageCount,
+                        current_page_index = Model.CurrentPageIndex,
+                        number_of_displaying_pages = 4
+                    })
+                </ul>
             </div>
         </div>
-
-
     </div>
 }
 

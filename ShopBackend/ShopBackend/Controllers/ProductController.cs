@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using ShopBackend.Data;
-using PagedList;
+using Gobln.Pager;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -87,45 +87,22 @@ namespace ShopBackend.Controllers
         {
             const int NOT_DELETED = 1;
             const int FIRST_PAGE = 1;
-            var product_details = from tbl1 in db.oc_product
-                                  join tbl2 in db.oc_product_description on tbl1.product_id equals tbl2.product_id
-                                  where tbl1.status == NOT_DELETED
-                                  orderby tbl1.date_added
-                                  select new
-                                  {
-                                      tbl1.product_id,
-                                      tbl1.image,
-                                      tbl2.name,
-                                      tbl1.model,
-                                      tbl1.quantity,
-                                      tbl1.status
-                                  };
+            var model = from tbl1 in db.oc_product
+                        join tbl2 in db.oc_product_description on tbl1.product_id equals tbl2.product_id
+                        where tbl1.status == NOT_DELETED
+                        orderby tbl1.date_added
+                        select new Product_Index_Viewmodel
+                        {
+                            image = tbl1.image,
+                            status = (tbl1.status == 1) ? "dừng " : "hoạt động",
+                            model = tbl1.model,
+                            name = tbl2.name,
+                            product_id = tbl1.product_id,
+                            quantity = tbl1.quantity
+                        };
 
             if (!page.HasValue) page = FIRST_PAGE;
-            var product_details_paged = product_details.OrderBy(r => r.product_id).ToPagedList(page.Value, PAGE_SIZE);
-            var model = new List<Product_Index_Viewmodel>();
-            foreach (var item in product_details_paged)
-            {
-                model.Add(new Product_Index_Viewmodel()
-                {
-                    product_id = item.product_id,
-                    image = item.image,
-                    model = item.model,
-                    name = item.name,
-                    quantity = item.quantity,
-                    status = (item.status == 0) ? "Dừng" : "Hoạt động"
-                });
-            }
-            ViewBag.Page = page;
-            int page_count = product_details_paged.PageCount;
-            ViewBag.PageCount = page_count;
-            bool has_page = page_count > 0;
-            if (page > page_count && has_page)
-            {
-                var last_page = page_count;
-                return RedirectToAction("Index", new { page = last_page });
-            }
-            return View(model);
+            return View(model.ToPagedList(PAGE_SIZE).GetPage(page.Value));
         }
 
         // GET: Product/Details/5

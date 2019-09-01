@@ -87,3 +87,6 @@
 ._order_index_tr td {
   text-align: left;
   vertical-align: middle !important; }
+
+.treeview-menu-visible {
+  display: block !important; }

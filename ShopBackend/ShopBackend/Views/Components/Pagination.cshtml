@@ -1,0 +1,68 @@
+﻿
+@model  ShopBackend.Models.Components_PaginationViewmodel
+@{
+    var _min_page_number = Model.current_page_index - (Model.number_of_displaying_pages);
+    if (_min_page_number < 1)
+    {
+        _min_page_number = 1;
+    }
+    var _max_page_number = Model.current_page_index + (Model.number_of_displaying_pages);
+    if (_max_page_number > Model.total_page_count)
+    {
+        _max_page_number = Model.total_page_count;
+    }
+
+    var _previous_page_index = 0;
+    var _next_page_index = 0;
+
+    if (Model.current_page_index - 1 < 1)
+    {
+        _previous_page_index = 1;
+    }
+    else
+    {
+        _previous_page_index = Model.current_page_index - 1;
+    }
+
+    if (Model.current_page_index + 1 > Model.total_page_count)
+    {
+        _next_page_index = 1;
+    }
+    else
+    {
+        _next_page_index = Model.current_page_index + 1;
+    }
+}
+
+<li>
+    <a href="@(Model.href + _previous_page_index)">
+        <<
+    </a>
+</li>
+@for (int page_number = _min_page_number; page_number <= _max_page_number; page_number++)
+{
+
+
+    if (page_number == Model.current_page_index)
+    {
+        <li class="active">
+            <a href="@(Model.href + @page_number)">
+                @page_number
+            </a>
+        </li>
+    }
+    else
+    {
+        <li>
+            <a href="@(Model.href + @page_number)">
+                @page_number
+            </a>
+        </li>
+    }
+}
+
+<li>
+    <a href="@(Model.href + _next_page_index)">
+        >>
+    </a>
+</li>

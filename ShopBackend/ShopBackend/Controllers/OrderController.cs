@@ -1,4 +1,5 @@
-﻿using ShopBackend.Models;
+﻿using Gobln.Pager;
+using ShopBackend.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace ShopBackend.Controllers
 
     public class OrderController : Controller
     {
+        const int PAGE_SIZE = 5;
         private ShopBackend.Data.shop2Entities db;
         public OrderController()
         {
@@ -44,7 +46,7 @@ namespace ShopBackend.Controllers
                 shipping_address2 = r.shipping_address_2,
                 shipping_city = r.shipping_city,
                 shipping_country = r.shipping_country,
-                shipping_method  = r.shipping_method,
+                shipping_method = r.shipping_method,
                 store_id = r.store_id
             }).SingleOrDefault();
 
@@ -124,43 +126,25 @@ namespace ShopBackend.Controllers
             return View(model);
         }
         // GET: Order
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var orders = db.oc_order
-                .OrderByDescending(r => r.date_added)
-                .ThenByDescending(r => r.date_modified)
-                .AsQueryable();
+            if (!page.HasValue) page = 1;
 
-            var items = orders.Select(r => new
-            {
-                order_id = r.order_id,
-                customer_id = r.customer_id,
-                order_status_id = r.order_status_id,
-                date_added = r.date_added,
-                date_modified = r.date_modified,
-                total = r.total,
-            }).AsQueryable();
+            var model = from order in db.oc_order
+                       join customer in db.oc_customer on order.customer_id equals customer.customer_id
+                       join status in db.oc_order_status on order.order_status_id equals status.order_status_id
+                       orderby order.date_added , order.date_modified
+                       select new Order_IndexViewmodel
+                       {
+                           customer_fullname = customer.firstname + customer.lastname,
+                           date_added= order.date_added,
+                           date_modified= order.date_modified,
+                           total = order.total,
+                           order_id = order.order_id,
+                           order_status = status.name
+                       };
 
-            var model = new Order_IndexViewmodel()
-            {
-                Orders = new List<Order>()
-            };
-            foreach (var item in items)
-            {
-                var customer = db.oc_customer.Find(item.customer_id);
-                var order_status = db.oc_order_status.Find(item.order_status_id, 1);
-                var customer_fullname = customer.firstname + customer.lastname;
-                model.Orders.Add(new Order()
-                {
-                    customer_fullname = customer_fullname,
-                    date_added = item.date_added,
-                    date_modified = item.date_modified,
-                    order_id = item.order_id,
-                    total = (int)item.total,
-                    order_status = order_status.name
-                });
-            }
-            return View(model);
+            return View(model.ToPagedList(PAGE_SIZE).GetPage(page.Value));
         }
 
         // GET: Order/Details/5

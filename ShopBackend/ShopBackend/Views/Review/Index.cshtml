@@ -1,0 +1,137 @@
+﻿@using Gobln.Pager;
+@using ShopBackend.Models;
+@model  Gobln.Pager.Page<Review_IndexViewmodel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section content_header{
+    <h1>
+        Đánh giá của khách hàng
+    </h1>
+    <ol class="breadcrumb">
+
+        <li><a href="/"><i class="fa fa-dashboard"></i> Danh mục</a></li>
+        <li class="active">Đánh giá</li>
+    </ol>
+}
+
+@section content_main{
+    <div class="row">
+        <div id="filter-review" class="col-md-3 col-md-push-9 col-sm-12 hidden-sm hidden-xs">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-filter"></i> Filter</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="control-label" for="input-product">Product</label>
+                        <input type="text" name="filter_product" value="" placeholder="Product" id="input-product" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="input-author">Author</label>
+                        <input type="text" name="filter_author" value="" placeholder="Author" id="input-author" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="input-status">Status</label>
+                        <select name="filter_status" id="input-status" class="form-control">
+                            <option value=""></option>
+                            <option value="1">Enabled</option>
+                            <option value="0">Disabled</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="input-date-added">Date Added</label>
+                        <div class="input-group date">
+                            <input type="text" name="filter_date_added" value="" placeholder="Date Added" data-date-format="YYYY-MM-DD" id="input-date-added" class="form-control">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <button type="button" id="button-filter" class="btn btn-default"><i class="fa fa-filter"></i> Filter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 col-md-pull-3 col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-list"></i> Review List</h3>
+                </div>
+                <div class="panel-body">
+                    <form action="http://localhost/upload/admin/index.php?route=catalog/review/delete&amp;user_token=IMNrCGXWV1JEQGhoAhPzhnprAcHCru6B&amp;sort=r.status&amp;order=ASC" method="post" enctype="multipart/form-data" id="form-review">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);"></td>
+                                        <td class="text-left"> <a href="http://localhost/upload/admin/index.php?route=catalog/review&amp;user_token=IMNrCGXWV1JEQGhoAhPzhnprAcHCru6B&amp;sort=pd.name&amp;order=DESC">Product</a> </td>
+                                        <td class="text-left"> <a href="http://localhost/upload/admin/index.php?route=catalog/review&amp;user_token=IMNrCGXWV1JEQGhoAhPzhnprAcHCru6B&amp;sort=r.author&amp;order=DESC">Author</a> </td>
+                                        <td class="text-right"> <a href="http://localhost/upload/admin/index.php?route=catalog/review&amp;user_token=IMNrCGXWV1JEQGhoAhPzhnprAcHCru6B&amp;sort=r.rating&amp;order=DESC">Rating</a> </td>
+                                        <td class="text-left"> <a href="http://localhost/upload/admin/index.php?route=catalog/review&amp;user_token=IMNrCGXWV1JEQGhoAhPzhnprAcHCru6B&amp;sort=r.status&amp;order=DESC" class="asc">Status</a> </td>
+                                        <td class="text-left"> <a href="http://localhost/upload/admin/index.php?route=catalog/review&amp;user_token=IMNrCGXWV1JEQGhoAhPzhnprAcHCru6B&amp;sort=r.date_added&amp;order=DESC">Date Added</a> </td>
+                                        <td class="text-right">Action</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.ToList().Any())
+                                    {
+                                        foreach (var review in Model.ToList())
+                                        {
+                                            <tr title="@review.text">
+                                                <td>
+                                                    <input type="checkbox" name="selected" value="@review.product_id">
+                                                </td>
+                                                <td>@review.product_name</td>
+                                                <td>@review.author</td>
+                                                <td>
+                                                    @review.rating
+                                                    @*@for (int i = 1; i < review.rating; i++)
+                                        {
+                                            <i class="fa fa-star" aria-hidden="true" style="color:green"></i>
+                                        }*@
+                                                </td>
+                                                <td>@review.status</td>
+                                                <td>@review.date_added</td>
+                                                <td>
+                                                    <a href="http://localhost/upload/admin/index.php?route=catalog/review/edit&amp;user_token=IMNrCGXWV1JEQGhoAhPzhnprAcHCru6B&amp;review_id=1&amp;sort=r.status&amp;order=ASC" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td class="text-center" colspan="7">Không có kết quả nào!</td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </form>
+                    <div class="box-footer clearfix">
+                        <ul class="pagination col-ms-9 pull-right">
+                            @Html.Partial("~/Views/Components/Pagination.cshtml", new Components_PaginationViewmodel()
+                            {
+                                href = "Review/?page=",
+                                total_page_count = Model.TotalPageCount,
+                                current_page_index = Model.CurrentPageIndex,
+                                number_of_displaying_pages = 4
+                            })
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts{
+    <script>
+
+    </script>
+}

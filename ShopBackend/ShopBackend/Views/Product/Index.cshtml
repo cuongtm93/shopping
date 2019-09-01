@@ -1,5 +1,6 @@
 ﻿@using ShopBackend.Models;
-@model IEnumerable<Product_Index_Viewmodel>
+@using Gobln.Pager;
+@model Page<Product_Index_Viewmodel>
 
 @{
     ViewBag.Title = "Danh mục sản phẩm";
@@ -34,7 +35,6 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <table class="table table-bordered table-hover">
-                    <tbody>
                     <thead class="thead-dark">
                         <tr>
                             <th>
@@ -48,41 +48,41 @@
                             <th style="width: 20px">Hành động</th>
                         </tr>
                     </thead>
-                    @foreach (Product_Index_Viewmodel item in Model)
-                    {
-                        <tr>
-                            <td style="width: 10px">
-                                <input type="checkbox" name="checked" value="@item.product_id" />
-                            </td>
-                            <td>
-                                <img src="~/image/@item.image" alt="Apple Cinema 30&quot;" class="img-thumbnail" style="width:50px;max-height : 80px">
+                    <tbody>
+                        @foreach (Product_Index_Viewmodel product in Model)
+                        {
+                            <tr>
+                                <td style="width: 10px">
+                                    <input type="checkbox" name="checked" value="@product.product_id" />
+                                </td>
+                                <td>
+                                    <img src="~/image/@product.image" alt="Apple Cinema 30&quot;" class="img-thumbnail" style="width:50px;max-height : 80px">
 
-                            </td>
-                            <td>@item.name</td>
-                            <td>@item.model</td>
-                            <td>@item.quantity</td>
-                            <td>@item.status</td>
-                            <td>
-                                <a href="/Product/Edit/@item.product_id" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit">
-                                    <i class="fa fa-pencil"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    }
+                                </td>
+                                <td>@product.name</td>
+                                <td>@product.model</td>
+                                <td>@product.quantity</td>
+                                <td>@product.status</td>
+                                <td>
+                                    <a href="/Product/Edit/@product.product_id" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-                <ul class="pagination pagination-sm no-margin pull-right">
-                    @if (ViewBag.Page > 1)
+                <ul class="pagination col-ms-9 pull-right">
+                    @Html.Partial("~/Views/Components/Pagination.cshtml", new Components_PaginationViewmodel()
                     {
-                        <li><a href="Product/?page=@(ViewBag.Page-1)">previous</a></li>
-                    }
-                    @if (ViewBag.Page < ViewBag.PageCount)
-                    {
-                        <li><a href="Product/?page=@(ViewBag.Page+1)">next</a></li>
-                    }
+                        href = "Product/?page=",
+                        total_page_count = Model.TotalPageCount,
+                        current_page_index = Model.CurrentPageIndex,
+                        number_of_displaying_pages = 4
+                    })
                 </ul>
             </div>
         </div>
