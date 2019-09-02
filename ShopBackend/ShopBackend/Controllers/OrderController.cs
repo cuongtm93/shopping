@@ -29,100 +29,87 @@ namespace ShopBackend.Controllers
 
         public ActionResult Print_Shipping(int id)
         {
-            var model = db.Order_Details(id).Select(r => new Order_PrintShippingViewmodel()
-            {
-                customer_email = r.email,
-                customer_full_name = r.fullname,
-                customer_telephone = r.telephone,
-                date_added = r.date_added,
-                invoice_prefix = r.invoice_prefix,
-                order_id = r.order_id,
-                payment_address1 = r.payment_address_1,
-                payment_address2 = r.payment_address_2,
-                payment_city = r.payment_city,
-                payment_country = r.payment_country,
-                payment_method = r.payment_method,
-                shipping_address1 = r.shipping_address_1,
-                shipping_address2 = r.shipping_address_2,
-                shipping_city = r.shipping_city,
-                shipping_country = r.shipping_country,
-                shipping_method = r.shipping_method,
-                store_id = r.store_id
-            }).SingleOrDefault();
+            var _ = from order in db.oc_order
+                    join customer in db.oc_customer on order.customer_id equals customer.customer_id
+                    join _store in db.oc_store on order.store_id equals _store.store_id
+                    where order.order_id == id
+                    select new Order_PrintShippingViewmodel
+                    {
+                        customer_email = customer.email,
+                        customer_full_name = customer.firstname + customer.lastname,
+                        customer_telephone = customer.telephone,
+                        date_added = order.date_added,
+                        invoice_prefix = order.invoice_prefix,
+                        order_id = order.order_id,
+                        payment_address1 = order.payment_address_1,
+                        payment_address2 = order.payment_address_2,
+                        payment_city = order.payment_city,
+                        payment_country = order.payment_country,
+                        payment_method = order.payment_method,
+                        shipping_address1 = order.shipping_address_1,
+                        shipping_address2 = order.shipping_address_2,
+                        shipping_city = order.shipping_city,
+                        shipping_country = order.shipping_country,
+                        shipping_method = order.shipping_method,
+                        store_id = order.store_id,
+                        store_address = _store.address,
+                        store_email = _store.email,
+                        store_name = _store.name,
+                        store_phone = _store.phone,
+                        store_website = _store.url
+                    };
 
-            var store = db.oc_store.Single(r => r.store_id == model.store_id);
-
-            model.store_name = store.name;
-            model.store_address = store.address;
-            model.store_phone = store.phone;
-            model.store_email = store.email;
-            model.store_website = store.url;
-            var products_without_weight_unit = from product in db.oc_product
-                                               join order_product in db.oc_order_product
-                                               on product.product_id equals order_product.product_id
-                                               where order_product.order_id == id
-                                               select new
-                                               {
-                                                   product.location,
-                                                   order_product.name,
-                                                   product.weight,
-                                                   product.weight_class_id,
-                                                   product.model,
-                                                   order_product.quantity
-                                               };
-
-            var products = from product in products_without_weight_unit
-                           join weight_class_description in db.oc_weight_class_description
-                           on product.weight_class_id equals weight_class_description.weight_class_id
+            var products = from product in db.oc_product
+                           join product_details in db.oc_product_description on product.product_id equals product_details.product_id
+                           join order_product in db.oc_order_product on product.product_id equals order_product.product_id
+                           join _unit in db.oc_weight_class_description on product.weight_class_id equals _unit.weight_class_id
+                           where order_product.order_id == id
                            select new Order_PrintShipping_Products()
                            {
                                location = product.location,
                                model = product.model,
-                               name = product.name,
-                               quantity = product.quantity,
+                               name = product_details.name,
+                               quantity = order_product.quantity,
                                weight = product.weight,
-                               weight_unit = weight_class_description.unit
+                               weight_unit = _unit.unit
                            };
-
+            var model = _.FirstOrDefault();
             model.Products = products.ToList();
-
             return View(model);
         }
         public ActionResult Print_Invoice(int id)
         {
             var order_products = db.oc_order_product.Where(r => r.order_id == id).ToList();
             var order_products_total = order_products.Sum(r => r.price * r.quantity);
-
-            var model = db.Order_Details(id).Select(r => new Order_PrintInvoiceViewmodel()
-            {
-                date_added = r.date_added,
-                invoice_prefix = r.invoice_prefix,
-                email = r.email,
-                full_name = r.fullname,
-                order_id = r.order_id,
-                store_id = r.store_id,
-                payment_address1 = r.payment_address_1,
-                payment_address2 = r.payment_address_2,
-                payment_method = r.payment_method,
-                payment_city = r.payment_city,
-                payment_country = r.payment_country,
-                shipping_address1 = r.shipping_address_1,
-                shipping_address2 = r.shipping_address_2,
-                shipping_city = r.shipping_city,
-                shipping_country = r.shipping_country,
-                shipping_method = r.shipping_method,
-                store_name = r.store_name,
-                telephone = r.telephone,
-                total = (int)r.total,
-                order_products_total = (int)order_products_total,
-                order_products = order_products,
-            }).SingleOrDefault();
-
-            var store = db.oc_store.SingleOrDefault(r => r.store_id == model.store_id);
-            model.store_address = store.address;
-            model.store_phone = store.phone;
-            model.store_email = store.email;
-            model.store_website = store.url;
+            var _ = from order in db.oc_order
+                    join customer in db.oc_customer on order.customer_id equals customer.customer_id
+                    join _store in db.oc_store on order.store_id equals _store.store_id
+                    where order.order_id == id
+                    select new Order_PrintInvoiceViewmodel
+                    {
+                        date_added = order.date_added,
+                        invoice_prefix = order.invoice_prefix,
+                        email = _store.email,
+                        full_name = customer.firstname + customer.lastname,
+                        order_id = order.order_id,
+                        store_id = _store.store_id,
+                        payment_address1 = order.payment_address_1,
+                        payment_address2 = order.payment_address_2,
+                        payment_method = order.payment_method,
+                        payment_city = order.payment_city,
+                        payment_country = order.payment_country,
+                        shipping_address1 = order.shipping_address_1,
+                        shipping_address2 = order.shipping_address_2,
+                        shipping_city = order.shipping_city,
+                        shipping_country = order.shipping_country,
+                        shipping_method = order.shipping_method,
+                        store_name = _store.name,
+                        telephone = _store.phone,
+                        total = (int)order.total,
+                    };
+            var model = _.FirstOrDefault();
+            model.order_products_total = (int)order_products_total;
+            model.order_products = order_products;
             return View(model);
         }
         // GET: Order
@@ -131,18 +118,18 @@ namespace ShopBackend.Controllers
             if (!page.HasValue) page = 1;
 
             var model = from order in db.oc_order
-                       join customer in db.oc_customer on order.customer_id equals customer.customer_id
-                       join status in db.oc_order_status on order.order_status_id equals status.order_status_id
-                       orderby order.date_added , order.date_modified
-                       select new Order_IndexViewmodel
-                       {
-                           customer_fullname = customer.firstname + customer.lastname,
-                           date_added= order.date_added,
-                           date_modified= order.date_modified,
-                           total = order.total,
-                           order_id = order.order_id,
-                           order_status = status.name
-                       };
+                        join customer in db.oc_customer on order.customer_id equals customer.customer_id
+                        join status in db.oc_order_status on order.order_status_id equals status.order_status_id
+                        orderby order.date_added, order.date_modified
+                        select new Order_IndexViewmodel
+                        {
+                            customer_fullname = customer.firstname + customer.lastname,
+                            date_added = order.date_added,
+                            date_modified = order.date_modified,
+                            total = order.total,
+                            order_id = order.order_id,
+                            order_status = status.name
+                        };
 
             return View(model.ToPagedList(PAGE_SIZE).GetPage(page.Value));
         }
@@ -162,33 +149,36 @@ namespace ShopBackend.Controllers
                                             date_added = history_record.date_added,
                                             status = order_status.name
                                         };
+            var _ = from order in db.oc_order
+                    join customer in db.oc_customer on order.customer_id equals customer.customer_id
+                    join _store in db.oc_store on order.store_id equals _store.store_id
+                    where order.order_id == id
+                    select new Order_DetailsViewmodel
+                    {
+                        date_added = order.date_added,
+                        email = _store.email,
+                        full_name = customer.firstname + customer.lastname,
+                        order_id = order.order_id,
 
-            var model = db.Order_Details(id).Select(r => new Order_DetailsViewmodel()
-            {
-                date_added = r.date_added,
-                email = r.email,
-                full_name = r.fullname,
-                order_id = r.order_id,
+                        payment_address1 = order.payment_address_1,
+                        payment_address2 = order.payment_address_2,
+                        payment_method = order.payment_method,
+                        payment_city = order.payment_city,
+                        payment_country = order.payment_country,
+                        shipping_address1 = order.shipping_address_1,
+                        shipping_address2 = order.shipping_address_2,
+                        shipping_city = order.shipping_city,
+                        shipping_country = order.shipping_country,
+                        shipping_method = order.shipping_method,
+                        store_name = _store.name,
+                        telephone = _store.phone,
+                        total = (int)order.total,
+                    };
 
-                payment_address1 = r.payment_address_1,
-                payment_address2 = r.payment_address_2,
-                payment_method = r.payment_method,
-                payment_city = r.payment_city,
-                payment_country = r.payment_country,
-                shipping_address1 = r.shipping_address_1,
-                shipping_address2 = r.shipping_address_2,
-                shipping_city = r.shipping_city,
-                shipping_country = r.shipping_country,
-                shipping_method = r.shipping_method,
-                store_name = r.store_name,
-                telephone = r.telephone,
-                total = (int)r.total,
-                order_products_total = (int)order_products_total,
-                order_products = order_products,
-                order_history_records = order_history_records.ToList(),
-                order_statuses = db.oc_order_status.ToList()
-            }).SingleOrDefault();
-
+            var model = _.FirstOrDefault();
+            model.order_products = order_products;
+            model.order_history_records = order_history_records.ToList();
+            model.order_statuses = db.oc_order_status.ToList();
             return View(model);
         }
 

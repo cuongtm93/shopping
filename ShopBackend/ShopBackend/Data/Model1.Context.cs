@@ -12,8 +12,6 @@ namespace ShopBackend.Data
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.Core.Objects;
-    using System.Linq;
     
     public partial class shop2Entities : DbContext
     {
@@ -164,14 +162,5 @@ namespace ShopBackend.Data
         public virtual DbSet<oc_zone> oc_zone { get; set; }
         public virtual DbSet<oc_zone_to_geo_zone> oc_zone_to_geo_zone { get; set; }
         public virtual DbSet<product_product_desc_view> product_product_desc_view { get; set; }
-    
-        public virtual ObjectResult<Order_Details_Result> Order_Details(Nullable<int> order_id)
-        {
-            var order_idParameter = order_id.HasValue ?
-                new ObjectParameter("order_id", order_id) :
-                new ObjectParameter("order_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Order_Details_Result>("Order_Details", order_idParameter);
-        }
     }
 }

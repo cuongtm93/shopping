@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="shop2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="shop2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="oc_address">
           <Key>
             <PropertyRef Name="address_id" />
@@ -1388,7 +1388,7 @@
           <Property Name="ssl" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="address" Type="nvarchar" MaxLength="255" />
           <Property Name="email" Type="nvarchar" MaxLength="255" />
-          <Property Name="phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="phone" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="oc_tax_class">
           <Key>
@@ -1639,9 +1639,6 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <Property Name="date_modified" Type="datetime2" Precision="0" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
-        <Function Name="Order_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="order_id" Type="int" Mode="In" />
-        </Function>
         <EntityContainer Name="shop2ModelStoreContainer">
           <EntitySet Name="oc_address" EntityType="Self.oc_address" Schema="shop" store:Type="Tables" />
           <EntitySet Name="oc_api" EntityType="Self.oc_api" Schema="shop" store:Type="Tables" />
@@ -1816,7 +1813,8 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
     FROM [dbo].[product_product_desc_view] AS [product_product_desc_view]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="shop2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -3203,7 +3201,7 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <Property Name="ssl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="oc_tax_class">
           <Key>
@@ -3385,6 +3383,73 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <Property Name="date_added" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="date_modified" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
+        <EntityType Name="product_product_desc_view">
+          <Key>
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="model" />
+            <PropertyRef Name="sku" />
+            <PropertyRef Name="upc" />
+            <PropertyRef Name="ean" />
+            <PropertyRef Name="jan" />
+            <PropertyRef Name="isbn" />
+            <PropertyRef Name="mpn" />
+            <PropertyRef Name="location" />
+            <PropertyRef Name="quantity" />
+            <PropertyRef Name="stock_status_id" />
+            <PropertyRef Name="manufacturer_id" />
+            <PropertyRef Name="shipping" />
+            <PropertyRef Name="price" />
+            <PropertyRef Name="points" />
+            <PropertyRef Name="tax_class_id" />
+            <PropertyRef Name="date_available" />
+            <PropertyRef Name="weight" />
+            <PropertyRef Name="weight_class_id" />
+            <PropertyRef Name="length" />
+            <PropertyRef Name="width" />
+            <PropertyRef Name="height" />
+            <PropertyRef Name="length_class_id" />
+            <PropertyRef Name="subtract" />
+            <PropertyRef Name="minimum" />
+            <PropertyRef Name="sort_order" />
+            <PropertyRef Name="status" />
+            <PropertyRef Name="viewed" />
+            <PropertyRef Name="date_added" />
+            <PropertyRef Name="date_modified" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="model" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sku" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="upc" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ean" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="jan" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="isbn" Type="String" MaxLength="17" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mpn" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="location" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="stock_status_id" Type="Int32" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="manufacturer_id" Type="Int32" Nullable="false" />
+          <Property Name="shipping" Type="Int16" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="points" Type="Int32" Nullable="false" />
+          <Property Name="tax_class_id" Type="Int32" Nullable="false" />
+          <Property Name="date_available" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="weight" Type="Decimal" Precision="15" Scale="8" Nullable="false" />
+          <Property Name="weight_class_id" Type="Int32" Nullable="false" />
+          <Property Name="length" Type="Decimal" Precision="15" Scale="8" Nullable="false" />
+          <Property Name="width" Type="Decimal" Precision="15" Scale="8" Nullable="false" />
+          <Property Name="height" Type="Decimal" Precision="15" Scale="8" Nullable="false" />
+          <Property Name="length_class_id" Type="Int32" Nullable="false" />
+          <Property Name="subtract" Type="Int16" Nullable="false" />
+          <Property Name="minimum" Type="Int32" Nullable="false" />
+          <Property Name="sort_order" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int16" Nullable="false" />
+          <Property Name="viewed" Type="Int32" Nullable="false" />
+          <Property Name="date_added" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="date_modified" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="shop2Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="oc_address" EntityType="Self.oc_address" />
           <EntitySet Name="oc_api" EntityType="Self.oc_api" />
@@ -3522,99 +3587,8 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <EntitySet Name="oc_weight_class_description" EntityType="Self.oc_weight_class_description" />
           <EntitySet Name="oc_zone" EntityType="Self.oc_zone" />
           <EntitySet Name="oc_zone_to_geo_zone" EntityType="Self.oc_zone_to_geo_zone" />
-          <EntitySet Name="product_product_desc_view" EntityType="shop2Model.product_product_desc_view" />
-          <FunctionImport Name="Order_Details" ReturnType="Collection(shop2Model.Order_Details_Result)">
-          <Parameter Name="order_id" Mode="In" Type="Int32" />
-          </FunctionImport>
+          <EntitySet Name="product_product_desc_view" EntityType="Self.product_product_desc_view" />
         </EntityContainer>
-        <EntityType Name="product_product_desc_view">
-          <Key>
-            <PropertyRef Name="product_id" />
-            <PropertyRef Name="model" />
-            <PropertyRef Name="sku" />
-            <PropertyRef Name="upc" />
-            <PropertyRef Name="ean" />
-            <PropertyRef Name="jan" />
-            <PropertyRef Name="isbn" />
-            <PropertyRef Name="mpn" />
-            <PropertyRef Name="location" />
-            <PropertyRef Name="quantity" />
-            <PropertyRef Name="stock_status_id" />
-            <PropertyRef Name="manufacturer_id" />
-            <PropertyRef Name="shipping" />
-            <PropertyRef Name="price" />
-            <PropertyRef Name="points" />
-            <PropertyRef Name="tax_class_id" />
-            <PropertyRef Name="date_available" />
-            <PropertyRef Name="weight" />
-            <PropertyRef Name="weight_class_id" />
-            <PropertyRef Name="length" />
-            <PropertyRef Name="width" />
-            <PropertyRef Name="height" />
-            <PropertyRef Name="length_class_id" />
-            <PropertyRef Name="subtract" />
-            <PropertyRef Name="minimum" />
-            <PropertyRef Name="sort_order" />
-            <PropertyRef Name="status" />
-            <PropertyRef Name="viewed" />
-            <PropertyRef Name="date_added" />
-            <PropertyRef Name="date_modified" />
-            <PropertyRef Name="name" />
-          </Key>
-          <Property Name="product_id" Type="Int32" Nullable="false" />
-          <Property Name="model" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="sku" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="upc" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="ean" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="true" />
-          <Property Name="jan" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
-          <Property Name="isbn" Type="String" Nullable="false" MaxLength="17" FixedLength="false" Unicode="true" />
-          <Property Name="mpn" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="location" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="quantity" Type="Int32" Nullable="false" />
-          <Property Name="stock_status_id" Type="Int32" Nullable="false" />
-          <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="manufacturer_id" Type="Int32" Nullable="false" />
-          <Property Name="shipping" Type="Int16" Nullable="false" />
-          <Property Name="price" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
-          <Property Name="points" Type="Int32" Nullable="false" />
-          <Property Name="tax_class_id" Type="Int32" Nullable="false" />
-          <Property Name="date_available" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="weight" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="weight_class_id" Type="Int32" Nullable="false" />
-          <Property Name="length" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="width" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="height" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="length_class_id" Type="Int32" Nullable="false" />
-          <Property Name="subtract" Type="Int16" Nullable="false" />
-          <Property Name="minimum" Type="Int32" Nullable="false" />
-          <Property Name="sort_order" Type="Int32" Nullable="false" />
-          <Property Name="status" Type="Int16" Nullable="false" />
-          <Property Name="viewed" Type="Int32" Nullable="false" />
-          <Property Name="date_added" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="date_modified" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <ComplexType Name="Order_Details_Result">
-          <Property Type="Int32" Name="order_id" Nullable="false" />
-          <Property Type="String" Name="store_name" Nullable="false" MaxLength="64" />
-          <Property Type="DateTime" Name="date_added" Nullable="false" />
-          <Property Type="String" Name="payment_method" Nullable="false" MaxLength="128" />
-          <Property Type="String" Name="shipping_method" Nullable="false" MaxLength="128" />
-          <Property Type="String" Name="fullname" Nullable="false" MaxLength="64" />
-          <Property Type="String" Name="email" Nullable="false" MaxLength="96" />
-          <Property Type="String" Name="telephone" Nullable="false" MaxLength="32" />
-          <Property Type="Decimal" Name="total" Nullable="false" Precision="15" Scale="4" />
-          <Property Type="String" Name="shipping_address_1" Nullable="false" MaxLength="128" />
-          <Property Type="String" Name="shipping_address_2" Nullable="false" MaxLength="128" />
-          <Property Type="String" Name="payment_address_1" Nullable="false" MaxLength="128" />
-          <Property Type="String" Name="payment_address_2" Nullable="false" MaxLength="128" />
-          <Property Type="String" Name="shipping_city" Nullable="false" MaxLength="128" />
-          <Property Type="String" Name="shipping_country" Nullable="false" MaxLength="128" />
-          <Property Type="String" Name="payment_city" Nullable="false" MaxLength="128" />
-          <Property Type="String" Name="payment_country" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="store_id" Nullable="false" />
-          <Property Type="String" Name="invoice_prefix" Nullable="false" MaxLength="26" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4418,11 +4392,11 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <EntitySetMapping Name="oc_manufacturer">
             <EntityTypeMapping TypeName="shop2Model.oc_manufacturer">
               <MappingFragment StoreEntitySet="oc_manufacturer">
-                <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="manufacturer_id" ColumnName="manufacturer_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+                <ScalarProperty Name="status" ColumnName="status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -5071,13 +5045,13 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <EntitySetMapping Name="oc_store">
             <EntityTypeMapping TypeName="shop2Model.oc_store">
               <MappingFragment StoreEntitySet="oc_store">
-                <ScalarProperty Name="phone" ColumnName="phone" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="store_id" ColumnName="store_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="url" ColumnName="url" />
                 <ScalarProperty Name="ssl" ColumnName="ssl" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -5278,66 +5252,41 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <EntitySetMapping Name="product_product_desc_view">
             <EntityTypeMapping TypeName="shop2Model.product_product_desc_view">
               <MappingFragment StoreEntitySet="product_product_desc_view">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="date_modified" ColumnName="date_modified" />
-                <ScalarProperty Name="date_added" ColumnName="date_added" />
-                <ScalarProperty Name="viewed" ColumnName="viewed" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="sort_order" ColumnName="sort_order" />
-                <ScalarProperty Name="minimum" ColumnName="minimum" />
-                <ScalarProperty Name="subtract" ColumnName="subtract" />
-                <ScalarProperty Name="length_class_id" ColumnName="length_class_id" />
-                <ScalarProperty Name="height" ColumnName="height" />
-                <ScalarProperty Name="width" ColumnName="width" />
-                <ScalarProperty Name="length" ColumnName="length" />
-                <ScalarProperty Name="weight_class_id" ColumnName="weight_class_id" />
-                <ScalarProperty Name="weight" ColumnName="weight" />
-                <ScalarProperty Name="date_available" ColumnName="date_available" />
-                <ScalarProperty Name="tax_class_id" ColumnName="tax_class_id" />
-                <ScalarProperty Name="points" ColumnName="points" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="shipping" ColumnName="shipping" />
-                <ScalarProperty Name="manufacturer_id" ColumnName="manufacturer_id" />
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="stock_status_id" ColumnName="stock_status_id" />
-                <ScalarProperty Name="quantity" ColumnName="quantity" />
-                <ScalarProperty Name="location" ColumnName="location" />
-                <ScalarProperty Name="mpn" ColumnName="mpn" />
-                <ScalarProperty Name="isbn" ColumnName="isbn" />
-                <ScalarProperty Name="jan" ColumnName="jan" />
-                <ScalarProperty Name="ean" ColumnName="ean" />
-                <ScalarProperty Name="upc" ColumnName="upc" />
-                <ScalarProperty Name="sku" ColumnName="sku" />
-                <ScalarProperty Name="model" ColumnName="model" />
                 <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="sku" ColumnName="sku" />
+                <ScalarProperty Name="upc" ColumnName="upc" />
+                <ScalarProperty Name="ean" ColumnName="ean" />
+                <ScalarProperty Name="jan" ColumnName="jan" />
+                <ScalarProperty Name="isbn" ColumnName="isbn" />
+                <ScalarProperty Name="mpn" ColumnName="mpn" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="stock_status_id" ColumnName="stock_status_id" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="manufacturer_id" ColumnName="manufacturer_id" />
+                <ScalarProperty Name="shipping" ColumnName="shipping" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="points" ColumnName="points" />
+                <ScalarProperty Name="tax_class_id" ColumnName="tax_class_id" />
+                <ScalarProperty Name="date_available" ColumnName="date_available" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="weight_class_id" ColumnName="weight_class_id" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="length_class_id" ColumnName="length_class_id" />
+                <ScalarProperty Name="subtract" ColumnName="subtract" />
+                <ScalarProperty Name="minimum" ColumnName="minimum" />
+                <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="viewed" ColumnName="viewed" />
+                <ScalarProperty Name="date_added" ColumnName="date_added" />
+                <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Order_Details" FunctionName="shop2Model.Store.Order_Details">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="shop2Model.Order_Details_Result">
-                <ScalarProperty Name="order_id" ColumnName="order_id" />
-                <ScalarProperty Name="store_name" ColumnName="store_name" />
-                <ScalarProperty Name="date_added" ColumnName="date_added" />
-                <ScalarProperty Name="payment_method" ColumnName="payment_method" />
-                <ScalarProperty Name="shipping_method" ColumnName="shipping_method" />
-                <ScalarProperty Name="fullname" ColumnName="fullname" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="telephone" ColumnName="telephone" />
-                <ScalarProperty Name="total" ColumnName="total" />
-                <ScalarProperty Name="shipping_address_1" ColumnName="shipping_address_1" />
-                <ScalarProperty Name="shipping_address_2" ColumnName="shipping_address_2" />
-                <ScalarProperty Name="payment_address_1" ColumnName="payment_address_1" />
-                <ScalarProperty Name="payment_address_2" ColumnName="payment_address_2" />
-                <ScalarProperty Name="shipping_city" ColumnName="shipping_city" />
-                <ScalarProperty Name="shipping_country" ColumnName="shipping_country" />
-                <ScalarProperty Name="payment_city" ColumnName="payment_city" />
-                <ScalarProperty Name="payment_country" ColumnName="payment_country" />
-                <ScalarProperty Name="store_id" ColumnName="store_id" />
-                <ScalarProperty Name="invoice_prefix" ColumnName="invoice_prefix" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
