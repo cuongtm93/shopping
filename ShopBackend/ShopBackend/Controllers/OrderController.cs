@@ -81,7 +81,7 @@ namespace ShopBackend.Controllers
         {
             var order_products = db.oc_order_product.Where(r => r.order_id == id).ToList();
             var order_products_total = order_products.Sum(r => r.price * r.quantity);
-            var _ = from order in db.oc_order
+            var details = from order in db.oc_order
                     join customer in db.oc_customer on order.customer_id equals customer.customer_id
                     join _store in db.oc_store on order.store_id equals _store.store_id
                     where order.order_id == id
@@ -107,7 +107,7 @@ namespace ShopBackend.Controllers
                         telephone = _store.phone,
                         total = (int)order.total,
                     };
-            var model = _.FirstOrDefault();
+            var model = details.FirstOrDefault();
             model.order_products_total = (int)order_products_total;
             model.order_products = order_products;
             return View(model);
@@ -149,7 +149,8 @@ namespace ShopBackend.Controllers
                                             date_added = history_record.date_added,
                                             status = order_status.name
                                         };
-            var _ = from order in db.oc_order
+
+            var details = from order in db.oc_order
                     join customer in db.oc_customer on order.customer_id equals customer.customer_id
                     join _store in db.oc_store on order.store_id equals _store.store_id
                     where order.order_id == id
@@ -175,7 +176,7 @@ namespace ShopBackend.Controllers
                         total = (int)order.total,
                     };
 
-            var model = _.FirstOrDefault();
+            var model = details.FirstOrDefault();
             model.order_products = order_products;
             model.order_history_records = order_history_records.ToList();
             model.order_statuses = db.oc_order_status.ToList();
