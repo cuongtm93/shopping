@@ -82,36 +82,37 @@ namespace ShopBackend.Controllers
             var order_products = db.oc_order_product.Where(r => r.order_id == id).ToList();
             var order_products_total = order_products.Sum(r => r.price * r.quantity);
             var details = from order in db.oc_order
-                    join customer in db.oc_customer on order.customer_id equals customer.customer_id
-                    join _store in db.oc_store on order.store_id equals _store.store_id
-                    where order.order_id == id
-                    select new Order_PrintInvoiceViewmodel
-                    {
-                        date_added = order.date_added,
-                        invoice_prefix = order.invoice_prefix,
-                        email = _store.email,
-                        full_name = customer.firstname + customer.lastname,
-                        order_id = order.order_id,
-                        store_id = _store.store_id,
-                        payment_address1 = order.payment_address_1,
-                        payment_address2 = order.payment_address_2,
-                        payment_method = order.payment_method,
-                        payment_city = order.payment_city,
-                        payment_country = order.payment_country,
-                        shipping_address1 = order.shipping_address_1,
-                        shipping_address2 = order.shipping_address_2,
-                        shipping_city = order.shipping_city,
-                        shipping_country = order.shipping_country,
-                        shipping_method = order.shipping_method,
-                        store_name = _store.name,
-                        telephone = _store.phone,
-                        total = (int)order.total,
-                        store_address = _store.address,
-                        store_email = _store.email,
-                        store_phone = _store.phone,
-                        store_website = _store.url,
-                        order_products_total = order_products_total,
-                    };
+                          join customer in db.oc_customer on order.customer_id equals customer.customer_id
+                          join _store in db.oc_store on order.store_id equals _store.store_id
+                          where order.order_id == id
+                          select new Order_PrintInvoiceViewmodel
+                          {
+                              date_added = order.date_added,
+                              invoice_prefix = order.invoice_prefix,
+                              email = _store.email,
+                              full_name = customer.firstname + customer.lastname,
+                              order_id = order.order_id,
+                              store_id = _store.store_id,
+                              payment_address1 = order.payment_address_1,
+                              payment_address2 = order.payment_address_2,
+                              payment_method = order.payment_method,
+                              payment_city = order.payment_city,
+                              payment_country = order.payment_country,
+                              shipping_address1 = order.shipping_address_1,
+                              shipping_address2 = order.shipping_address_2,
+                              shipping_city = order.shipping_city,
+                              shipping_country = order.shipping_country,
+                              shipping_method = order.shipping_method,
+                              store_name = _store.name,
+                              telephone = _store.phone,
+                              total = (int)order.total,
+                              store_address = _store.address,
+                              store_email = _store.email,
+                              store_phone = _store.phone,
+                              store_website = _store.url,
+                              order_products_total = order_products_total,
+                          };
+
             var model = details.FirstOrDefault();
             model.order_products = order_products;
             return View(model);
@@ -155,30 +156,29 @@ namespace ShopBackend.Controllers
                                         };
 
             var details = from order in db.oc_order
-                    join customer in db.oc_customer on order.customer_id equals customer.customer_id
-                    join _store in db.oc_store on order.store_id equals _store.store_id
-                    where order.order_id == id
-                    select new Order_DetailsViewmodel
-                    {
-                        date_added = order.date_added,
-                        email = _store.email,
-                        full_name = customer.firstname + customer.lastname,
-                        order_id = order.order_id,
-
-                        payment_address1 = order.payment_address_1,
-                        payment_address2 = order.payment_address_2,
-                        payment_method = order.payment_method,
-                        payment_city = order.payment_city,
-                        payment_country = order.payment_country,
-                        shipping_address1 = order.shipping_address_1,
-                        shipping_address2 = order.shipping_address_2,
-                        shipping_city = order.shipping_city,
-                        shipping_country = order.shipping_country,
-                        shipping_method = order.shipping_method,
-                        store_name = _store.name,
-                        telephone = _store.phone,
-                        total = (int)order.total,
-                    };
+                          join customer in db.oc_customer on order.customer_id equals customer.customer_id
+                          join _store in db.oc_store on order.store_id equals _store.store_id
+                          where order.order_id == id
+                          select new Order_DetailsViewmodel
+                          {
+                              date_added = order.date_added,
+                              email = _store.email,
+                              full_name = customer.firstname + customer.lastname,
+                              order_id = order.order_id,
+                              payment_address1 = order.payment_address_1,
+                              payment_address2 = order.payment_address_2,
+                              payment_method = order.payment_method,
+                              payment_city = order.payment_city,
+                              payment_country = order.payment_country,
+                              shipping_address1 = order.shipping_address_1,
+                              shipping_address2 = order.shipping_address_2,
+                              shipping_city = order.shipping_city,
+                              shipping_country = order.shipping_country,
+                              shipping_method = order.shipping_method,
+                              store_name = _store.name,
+                              telephone = _store.phone,
+                              total = (int)order.total,
+                          };
 
             var model = details.FirstOrDefault();
             model.order_products = order_products;

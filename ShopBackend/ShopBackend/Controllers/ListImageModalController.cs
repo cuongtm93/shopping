@@ -48,9 +48,9 @@ namespace ShopBackend.Controllers
             return View();
         }
 
-        
+
         [HttpPost]
-        public JsonResult Upload(HttpPostedFileBase file_upload , string dir_upload)
+        public JsonResult Upload(HttpPostedFileBase file_upload, string dir_upload)
         {
             if (file_upload != null && file_upload.ContentLength > 0)
                 try

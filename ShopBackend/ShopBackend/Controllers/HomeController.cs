@@ -22,7 +22,7 @@ namespace ShopBackend.Controllers
         {
             db = new shop2Entities();
         }
-       
+
         public ActionResult Index()
         {
             var Lastest_Orders = db.oc_order
@@ -34,7 +34,7 @@ namespace ShopBackend.Controllers
                 Lastest_Orders = new List<Lastest_Orders>(),
                 Total_Orders = db.oc_order.Count(),
                 Total_Customers = db.oc_customer.Count(),
-                Total_Sales = db.oc_order.Count(r=>r.order_status_id == COMPLETE),
+                Total_Sales = db.oc_order.Count(r => r.order_status_id == COMPLETE),
                 Total_OnlineUsers = db.oc_customer_online.Count(),
             };
 
@@ -48,7 +48,7 @@ namespace ShopBackend.Controllers
                     Status = status.name,
                     Date_Added = order.date_added,
                     Order_id = order.order_id.ToString(),
-                    Total =  (int ) order.total
+                    Total = (int)order.total
                 });
             }
             return View(model);

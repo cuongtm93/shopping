@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="shop2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="shop2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="oc_address">
           <Key>
             <PropertyRef Name="address_id" />
@@ -1066,6 +1066,7 @@
           <Property Name="viewed" Type="int" Nullable="false" />
           <Property Name="date_added" Type="datetime2" Precision="0" Nullable="false" />
           <Property Name="date_modified" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="deleted" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="oc_product_attribute">
           <Key>
@@ -1813,8 +1814,7 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
     FROM [dbo].[product_product_desc_view] AS [product_product_desc_view]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="shop2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -2879,6 +2879,7 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <Property Name="viewed" Type="Int32" Nullable="false" />
           <Property Name="date_added" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="date_modified" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="deleted" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="oc_product_attribute">
           <Key>
@@ -4684,6 +4685,7 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <EntitySetMapping Name="oc_product">
             <EntityTypeMapping TypeName="shop2Model.oc_product">
               <MappingFragment StoreEntitySet="oc_product">
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
                 <ScalarProperty Name="product_id" ColumnName="product_id" />
                 <ScalarProperty Name="model" ColumnName="model" />
                 <ScalarProperty Name="sku" ColumnName="sku" />

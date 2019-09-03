@@ -85,20 +85,19 @@ namespace ShopBackend.Controllers
         // GET: Product
         public ActionResult Index(int? page)
         {
-            const int NOT_DELETED = 1;
             const int FIRST_PAGE = 1;
-            var model = from tbl1 in db.oc_product
-                        join tbl2 in db.oc_product_description on tbl1.product_id equals tbl2.product_id
-                        where tbl1.status == NOT_DELETED
-                        orderby tbl1.date_added
+            var model = from product in db.oc_product
+                        join product_description in db.oc_product_description on product.product_id equals product_description.product_id
+                        where product.deleted != 1
+                        orderby product.date_added , product.date_modified
                         select new Product_Index_Viewmodel
                         {
-                            image = tbl1.image,
-                            status = (tbl1.status == 1) ? "dừng " : "hoạt động",
-                            model = tbl1.model,
-                            name = tbl2.name,
-                            product_id = tbl1.product_id,
-                            quantity = tbl1.quantity
+                            image = product.image,
+                            status = (product.status != 1) ? "dừng " : "hoạt động",
+                            model = product.model,
+                            name = product_description.name,
+                            product_id = product.product_id,
+                            quantity = product.quantity
                         };
 
             if (!page.HasValue) page = FIRST_PAGE;
@@ -313,7 +312,7 @@ namespace ShopBackend.Controllers
             {
                 // TODO: Add delete logic here
                 string _list_checked_product_id = collection["checked"];
-                var result1 = db.Database.ExecuteSqlCommand($"update shop.oc_product set status=0 where product_id in ({_list_checked_product_id})");
+                var result1 = db.Database.ExecuteSqlCommand($"update shop.oc_product set deleted=1 where product_id in ({_list_checked_product_id})");
                 db.SaveChanges();
                 return Redirect(Request.UrlReferrer.ToString());
             }

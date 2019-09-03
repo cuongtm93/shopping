@@ -45,5 +45,6 @@ namespace ShopBackend.Data
         public int viewed { get; set; }
         public System.DateTime date_added { get; set; }
         public System.DateTime date_modified { get; set; }
+        public int deleted { get; set; }
     }
 }

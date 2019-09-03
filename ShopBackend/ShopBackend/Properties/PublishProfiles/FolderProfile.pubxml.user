@@ -184,10 +184,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/24/2018 13:38:24</publishTime>
     </File>
     <File Include="bin/ShopBackend.dll">
-      <publishTime>02/09/2019 04:12:29</publishTime>
+      <publishTime>09/03/2019 07:14:02</publishTime>
     </File>
     <File Include="bin/ShopBackend.pdb">
-      <publishTime>02/09/2019 04:12:29</publishTime>
+      <publishTime>09/03/2019 07:14:02</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>11/28/2018 13:04:24</publishTime>
@@ -637,7 +637,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2019 20:24:53</publishTime>
     </File>
     <File Include="Data/Model1.edmx.diagram">
-      <publishTime>02/09/2019 01:05:49</publishTime>
+      <publishTime>02/09/2019 08:54:37</publishTime>
     </File>
     <File Include="dist/css/AdminLTE.css">
       <publishTime>02/09/2019 01:05:52</publishTime>
@@ -2083,7 +2083,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/09/2019 01:05:49</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/09/2019 06:23:01</publishTime>
+      <publishTime>02/09/2019 09:40:53</publishTime>
     </File>
   </ItemGroup>
 </Project>
