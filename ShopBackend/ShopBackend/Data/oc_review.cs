@@ -21,7 +21,7 @@ namespace ShopBackend.Data
         public string text { get; set; }
         public int rating { get; set; }
         public short status { get; set; }
-        public System.DateTime date_added { get; set; }
+        public Nullable<System.DateTime> date_added { get; set; }
         public System.DateTime date_modified { get; set; }
     }
 }

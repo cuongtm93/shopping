@@ -19,7 +19,7 @@ namespace ShopBackend.Data
         public int customer_group_id { get; set; }
         public int priority { get; set; }
         public decimal price { get; set; }
-        public System.DateTime date_start { get; set; }
+        public Nullable<System.DateTime> date_start { get; set; }
         public System.DateTime date_end { get; set; }
     }
 }

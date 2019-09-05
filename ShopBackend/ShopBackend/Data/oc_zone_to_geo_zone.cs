@@ -18,7 +18,7 @@ namespace ShopBackend.Data
         public int country_id { get; set; }
         public int zone_id { get; set; }
         public int geo_zone_id { get; set; }
-        public System.DateTime date_added { get; set; }
+        public Nullable<System.DateTime> date_added { get; set; }
         public System.DateTime date_modified { get; set; }
     }
 }

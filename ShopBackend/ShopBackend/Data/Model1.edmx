@@ -1066,7 +1066,7 @@
           <Property Name="viewed" Type="int" Nullable="false" />
           <Property Name="date_added" Type="datetime2" Precision="0" Nullable="false" />
           <Property Name="date_modified" Type="datetime2" Precision="0" Nullable="false" />
-          <Property Name="deleted" Type="int" Nullable="false" />
+          <Property Name="deleted" Type="int" />
         </EntityType>
         <EntityType Name="oc_product_attribute">
           <Key>
@@ -1103,7 +1103,7 @@
           <Property Name="quantity" Type="int" Nullable="false" />
           <Property Name="priority" Type="int" Nullable="false" />
           <Property Name="price" Type="decimal" Precision="15" Scale="4" Nullable="false" />
-          <Property Name="date_start" Type="date" Nullable="false" />
+          <Property Name="date_start" Type="date" />
           <Property Name="date_end" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="oc_product_filter">
@@ -1187,7 +1187,7 @@
           <Property Name="customer_group_id" Type="int" Nullable="false" />
           <Property Name="priority" Type="int" Nullable="false" />
           <Property Name="price" Type="decimal" Precision="15" Scale="4" Nullable="false" />
-          <Property Name="date_start" Type="date" Nullable="false" />
+          <Property Name="date_start" Type="date" />
           <Property Name="date_end" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="oc_product_to_category">
@@ -1322,7 +1322,7 @@
           <Property Name="text" Type="nvarchar(max)" Nullable="false" />
           <Property Name="rating" Type="int" Nullable="false" />
           <Property Name="status" Type="smallint" Nullable="false" />
-          <Property Name="date_added" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="date_added" Type="datetime2" Precision="0" />
           <Property Name="date_modified" Type="datetime2" Precision="0" Nullable="false" />
         </EntityType>
         <EntityType Name="oc_seo_url">
@@ -1568,7 +1568,7 @@
           <Property Name="country_id" Type="int" Nullable="false" />
           <Property Name="zone_id" Type="int" Nullable="false" />
           <Property Name="geo_zone_id" Type="int" Nullable="false" />
-          <Property Name="date_added" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="date_added" Type="datetime2" Precision="0" />
           <Property Name="date_modified" Type="datetime2" Precision="0" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -2879,7 +2879,7 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <Property Name="viewed" Type="Int32" Nullable="false" />
           <Property Name="date_added" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="date_modified" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="deleted" Type="Int32" Nullable="false" />
+          <Property Name="deleted" Type="Int32" />
         </EntityType>
         <EntityType Name="oc_product_attribute">
           <Key>
@@ -2916,7 +2916,7 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <Property Name="quantity" Type="Int32" Nullable="false" />
           <Property Name="priority" Type="Int32" Nullable="false" />
           <Property Name="price" Type="Decimal" Precision="15" Scale="4" Nullable="false" />
-          <Property Name="date_start" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="date_start" Type="DateTime" Precision="0" />
           <Property Name="date_end" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="oc_product_filter">
@@ -3000,7 +3000,7 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <Property Name="customer_group_id" Type="Int32" Nullable="false" />
           <Property Name="priority" Type="Int32" Nullable="false" />
           <Property Name="price" Type="Decimal" Precision="15" Scale="4" Nullable="false" />
-          <Property Name="date_start" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="date_start" Type="DateTime" Precision="0" />
           <Property Name="date_end" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="oc_product_to_category">
@@ -3135,7 +3135,7 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="rating" Type="Int32" Nullable="false" />
           <Property Name="status" Type="Int16" Nullable="false" />
-          <Property Name="date_added" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="date_added" Type="DateTime" Precision="0" />
           <Property Name="date_modified" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="oc_seo_url">
@@ -3381,7 +3381,7 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <Property Name="country_id" Type="Int32" Nullable="false" />
           <Property Name="zone_id" Type="Int32" Nullable="false" />
           <Property Name="geo_zone_id" Type="Int32" Nullable="false" />
-          <Property Name="date_added" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="date_added" Type="DateTime" Precision="0" />
           <Property Name="date_modified" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="product_product_desc_view">

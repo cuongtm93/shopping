@@ -15,7 +15,7 @@ namespace ShopBackend.Models
         public string text { get; set; }
         public int rating { get; set; }
         public short status { get; set; }
-        public DateTime date_added { get; set; }
+        public DateTime? date_added { get; set; }
         public DateTime date_modified { get; set; }
     }
 }
