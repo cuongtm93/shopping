@@ -184,10 +184,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/24/2018 13:38:24</publishTime>
     </File>
     <File Include="bin/ShopBackend.dll">
-      <publishTime>09/06/2019 05:01:39</publishTime>
+      <publishTime>09/09/2019 16:28:36</publishTime>
     </File>
     <File Include="bin/ShopBackend.pdb">
-      <publishTime>09/06/2019 05:01:39</publishTime>
+      <publishTime>09/09/2019 16:28:36</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>11/28/2018 13:04:24</publishTime>
@@ -2016,6 +2016,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Components/Pagination.cshtml">
       <publishTime>09/02/2019 01:05:49</publishTime>
     </File>
+    <File Include="Views/Customer/Index.cshtml">
+      <publishTime>09/09/2019 15:02:51</publishTime>
+    </File>
     <File Include="Views/Error/_404.cshtml">
       <publishTime>09/02/2019 01:05:49</publishTime>
     </File>
@@ -2035,16 +2038,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2019 01:05:49</publishTime>
     </File>
     <File Include="Views/Order/Details.cshtml">
-      <publishTime>09/02/2019 01:05:49</publishTime>
+      <publishTime>09/09/2019 13:26:53</publishTime>
     </File>
     <File Include="Views/Order/Index.cshtml">
       <publishTime>09/02/2019 01:05:49</publishTime>
     </File>
     <File Include="Views/Order/Print_Invoice.cshtml">
-      <publishTime>09/02/2019 01:05:49</publishTime>
+      <publishTime>08/09/2019 10:20:03</publishTime>
     </File>
     <File Include="Views/Order/Print_Shipping.cshtml">
-      <publishTime>09/02/2019 01:05:49</publishTime>
+      <publishTime>08/09/2019 10:20:45</publishTime>
     </File>
     <File Include="Views/Product/Create.cshtml">
       <publishTime>09/02/2019 01:05:49</publishTime>
@@ -2065,7 +2068,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2019 01:05:49</publishTime>
     </File>
     <File Include="Views/Product/Index.cshtml">
-      <publishTime>09/02/2019 01:05:49</publishTime>
+      <publishTime>09/09/2019 13:01:13</publishTime>
+    </File>
+    <File Include="Views/Return/Index.cshtml">
+      <publishTime>09/09/2019 14:16:36</publishTime>
     </File>
     <File Include="Views/Review/Index.cshtml">
       <publishTime>09/02/2019 01:05:49</publishTime>
@@ -2074,7 +2080,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2019 01:05:49</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>09/02/2019 01:05:49</publishTime>
+      <publishTime>09/09/2019 16:28:23</publishTime>
+    </File>
+    <File Include="Views/Statistic/Index.cshtml">
+      <publishTime>09/09/2019 15:48:18</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>09/02/2019 01:05:49</publishTime>
