@@ -1,0 +1,54 @@
+﻿@model ShopBackend.Models.Statistic_IndexViewmodel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section content_header{
+    <h1>
+        Thống kê
+    </h1>
+
+    <ol class="breadcrumb">
+
+        <li><a href="/"><i class="fa fa-dashboard"></i> Thống kê</a></li>
+        <li class="active">Toàn bộ</li>
+    </ol>
+}
+
+@section content_main{
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td class="text-left">Thống kê</td>
+                        <td class="text-right">Kết quả</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var statistic in Model.statistics)
+                    {
+                        <tr>
+                            <td class="text-left">@statistic.name</td>
+                            <td class="text-right">@statistic.value</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+        <div class="panel-footer">
+            <a href="@Url.Action("Update")" data-toggle="tooltip" title="" class="btn btn-warning" data-original-title="Refresh">
+                <i class="fa fa-refresh"></i> Cập nhật 
+            </a>
+        </div>
+    </div>
+
+}
+
+@section scripts{
+    <script>
+
+    </script>
+}

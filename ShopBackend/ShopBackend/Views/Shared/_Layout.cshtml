@@ -34,7 +34,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="~/dist/css/app.min.css" />
-    <link  rel="stylesheet" href="~/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"/>
+    <link rel="stylesheet" href="~/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" />
     <script src="~/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 </head>
 <!--
@@ -81,7 +81,7 @@ desired effect
                 <div class="navbar-custom-menu">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <ul class="nav navbar-nav" >
+                        <ul class="nav navbar-nav">
                             <!-- Messages: style can be found in dropdown.less-->
                             <li class="dropdown messages-menu" style="display:none">
                                 <!-- Menu toggle button -->
@@ -316,31 +316,8 @@ desired effect
                                 <li><a href="/Manufacturer">Nhóm khách hàng</a></li>
                             </ul>
                         </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-link"></i> <span>Thống kê</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="/Product">Thống kê</a></li>
-                                <li><a href="/Manufacturer">Nhóm khách hàng</a></li>
-                            </ul>
-                        </li>
-                        @*<li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
-        <li class="treeview">
-            <a href="#">
-                <i class="fa fa-link"></i> <span>Multilevel</span>
-                <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                </span>
-            </a>
-            <ul class="treeview-menu">
-                <li><a href="#">Link in level 2</a></li>
-                <li><a href="#">Link in level 2</a></li>
-            </ul>
-        </li>*@
+                        <li><a href="@Url.Action("Index","Statistic")"><i class="fa fa-link"></i> <span>Thống kê</span></a></li>
+                        
                     </ul>
                     <!-- /.sidebar-menu -->
                 </section>
@@ -456,7 +433,7 @@ desired effect
     <!-- FastClick -->
     <script src="~/bower_components/fastclick/lib/fastclick.js"></script>
 
-    
+
     <!-- Bootstrap 3.3.7 -->
     <script src="~/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->

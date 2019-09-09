@@ -1369,6 +1369,7 @@
           <Property Name="statistics_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="code" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="value" Type="decimal" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="oc_stock_status">
           <Key>
@@ -3182,6 +3183,7 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <Property Name="statistics_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="code" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="value" Type="Decimal" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="oc_stock_status">
           <Key>
@@ -5029,6 +5031,7 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <EntitySetMapping Name="oc_statistics">
             <EntityTypeMapping TypeName="shop2Model.oc_statistics">
               <MappingFragment StoreEntitySet="oc_statistics">
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="statistics_id" ColumnName="statistics_id" />
                 <ScalarProperty Name="code" ColumnName="code" />
                 <ScalarProperty Name="value" ColumnName="value" />

@@ -17,5 +17,6 @@ namespace ShopBackend.Data
         public int statistics_id { get; set; }
         public string code { get; set; }
         public decimal value { get; set; }
+        public string name { get; set; }
     }
 }

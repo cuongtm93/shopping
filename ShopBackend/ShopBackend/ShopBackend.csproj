@@ -163,6 +163,7 @@
       <DependentUpon>app.css</DependentUpon>
     </Content>
     <Content Include="dist\css\app.scss" />
+    <Compile Include="Controllers\StatisticController.cs" />
     <Compile Include="Data\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -608,6 +609,7 @@
     <Compile Include="Models\Product_Index_Viewmodel.cs" />
     <Compile Include="Models\Return_IndexViewmodel.cs" />
     <Compile Include="Models\Review_IndexViewmodel.cs" />
+    <Compile Include="Models\Statistic_IndexViewmodel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
   </ItemGroup>
@@ -1255,6 +1257,7 @@
     <Content Include="Views\Components\Pagination.cshtml" />
     <Content Include="Views\Return\Index.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Statistic\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
