@@ -1,0 +1,93 @@
+﻿@using ShopBackend.Models;
+@using Gobln;
+@model Gobln.Pager.Page<Return_IndexViewmodel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section content_header{
+    <h1>
+        Đổi trả
+    </h1>
+
+    <ol class="breadcrumb">
+
+        <li><a href="/"><i class="fa fa-dashboard"></i> Đơn hàng</a></li>
+        <li class="active">Đổi trả</li>
+    </ol>
+}
+
+@section content_main{
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form action="" method="post" enctype="multipart/form-data" id="form-return">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);"></td>
+                                <td class="text-left">Mã</td>
+                                <td class="text-right">Mã đơn hàng </td>
+                                <td class="text-left">Nguyên nhân</td>
+                                <td class="text-left">Khách hàng</td>
+                                <td class="text-left">Sản phẩm</td>
+                                <td class="text-left">Mẫu</td>
+                                <td class="text-left">Trạng thái</td>
+                                <td class="text-left">Ngày tạo</td>
+                                <td class="text-left">Ngày sửa</td>
+                                <td class="text-right">Thao tác</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Return_IndexViewmodel _return in Model)
+                            {
+                                <tr>
+                                    <td style="width: 1px;" class="text-center">
+                                        <input type="checkbox" name="return_id" value="@_return.return_id">
+                                    </td>
+                                    <td class="text-right"> @_return.return_id </td>
+                                    <td class="text-right"> @_return.order_id </td>
+                                    <td class="text-left"> @_return.return_reason </td>
+                                    <td class="text-left"> @(_return.firstname + _return.lastname)  </td>
+                                    <td class="text-left"> @_return.product </td>
+                                    <td class="text-left"> @_return.model </td>
+                                    <td class="text-left"> @_return.return_status </td>
+                                    <td class="text-left">@_return.date_added.ToString("dd/MM/yyyy")</td>
+                                    <td class="text-left">@_return.date_modified.ToString("dd/MM/yyyy") </td>
+                                    <td class="text-right">Thao tác</td>
+                                </tr>
+                            }
+                            @if (!Model.Any())
+                            {
+                                <tr>
+                                    <td class="text-center" colspan="11">Không có !</td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+            </form>
+            <div class="row">
+                @if (Model.Any())
+                {
+                    <ul class="pagination col-ms-9 pull-right" style="margin-right : 15px;">
+                        @Html.Partial("~/Views/Components/Pagination.cshtml", new Components_PaginationViewmodel()
+                        {
+                            href = "Return/?page=",
+                            total_page_count = Model.TotalPageCount,
+                            current_page_index = Model.CurrentPageIndex,
+                            number_of_displaying_pages = 4
+                        })
+                    </ul>
+                }
+            </div>
+        </div>
+    </div>
+    
+}
+
+@section scripts{
+    <script></script>
+}

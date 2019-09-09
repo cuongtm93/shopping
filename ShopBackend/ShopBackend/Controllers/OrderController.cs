@@ -11,7 +11,7 @@ namespace ShopBackend.Controllers
 
     public class OrderController : Controller
     {
-        const int PAGE_SIZE = 5;
+        
         private ShopBackend.Data.shop2Entities db;
         public OrderController()
         {
@@ -124,6 +124,7 @@ namespace ShopBackend.Controllers
         // GET: Order
         public ActionResult Index(int? page)
         {
+            const int PAGE_SIZE = 5;
             if (!page.HasValue) page = 1;
 
             var model = from order in db.oc_order

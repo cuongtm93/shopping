@@ -146,6 +146,7 @@
     <Compile Include="Controllers\ManufacturerController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ReturnController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
     <Content Include="Data\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -603,6 +604,7 @@
     <Compile Include="Models\Order_PrintShippingViewmodel.cs" />
     <Compile Include="Models\Product_Create_Viewmodel.cs" />
     <Compile Include="Models\Product_Index_Viewmodel.cs" />
+    <Compile Include="Models\Return_IndexViewmodel.cs" />
     <Compile Include="Models\Review_IndexViewmodel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -1249,6 +1251,7 @@
     <Content Include="Views\Order\Print_Shipping.cshtml" />
     <Content Include="Views\Review\Index.cshtml" />
     <Content Include="Views\Components\Pagination.cshtml" />
+    <Content Include="Views\Return\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
