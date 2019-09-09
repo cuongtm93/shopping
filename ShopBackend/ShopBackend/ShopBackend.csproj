@@ -141,6 +141,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListImageModalController.cs" />
     <Compile Include="Controllers\ManufacturerController.cs" />
@@ -593,6 +594,7 @@
     </Compile>
     <Compile Include="Helpers\ImageGalleryHelper.cs" />
     <Compile Include="Models\Components_PaginationViewmodel.cs" />
+    <Compile Include="Models\Customer_IndexViewmodel.cs" />
     <Compile Include="Models\Edit_ImagePartiallViewmodel.cs" />
     <Compile Include="Models\Home_IndexViewmodel.cs" />
     <Compile Include="Models\Manufacturer_EditViewmodel.cs" />
@@ -1252,6 +1254,7 @@
     <Content Include="Views\Review\Index.cshtml" />
     <Content Include="Views\Components\Pagination.cshtml" />
     <Content Include="Views\Return\Index.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
