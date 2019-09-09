@@ -8,7 +8,7 @@
     <h1>
         Chi tiết đơn hàng
     </h1>
-    
+
     <ol class="breadcrumb">
 
         <li><a href="/"><i class="fa fa-dashboard"></i> Danh mục</a></li>
@@ -21,10 +21,11 @@
         <div class="pull-right">
             <a href="/Order/Print_Invoice/@Model.order_id" target="_blank" data-toggle="tooltip" title="" class="btn btn-info" data-original-title="Print Invoice"><i class="fa fa-print"></i></a>
             <a href="Order/Print_Shipping/@Model.order_id" target="_blank" data-toggle="tooltip" title="" class="btn btn-info" data-original-title="Print Shipping List"><i class="fa fa-truck"></i></a>
-            <div href="#" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></div>
-            <div href="#" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Cancel" onclick="window.history.back()">
-                <i class="fa fa-reply"></i>
-            </div>
+            <a href="@Url.Action("Index")">
+                <div href="#" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Cancel">
+                    <i class="fa fa-reply"></i>
+                </div>
+            </a>
         </div>
     </div>
     <div class="row">
@@ -173,7 +174,7 @@
                                             <td class="text-left">@order_history_record.date_added.ToString("dd/MM/yyyy")</td>
                                             <td class="text-left">@order_history_record.comment</td>
                                             <td class="text-left">@order_history_record.status</td>
-                                            <td class="text-left">@(order_history_record.customer_notified ? "Rồi" : "Chưa")</td>
+                                            <td class="text-left">@(order_history_record.customer_notified ? "Có" : "Không")</td>
                                         </tr>
                                     }
                                 </tbody>
@@ -212,7 +213,7 @@
                                 <label class="col-sm-2 control-label" for="input-notify">Thông báo cho khách</label>
                                 <div class="col-sm-10">
                                     <div class="checkbox">
-                                        <input type="checkbox" name="notify" value="1" id="input-notify">
+                                        <input type="checkbox" name="notify" value="1" id="input-notify" checked>
                                     </div>
                                 </div>
                             </div>

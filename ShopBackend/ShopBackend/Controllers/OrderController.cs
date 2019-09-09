@@ -22,6 +22,10 @@ namespace ShopBackend.Controllers
         public ActionResult Add_Order_History(Data.oc_order_history model)
         {
             model.date_added = DateTime.Now;
+            if (string.IsNullOrWhiteSpace(model.comment))
+            {
+                model.comment = "Không ghi chú";
+            }
             db.oc_order_history.Add(model);
             db.SaveChanges();
             return RedirectToAction("Details", new { id = model.order_id });
