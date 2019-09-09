@@ -61,7 +61,16 @@
                                 </td>
                                 <td>@product.name</td>
                                 <td>@product.model</td>
-                                <td>@product.quantity</td>
+                                <td>
+                                    @if (product.quantity < 10)
+                                    {
+                                        <span class="label label-danger">@product.quantity</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-success">@product.quantity</span>
+                                    }
+                                </td>
                                 <td>@product.status</td>
                                 <td>
                                     <a href="/Product/Edit/@product.product_id" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit">
