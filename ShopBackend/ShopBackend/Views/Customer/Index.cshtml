@@ -80,8 +80,18 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-6 text-left"></div>
-                <div class="col-sm-6 text-right">Showing 1 to 1 of 1 (1 Pages)</div>
+                @if (Model.Any())
+                {
+                    <ul class="pagination col-ms-9 pull-right" style="margin-right : 15px;">
+                        @Html.Partial("~/Views/Components/Pagination.cshtml", new Components_PaginationViewmodel()
+                        {
+                            href = "Customer/?page=",
+                            total_page_count = Model.TotalPageCount,
+                            current_page_index = Model.CurrentPageIndex,
+                            number_of_displaying_pages = 4
+                        })
+                    </ul>
+                }
             </div>
         </div>
     </div>
