@@ -1,0 +1,91 @@
+﻿@using Gobln.Pager;
+@using ShopBackend.Models;
+@model Gobln.Pager.Page<Customer_IndexViewmodel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section content_header{
+    <h1>
+        Khách hàng
+    </h1>
+    <ol class="breadcrumb">
+
+        <li><a href="/"><i class="fa fa-dashboard"></i> Khách hàng</a></li>
+        <li class="active">Danh mục</li>
+    </ol>
+}
+
+@section content_main{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-list"></i> Customer List</h3>
+        </div>
+        <div class="panel-body">
+            <div class="table table-bordered">
+                <form action="" method="post" enctype="multipart/form-data" id="form-customer">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);"></td>
+                                <td class="text-left"><a href="" class="asc">Tên đầy đủ</a></td>
+                                <td class="text-left"><a href="">E-Mail</a></td>
+                                <td class="text-left"> <a href="">Nhóm</a></td>
+                                <td class="text-left"><a href="">Trạng thái</a></td>
+                                <td class="text-left"><a href="">IP</a></td>
+                                <td class="text-left"><a href="">Ngày đăng ký</a></td>
+                                @*<td class="text-right">Action</td>*@
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Customer_IndexViewmodel customer in Model)
+                            {
+                                <tr>
+                                    <td class="text-center">
+                                        <input type="checkbox" name="selected[]" value="1">
+                                    </td>
+                                    <td class="text-left">@(customer.firstname + customer.lastname)</td>
+                                    <td class="text-left">@customer.email</td>
+                                    <td class="text-left">@customer.customer_group</td>
+                                    <td class="text-left">@(customer.status == 0 ? "Ngưng" : "Kích hoạt")</td>
+                                    <td class="text-left">@customer.ip</td>
+                                    <td class="text-left">@customer.date_added</td>
+                                    @*<td class="text-right">
+                                        <div class="btn-group" style="min-width: 65px;">
+                                            <a href="" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                                            <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="caret"></span></button>
+                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                <li class="dropdown-header">Options</li>
+                                                <li class="disabled"><a><i class="fa fa-unlock"></i> Unlock Account</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                <li class="dropdown-header">Login into Store</li>
+                                                <li><a href="" target="_blank"><i class="fa fa-lock"></i> Your Store</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>*@
+                                </tr>
+                            }
+
+                            @if (!Model.Any())
+                            {
+                                <tr>
+                                    <td class="text-center" colspan="11">Không có !</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 text-left"></div>
+                <div class="col-sm-6 text-right">Showing 1 to 1 of 1 (1 Pages)</div>
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts{
+
+}
