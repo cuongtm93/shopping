@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopBackend.App_Start;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace ShopBackend.Helpers
 {
     public class ImageGalleryHelper
     {
-        public static string ROOT_DIR => HttpContext.Current.Request.PhysicalApplicationPath + "image\\";
+        public static string ROOT_DIR => Setting.Value["config_upload"];
         public const string FILTER = "(*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
 
         public static string GetRelativePathTo(FileSystemInfo from, FileSystemInfo to)

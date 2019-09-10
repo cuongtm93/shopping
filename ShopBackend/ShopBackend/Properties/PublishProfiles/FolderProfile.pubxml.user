@@ -184,10 +184,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/24/2018 13:38:24</publishTime>
     </File>
     <File Include="bin/ShopBackend.dll">
-      <publishTime>09/09/2019 16:28:36</publishTime>
+      <publishTime>09/10/2019 16:37:09</publishTime>
     </File>
     <File Include="bin/ShopBackend.pdb">
-      <publishTime>09/09/2019 16:28:36</publishTime>
+      <publishTime>09/10/2019 16:37:09</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>11/28/2018 13:04:24</publishTime>
@@ -2026,7 +2026,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2019 01:05:49</publishTime>
     </File>
     <File Include="Views/ListImageModal/Index.cshtml">
-      <publishTime>09/02/2019 01:05:49</publishTime>
+      <publishTime>09/10/2019 16:17:27</publishTime>
     </File>
     <File Include="Views/Manufacturer/Create.cshtml">
       <publishTime>09/02/2019 01:05:49</publishTime>
@@ -2062,13 +2062,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2019 01:05:49</publishTime>
     </File>
     <File Include="Views/Product/Edit_ImagePartial.cshtml">
-      <publishTime>09/02/2019 01:05:49</publishTime>
+      <publishTime>09/10/2019 16:30:40</publishTime>
     </File>
     <File Include="Views/Product/Edit_PropertyPartial.cshtml">
       <publishTime>09/02/2019 01:05:49</publishTime>
     </File>
     <File Include="Views/Product/Index.cshtml">
-      <publishTime>09/09/2019 13:01:13</publishTime>
+      <publishTime>09/10/2019 16:30:18</publishTime>
     </File>
     <File Include="Views/Return/Index.cshtml">
       <publishTime>09/09/2019 14:16:36</publishTime>

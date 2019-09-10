@@ -1,8 +1,8 @@
-﻿@{
+﻿@using ShopBackend.App_Start;
+@{
 
     Layout = null;
     var items = ViewBag.Items as Dictionary<string, string>;
-
     const int MAX_LONG_STRING_LENGTH = 8;
     string short_string(string long_string)
     {
@@ -25,7 +25,7 @@
         {
             var file_name = @item.Key.Substring(item.Key.LastIndexOf("\\") + 1);
             <div class="col-sm-3 gallery_item" typeof="file" path="@item.Key" short_name="@file_name" title="@item.Key">
-                <img src="~/image/@item.Key" style="max-width:100%" onclick="on_image_selected('@item.Key.Replace(@"\",@"\\")');$('#modal-default').modal('toggle');" />
+                <img src="@Setting.Value["config_image"]/@item.Key" style="max-width:100%" onclick="on_image_selected('@item.Key.Replace(@"\",@"\\")');$('#modal-default').modal('toggle');" />
                 <div class="form-group center">
                     <input type="checkbox" name="path[]" value="@item.Key" title="Chọn tệp" class="file_checkbox" />
                     <label> @short_string(file_name)</label>
@@ -37,7 +37,7 @@
         {
             var folder_name = @item.Key.Substring(item.Key.LastIndexOf("\\") + 1);
             <div class="col-sm-3 gallery_item" typeof="folder" path="@item.Key" short_name="@folder_name" onclick="open_folder($(this).attr('path'));" title="@item.Key">
-                <img src="~/image/folder.png" style="max-width:100%" />
+                <img src="@Setting.Value["config_image"]/folder.png" style="max-width:100%" />
                 <div class="form-group center">
                     <input type="checkbox" name="path[]" value="@item.Key" title="Chọn tệp" class="file_checkbox" />
                     <label> <span style="color:blue">@short_string(folder_name)</span></label>

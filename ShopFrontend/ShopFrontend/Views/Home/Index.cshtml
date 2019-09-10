@@ -1,4 +1,92 @@
-﻿@{
+﻿@using ShopFrontend.App_Start;
+@model ShopFrontend.Models.Home_IndexViewmodel
+@{
     ViewBag.Title = "Home Page";
 }
 
+    <div class="row clearfix news-products">
+        <div class="col-sm-12">
+            <div class="text-success" role="alert">Hàng mới nhất</div>
+        </div>
+        @foreach (var product in Model.top_4_news_products)
+        {
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <div href="#">
+                            <img class="pic-1" src="@Setting.Value["config_image"]/@product.image">
+                            @if (product.alternative_images.Any())
+                            {
+                                <img class="pic-2" src="@Setting.Value["config_image"]/@product.alternative_images.First().image">
+                            }
+                            <img class="pic-2" src="@Setting.Value["config_image"]/@product.image">
+                        </div>
+                        <ul class="social">
+                            <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+                            <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                            <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                        <span class="product-new-label">Sale</span>
+                        <span class="product-discount-label">20%</span>
+                    </div>
+                    <ul class="rating">
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star disable"></li>
+                    </ul>
+                    <div class="product-content">
+                        <h3 class="title"><a href="#">Women's Blouse</a></h3>
+                        <div class="price">
+                            $16.00
+                            <span>$20.00</span>
+                        </div>
+                        <a class="add-to-cart" href="">+ Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="row clearfix maybeyoulike-products">
+        <div class="col-sm-12">
+            <div class="text-success" role="alert">Có thể bạn thích</div>
+        </div>
+        
+        @foreach (var product in Model.top_4_maybeyoulike_products)
+        {
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <div href="#">
+                            <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo9/images/img-1.jpg">
+                            <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo9/images/img-2.jpg">
+                        </div>
+                        <ul class="social">
+                            <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+                            <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                            <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                        <span class="product-new-label">Sale</span>
+                        <span class="product-discount-label">20%</span>
+                    </div>
+                    <ul class="rating">
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star disable"></li>
+                    </ul>
+                    <div class="product-content">
+                        <h3 class="title"><a href="#">Women's Blouse</a></h3>
+                        <div class="price">
+                            $16.00
+                            <span>$20.00</span>
+                        </div>
+                        <a class="add-to-cart" href="">+ Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div> 

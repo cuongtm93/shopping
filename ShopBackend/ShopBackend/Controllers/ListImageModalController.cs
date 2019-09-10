@@ -55,7 +55,7 @@ namespace ShopBackend.Controllers
             if (file_upload != null && file_upload.ContentLength > 0)
                 try
                 {
-                    string path = Path.Combine(Server.MapPath("~/Image") + "\\" + dir_upload,
+                    string path = Path.Combine(ImageGalleryHelper.ROOT_DIR + "\\" + dir_upload,
                     Path.GetFileName(file_upload.FileName));
                     file_upload.SaveAs(path);
                     return Json(new { m = "File uploaded successfully" });

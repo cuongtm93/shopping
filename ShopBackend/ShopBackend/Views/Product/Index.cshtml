@@ -1,4 +1,5 @@
-﻿@using ShopBackend.Models;
+﻿@using ShopBackend.App_Start;
+@using ShopBackend.Models;
 @using Gobln.Pager;
 @model Page<Product_Index_Viewmodel>
 
@@ -56,7 +57,7 @@
                                     <input type="checkbox" name="checked" value="@product.product_id" />
                                 </td>
                                 <td>
-                                    <img src="~/image/@product.image" alt="Apple Cinema 30&quot;" class="img-thumbnail" style="width:50px;max-height : 80px">
+                                    <img src="@Setting.Value["config_image"]/@product.image" alt="Apple Cinema 30&quot;" class="img-thumbnail" style="width:50px;max-height : 80px">
 
                                 </td>
                                 <td>@product.name</td>

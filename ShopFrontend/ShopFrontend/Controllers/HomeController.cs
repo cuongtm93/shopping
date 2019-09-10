@@ -15,7 +15,38 @@ namespace ShopFrontend.Controllers
         }
         public ActionResult Index()
         {
-            return View();
+            var enabled = 1;
+            var top_4_news_products = (from product in db.oc_product
+                                       join product_description in db.oc_product_description on product.product_id equals product_description.product_id
+                                       where product.deleted != 1 && product.status == enabled
+                                       orderby product.date_added, product.date_available, product.date_modified
+                                       select new Product()
+                                       {
+                                           product_id = product.product_id,
+                                           date_added = product.date_added,
+                                           date_available = product.date_available,
+                                           date_modified = product.date_modified,
+                                           deleted = product.deleted,
+                                           model = product.model,
+                                           quantity = product.quantity,
+                                           status = product.status,
+                                           
+                                           name = product_description.name,
+                                           price = product.price,
+                                           image = product.image
+                                       }).Take(4).ToList();
+
+            top_4_news_products.ForEach((product) =>
+            {
+                product.alternative_images = db.oc_product_image.Where(r => r.product_id == product.product_id).ToList();
+            });
+
+            var model = new Home_IndexViewmodel()
+            {
+                top_4_maybeyoulike_products = top_4_news_products.Take(4),
+                top_4_news_products = top_4_news_products.Take(4),
+            };
+            return View(model);
         }
     }
 }

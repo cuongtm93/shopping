@@ -1,4 +1,5 @@
-﻿@model ShopBackend.Models.Edit_ImagePartialViewmodel
+﻿@using ShopBackend.App_Start;
+@model ShopBackend.Models.Edit_ImagePartialViewmodel
 @{
     var directory = System.IO.Path.GetDirectoryName(Model.Image);
     directory = directory.Replace("\\", "\\\\");
@@ -11,7 +12,7 @@
         <!-- /.box-header -->
         <div class="box-body">
             <div class="image-controls">
-                <img src="~/image/@Model.Image" class="img-thumbnail product-image" alt="" id="main_image">
+                <img src="@Setting.Value["config_image"]/@Model.Image" class="img-thumbnail product-image" alt="" id="main_image">
                 <div class="middle">
                     <div class="btn btn-success" onclick='javascript:show_modal("@directory", "main_image")'>
                         <i class="fa fa-refresh"></i>
@@ -47,7 +48,7 @@
                         <tr id="@_minor_image_box_id">
                             <td>
                                 <div class="image-controls">
-                                    <img src="~/image/@image.image" class="img-thumbnail product-image" alt="@image.sort_order" id='@_id_'>
+                                    <img src="@Setting.Value["config_image"]/@image.image" class="img-thumbnail product-image" alt="@image.sort_order" id='@_id_'>
                                     <div class="middle">
                                         <div class="btn btn-success" onclick='javascript:show_modal("@_dir_","@_id_")'>
                                             <i class="fa fa-refresh"></i>
@@ -154,7 +155,7 @@
 
 <script>
     product_id = @Model.Product_id;
-
+    config_image = '@Setting.Value["config_image"]';
     $(document).ready(function () {
         $( "input[name^='sort_order_']" ).keyup(function(event) {
             if (event.keyCode === 13) {
@@ -179,7 +180,7 @@
                     let r1 = `<tr id="minor__${created_image_id}">`;
                     let r2 = `<td>`;
                     let r3 = `<div class="image-controls">`;
-                    let r4 = `<img src="/image/no_image.png" class="img-thumbnail product-image" alt="0" id="_${created_image_id}">`;
+                    let r4 = `<img src="${config_image}/no_image.png" class="img-thumbnail product-image" alt="0" id="_${created_image_id}">`;
                     let r5 = `<div class="middle">`;
                     let r6 = `<div class="btn btn-success" onclick="javascript:show_modal('\\\\','_${created_image_id}')">`;
                     let r7 = `<i class="fa fa-refresh"></i>`;
@@ -249,7 +250,7 @@
             success: function (res) {
                 if (res.m === 'ok') {
                     var img = $("#main_image");
-                    img.attr("src", `image/no_image.png`);
+                    img.attr("src", `${config_image}/no_image.png`);
                 }
             }
         });
@@ -258,7 +259,7 @@
         console.log(selecting_id);
         selected_image = _new_selected_image;
         var img = (selecting_id === "main_image") ? $("#main_image") : $('#' + selecting_id);
-        img.attr("src", `image/${selected_image}`);
+        img.attr("src", `${config_image}/${selected_image}`);
 
         if (selecting_id === "main_image") {
             $.ajax({

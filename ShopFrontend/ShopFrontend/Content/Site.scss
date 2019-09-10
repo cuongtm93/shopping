@@ -1,1 +1,63 @@
-﻿
+﻿$vertical-align: 20px;
+$bottom-left-menu-height: 300px;
+$theme-color: #ef5777;
+
+@import 'product.css';
+.navbar-light {
+    background-color: white !important;
+    color : white;
+}
+.logo {
+    margin-bottom : 5px; // chỉnh lại cho ngay với Việt Cường Shop
+    width: 50px;
+    height: auto;
+}
+#app {
+    padding-right: 15px;
+    padding-left: $vertical-align;
+}
+
+.row-2 {
+    margin-top: $vertical-align;
+    max-height: $bottom-left-menu-height;
+}
+
+.bottom-left-menu {
+    background-color: $theme-color;
+}
+
+.top-menu {
+    margin-top: 10px;
+}
+
+.bottom-left-menu-carousel {
+    max-height: 100%;
+}
+
+.main-menu {
+    margin-top: $vertical-align;
+}
+
+.carousel-inner {
+    width: 100%;
+    max-height: $bottom-left-menu-height !important;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .bottom-left-menu-carousel {
+        visibility: hidden;
+    }
+}
+
+.productbox {
+    margin-top: $vertical-align;
+    margin-left : 0px;
+    margin-right : 0px;
+}
+.news-products {
+    @extend .productbox;
+}
+
+.maybeyoulike-products {
+    @extend .productbox;
+}
