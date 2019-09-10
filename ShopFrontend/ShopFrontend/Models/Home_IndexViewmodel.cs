@@ -30,6 +30,7 @@ namespace ShopFrontend.Models
         public System.DateTime date_added { get; set; }
         public System.DateTime date_modified { get; set; }
         public Nullable<int> deleted { get; set; }
+        public string stock_status { get; set; }
     }
     public class Home_IndexViewmodel
     {
