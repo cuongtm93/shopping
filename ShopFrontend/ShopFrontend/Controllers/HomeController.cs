@@ -23,6 +23,7 @@ namespace ShopFrontend.Controllers
                                        orderby product.date_added, product.date_available, product.date_modified
                                        select new Product()
                                        {
+                                           seo_url = product_description.seo_url,
                                            product_id = product.product_id,
                                            date_added = product.date_added,
                                            date_available = product.date_available,
@@ -49,6 +50,11 @@ namespace ShopFrontend.Controllers
                 top_4_news_products = top_4_news_products.Take(4),
             };
             return View(model);
+        }
+
+        public ActionResult Category(string seo_url)
+        {
+            return View();
         }
     }
 }

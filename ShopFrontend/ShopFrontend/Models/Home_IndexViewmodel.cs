@@ -9,6 +9,7 @@ namespace ShopFrontend.Models
     {
         public int product_id { get; set; }
         public string model { get; set; }
+        public string seo_url { get; set; }
         public IEnumerable<oc_product_image> alternative_images;
         public string name { get; set; }
         public string image { get; set; }

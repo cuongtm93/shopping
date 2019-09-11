@@ -1,0 +1,57 @@
+﻿@using ShopFrontend.App_Start;
+@{
+    ViewBag.Title = "Category";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Library</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Data</li>
+    </ol>
+</nav>
+<div class="row clearfix news-products">
+
+    @foreach (var product in Model.products)
+    {
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid">
+                <div class="product-image">
+                    <div href="#">
+                        <img class="pic-1" src="@Setting.Value["config_image"]/@product.image">
+                        @*@if (product.alternative_images.any())
+                            {
+                                <img class="pic-2" src="@setting.value["config_image"]/@product.alternative_images.first().image">
+                            }*@
+                        <img class="pic-2" src="@Setting.Value["config_image"]/@product.image">
+                    </div>
+                    @*<ul class="social">
+                            <li><a href="" data-tip="Xem nhanh"><i class="fa fa-search"></i></a></li>
+                            <li><a href="" data-tip="Thêm vào wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                            <li><a href="" data-tip="Mua ngay"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>*@
+                    <span class="product-new-label">@product.stock_status</span>
+                    <span class="product-discount-label">20%</span>
+                </div>
+                <ul class="rating">
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star disable"></li>
+                </ul>
+                <div class="product-content">
+                    <h3 class="title"><a href="#">@product.name</a></h3>
+                    <div class="price">
+                        @decimal.ToInt32(product.price) Đ
+                        @if (product.points > 0)
+                        {
+                            <span>@decimal.ToInt32(product.price + product.points) Đ</span>
+                        }
+                    </div>
+                    <a class="add-to-cart" href="">+ Mua ngay</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

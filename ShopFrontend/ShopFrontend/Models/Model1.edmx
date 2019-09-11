@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="shop2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="shop2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="oc_address">
           <Key>
             <PropertyRef Name="address_id" />
@@ -1092,6 +1092,7 @@
           <Property Name="meta_title" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="meta_description" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="meta_keyword" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="seo_url" Type="text" />
         </EntityType>
         <EntityType Name="oc_product_discount">
           <Key>
@@ -1896,8 +1897,7 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
     FROM [dbo].[product_product_desc_view] AS [product_product_desc_view]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="shop2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -2988,6 +2988,7 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <Property Name="meta_title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="meta_description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="meta_keyword" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="seo_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="oc_product_discount">
           <Key>
@@ -4817,6 +4818,7 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <EntitySetMapping Name="oc_product_description">
             <EntityTypeMapping TypeName="shop2Model.oc_product_description">
               <MappingFragment StoreEntitySet="oc_product_description">
+                <ScalarProperty Name="seo_url" ColumnName="seo_url" />
                 <ScalarProperty Name="product_id" ColumnName="product_id" />
                 <ScalarProperty Name="language_id" ColumnName="language_id" />
                 <ScalarProperty Name="name" ColumnName="name" />

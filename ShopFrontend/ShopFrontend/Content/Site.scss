@@ -3,6 +3,18 @@ $bottom-left-menu-height: 300px;
 $theme-color: #ef5777;
 
 @import 'product.css';
+body {
+    font-family: 'Open Sans', sans-serif;
+    width : 1360px;
+}
+body * {
+    font-family: 'tahoma' !important;
+}
+
+body i {
+    font-family: 'FontAwesome' !important;
+}
+
 .navbar-light {
     background-color: white !important;
     color : white;

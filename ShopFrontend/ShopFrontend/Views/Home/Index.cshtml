@@ -4,99 +4,155 @@
     ViewBag.Title = "Home Page";
 }
 
-    <div class="row clearfix news-products">
-        <div class="col-sm-12">
-            <div class="text-success" role="alert">Hàng mới nhất</div>
+<div class="row clearfix row-2">
+    <div class="col-md-3 col-sm-12 ">
+        <div class="card mb-3 bottom-left-menu">
+            <div class="card-header text-white rounded-lg">
+                Danh mục
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <a href="#">Điện thoại di động</a>
+                </li>
+                <li class="list-group-item">Máy tính bảng</li>
+                <li class="list-group-item">Thời trang nam</li>
+                <li class="list-group-item">Thời trang nữ</li>
+                <li class="list-group-item">Tạp hoá</li>
+            </ul>
         </div>
-        @foreach (var product in Model.top_4_news_products)
-        {
-            <div class="col-md-3 col-sm-6">
-                <div class="product-grid">
-                    <div class="product-image">
-                        <div href="#">
+    </div>
+    <div class="col-md-9 col-sm-12">
+        <div id="carouselExampleIndicators" class="carousel slide bottom-left-menu-carousel" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="https://placeimg.com/1080/500/animals" alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>My Caption Title (1st Image)</h5>
+                        <p>The whole caption will only show up if the screen is at least medium size.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="https://placeimg.com/1080/500/nature" alt="Third slide">
+                </div>
+            </div>
+
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+<div class="row clearfix news-products">
+    <div class="col-sm-12">
+        <div class="text-success" role="alert">Hàng mới nhất</div>
+    </div>
+    @foreach (var product in Model.top_4_news_products)
+    {
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid">
+                <div class="product-image">
+                    <div href="#">
+                        <a href="@Url.Action("Index","Product",new { seo_url = product.seo_url})">
+
                             <img class="pic-1" src="@Setting.Value["config_image"]/@product.image">
                             @*@if (product.alternative_images.any())
-                            {
-                                <img class="pic-2" src="@setting.value["config_image"]/@product.alternative_images.first().image">
-                            }*@
+                                {
+                                    <img class="pic-2" src="@setting.value["config_image"]/@product.alternative_images.first().image">
+                                }*@
                             <img class="pic-2" src="@Setting.Value["config_image"]/@product.image">
-                        </div>
-                        <ul class="social">
+                        </a>
+                    </div>
+                    @*<ul class="social">
                             <li><a href="" data-tip="Xem nhanh"><i class="fa fa-search"></i></a></li>
                             <li><a href="" data-tip="Thêm vào wishlist"><i class="fa fa-shopping-bag"></i></a></li>
                             <li><a href="" data-tip="Mua ngay"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                        <span class="product-new-label">@product.stock_status</span>
-                        <span class="product-discount-label">20%</span>
-                    </div>
-                    <ul class="rating">
-                        <li class="fa fa-star"></li>
-                        <li class="fa fa-star"></li>
-                        <li class="fa fa-star"></li>
-                        <li class="fa fa-star"></li>
-                        <li class="fa fa-star disable"></li>
-                    </ul>
-                    <div class="product-content">
-                        <h3 class="title"><a href="#">@product.name</a></h3>
-                        <div class="price">
-                            @decimal.ToInt32(product.price) Đ
-                            @if (product.points > 0)
-                            {
-                                <span>@decimal.ToInt32(product.price + product.points) Đ</span>
-                            }
-                        </div>
-                        <a class="add-to-cart" href="">+ Mua ngay</a>
-                    </div>
+                        </ul>*@
+                    <span class="product-new-label">@product.stock_status</span>
+                    <span class="product-discount-label">20%</span>
                 </div>
-            </div>
-        }
-    </div>
-    <div class="row clearfix maybeyoulike-products">
-        <div class="col-sm-12">
-            <div class="text-success" role="alert">Có thể bạn thích</div>
-        </div>
-        
-        @foreach (var product in Model.top_4_maybeyoulike_products)
-        {
-    <div class="col-md-3 col-sm-6">
-        <div class="product-grid">
-            <div class="product-image">
-                <div href="#">
-                    <img class="pic-1" src="@Setting.Value["config_image"]/@product.image">
-                    @*@if (product.alternative_images.any())
-                    {
-                        <img class="pic-2" src="@setting.value["config_image"]/@product.alternative_images.first().image">
-                    }*@
-                    <img class="pic-2" src="@Setting.Value["config_image"]/@product.image">
-                </div>
-                <ul class="social">
-                    <li><a href="" data-tip="Xem nhanh"><i class="fa fa-search"></i></a></li>
-                    <li><a href="" data-tip="Thêm vào wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                    <li><a href="" data-tip="Mua ngay"><i class="fa fa-shopping-cart"></i></a></li>
+                <ul class="rating">
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star disable"></li>
                 </ul>
-                <span class="product-new-label">@product.stock_status</span>
-                <span class="product-discount-label">20%</span>
-            </div>
-            <ul class="rating">
-                <li class="fa fa-star"></li>
-                <li class="fa fa-star"></li>
-                <li class="fa fa-star"></li>
-                <li class="fa fa-star"></li>
-                <li class="fa fa-star disable"></li>
-            </ul>
-            <div class="product-content">
-                <h3 class="title"><a href="#">@product.name</a></h3>
-                <div class="price">
-                    @decimal.ToInt32(product.price) Đ
-                    @if (product.points > 0)
-                    {
-                        <span>@decimal.ToInt32(product.price + product.points) Đ</span>
-                    }
+                <div class="product-content">
+                    <h3 class="title"><a href="#">@product.name</a></h3>
+                    <div class="price">
+                        @decimal.ToInt32(product.price) Đ
+                        @if (product.points > 0)
+                        {
+                            <span>@decimal.ToInt32(product.price + product.points) Đ</span>
+                        }
+                    </div>
+                    <a class="add-to-cart" href="@Url.Action("Index","Product",new { seo_url = product.seo_url})">+ Mua ngay</a>
                 </div>
-                <a class="add-to-cart" href="">+ Mua ngay</a>
             </div>
         </div>
+    }
+</div>
+<div class="row clearfix maybeyoulike-products">
+    <div class="col-sm-12">
+        <div class="text-success" role="alert">Có thể bạn thích</div>
     </div>
-        }
 
-    </div> 
+    @foreach (var product in Model.top_4_maybeyoulike_products)
+    {
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid">
+                <div class="product-image">
+                    <div>
+                        <a href="@Url.Action("Index","Product",new { seo_url = product.seo_url})">
+                            <img class="pic-1" src="@Setting.Value["config_image"]/@product.image">
+                            <img class="pic-2" src="@Setting.Value["config_image"]/@product.image">
+                        </a>
+
+                        @*@if (product.alternative_images.any())
+                            {
+                                <img class="pic-2" src="@setting.value["config_image"]/@product.alternative_images.first().image">
+                            }*@
+
+                    </div>
+                    @*<ul class="social">
+                            <li><a href="" data-tip="Xem nhanh"><i class="fa fa-search"></i></a></li>
+                            <li><a href="" data-tip="Thêm vào wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                            <li><a href="" data-tip="Mua ngay"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>*@
+                    <span class="product-new-label">@product.stock_status</span>
+                    <span class="product-discount-label">20%</span>
+                </div>
+                <ul class="rating">
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star disable"></li>
+                </ul>
+                <div class="product-content">
+                    <h3 class="title"><a href="#">@product.name</a></h3>
+                    <div class="price">
+                        @decimal.ToInt32(product.price) Đ
+                        @if (product.points > 0)
+                        {
+                            <span>@decimal.ToInt32(product.price + product.points) Đ</span>
+                        }
+                    </div>
+                    <a class="add-to-cart" href="@Url.Action("Index","Product",new { seo_url = product.seo_url})">+ Mua ngay</a>
+                </div>
+            </div>
+        </div>
+    }
+
+</div> 

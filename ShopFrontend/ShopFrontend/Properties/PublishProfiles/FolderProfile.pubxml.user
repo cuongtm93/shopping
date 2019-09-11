@@ -10,10 +10,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
-      <publishTime>09/10/2013 16:29:20</publishTime>
+      <publishTime>10/09/2013 16:29:20</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.pdb">
-      <publishTime>09/10/2013 16:29:20</publishTime>
+      <publishTime>10/09/2013 16:29:20</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>10/23/2017 13:15:18</publishTime>
@@ -169,10 +169,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/24/2018 13:38:24</publishTime>
     </File>
     <File Include="bin/ShopFrontend.dll">
-      <publishTime>09/10/2019 17:01:47</publishTime>
+      <publishTime>09/12/2019 00:35:44</publishTime>
     </File>
     <File Include="bin/ShopFrontend.pdb">
-      <publishTime>09/10/2019 17:01:47</publishTime>
+      <publishTime>09/12/2019 00:35:44</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>11/28/2018 13:04:24</publishTime>
@@ -181,7 +181,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/28/2018 12:59:46</publishTime>
     </File>
     <File Include="bin/System.Web.Optimization.dll">
-      <publishTime>02/11/2014 15:26:04</publishTime>
+      <publishTime>11/02/2014 15:26:04</publishTime>
     </File>
     <File Include="bin/System.Web.Razor.dll">
       <publishTime>11/28/2018 13:00:12</publishTime>
@@ -197,6 +197,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>01/23/2014 13:57:34</publishTime>
+    </File>
+    <File Include="Content/all.min.css">
+      <publishTime>08/22/2019 19:41:16</publishTime>
     </File>
     <File Include="Content/animate.css">
       <publishTime>09/10/2019 11:10:10</publishTime>
@@ -247,10 +250,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/10/2019 14:16:53</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>09/10/2019 14:41:04</publishTime>
+      <publishTime>09/12/2019 00:16:30</publishTime>
     </File>
     <File Include="Content/Site.min.css">
-      <publishTime>09/10/2019 14:41:04</publishTime>
+      <publishTime>09/12/2019 00:16:30</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>09/10/2019 07:14:51</publishTime>
@@ -278,6 +281,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Models/Model1.edmx.diagram">
       <publishTime>09/10/2019 07:25:49</publishTime>
+    </File>
+    <File Include="Scripts/all.min.js">
+      <publishTime>09/11/2019 23:19:22</publishTime>
     </File>
     <File Include="Scripts/bootsnav.js">
       <publishTime>09/10/2019 11:13:08</publishTime>
@@ -339,14 +345,23 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/modernizr-2.8.3.js">
       <publishTime>09/10/2019 07:14:55</publishTime>
     </File>
+    <File Include="Views/Home/Category.cshtml">
+      <publishTime>09/11/2019 19:18:57</publishTime>
+    </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>09/10/2019 17:01:46</publishTime>
+      <publishTime>09/12/2019 00:34:34</publishTime>
+    </File>
+    <File Include="Views/Product/Index.cshtml">
+      <publishTime>09/12/2019 00:19:46</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>09/10/2019 07:14:51</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>09/10/2019 16:55:33</publishTime>
+      <publishTime>09/11/2019 23:19:27</publishTime>
+    </File>
+    <File Include="Views/ShoppingCart/Index.cshtml">
+      <publishTime>09/11/2019 17:43:01</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>09/10/2019 07:14:51</publishTime>
