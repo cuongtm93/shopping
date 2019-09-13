@@ -184,10 +184,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/24/2018 13:38:24</publishTime>
     </File>
     <File Include="bin/ShopBackend.dll">
-      <publishTime>09/12/2019 00:39:58</publishTime>
+      <publishTime>09/13/2019 18:01:33</publishTime>
     </File>
     <File Include="bin/ShopBackend.pdb">
-      <publishTime>09/12/2019 00:39:58</publishTime>
+      <publishTime>09/13/2019 18:01:33</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>11/28/2018 13:04:24</publishTime>
