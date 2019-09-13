@@ -169,10 +169,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/24/2018 13:38:24</publishTime>
     </File>
     <File Include="bin/ShopFrontend.dll">
-      <publishTime>09/12/2019 00:35:44</publishTime>
+      <publishTime>09/13/2019 17:26:52</publishTime>
     </File>
     <File Include="bin/ShopFrontend.pdb">
-      <publishTime>09/12/2019 00:35:44</publishTime>
+      <publishTime>09/13/2019 17:26:52</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>11/28/2018 13:04:24</publishTime>
@@ -250,10 +250,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/10/2019 14:16:53</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>09/12/2019 00:16:30</publishTime>
+      <publishTime>09/12/2019 00:52:04</publishTime>
     </File>
     <File Include="Content/Site.min.css">
-      <publishTime>09/12/2019 00:16:30</publishTime>
+      <publishTime>09/12/2019 00:52:04</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>09/10/2019 07:14:51</publishTime>
@@ -346,19 +346,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/10/2019 07:14:55</publishTime>
     </File>
     <File Include="Views/Home/Category.cshtml">
-      <publishTime>09/11/2019 19:18:57</publishTime>
+      <publishTime>09/12/2019 18:21:26</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>09/12/2019 00:34:34</publishTime>
+      <publishTime>09/12/2019 18:18:04</publishTime>
     </File>
     <File Include="Views/Product/Index.cshtml">
-      <publishTime>09/12/2019 00:19:46</publishTime>
+      <publishTime>09/13/2019 16:40:57</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>09/10/2019 07:14:51</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>09/11/2019 23:19:27</publishTime>
+      <publishTime>09/12/2019 18:21:01</publishTime>
     </File>
     <File Include="Views/ShoppingCart/Index.cshtml">
       <publishTime>09/11/2019 17:43:01</publishTime>

@@ -38,5 +38,6 @@ namespace ShopFrontend.Models
         public IEnumerable<Product> top_4_news_products { get; set; }
 
         public IEnumerable<Product> top_4_maybeyoulike_products { get; set; }
+        public List<oc_category_description> toplevel_categories { get; internal set; }
     }
 }

@@ -11,13 +11,12 @@
                 Danh mục
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <a href="#">Điện thoại di động</a>
-                </li>
-                <li class="list-group-item">Máy tính bảng</li>
-                <li class="list-group-item">Thời trang nam</li>
-                <li class="list-group-item">Thời trang nữ</li>
-                <li class="list-group-item">Tạp hoá</li>
+                @foreach (var category in Model.toplevel_categories)
+                {
+                    <li class="list-group-item">
+                        <a href="@Url.Action("Category","Home", new {seo_url = category.seo_url})" style="color : black">@System.Web.HttpUtility.HtmlDecode(category.name)</a>
+                    </li>
+                }
             </ul>
         </div>
     </div>
@@ -55,7 +54,7 @@
 </div>
 <div class="row clearfix news-products">
     <div class="col-sm-12">
-        <div class="text-success" role="alert">Hàng mới nhất</div>
+        <h3 class="text-success" role="alert">Hàng mới nhất</h3>
     </div>
     @foreach (var product in Model.top_4_news_products)
     {
@@ -89,7 +88,7 @@
                     <li class="fa fa-star disable"></li>
                 </ul>
                 <div class="product-content">
-                    <h3 class="title"><a href="#">@product.name</a></h3>
+                    <h3 class="title"><a href="@Url.Action("Index","Product", new { seo_url = product.seo_url })">@product.name</a></h3>
                     <div class="price">
                         @decimal.ToInt32(product.price) Đ
                         @if (product.points > 0)
@@ -105,7 +104,7 @@
 </div>
 <div class="row clearfix maybeyoulike-products">
     <div class="col-sm-12">
-        <div class="text-success" role="alert">Có thể bạn thích</div>
+        <h3 class="text-success" role="alert">Có thể bạn thích</h3>
     </div>
 
     @foreach (var product in Model.top_4_maybeyoulike_products)
@@ -141,7 +140,7 @@
                     <li class="fa fa-star disable"></li>
                 </ul>
                 <div class="product-content">
-                    <h3 class="title"><a href="#">@product.name</a></h3>
+                    <h3 class="title"><a href="@Url.Action("Index","Product", new { seo_url = product.seo_url })">@product.name</a></h3>
                     <div class="price">
                         @decimal.ToInt32(product.price) Đ
                         @if (product.points > 0)

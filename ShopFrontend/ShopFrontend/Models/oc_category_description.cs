@@ -21,5 +21,6 @@ namespace ShopFrontend.Models
         public string meta_title { get; set; }
         public string meta_description { get; set; }
         public string meta_keyword { get; set; }
+        public string seo_url { get; set; }
     }
 }

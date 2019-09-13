@@ -1,10 +1,50 @@
 ﻿@using ShopFrontend.App_Start;
+@using System.Web;
 @model ShopFrontend.Models.ProductIndexViewmodel
 @{
     ViewBag.Title = "Xem hàng";
 }
+@section meta{
+    <meta name="description" content="@Html.Raw(Model.product_description.meta_description)" />
+    <meta name="robots" content="noodp" />
+    <link rel="canonical" href="@Request.Url.ToString()" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="@HttpUtility.HtmlDecode(Model.product_description.meta_title)" />
+    <meta property="og:description" content="@HttpUtility.HtmlDecode(Model.product_description.meta_description)" />
+    <meta property="og:url" content="https://lamwebbanhang.vn/" />
+    <meta property="og:site_name" content="WEB BÁN HÀNG CHUẨN SEO - 1.35T" />
+    <meta property="og:image" content="https://webbanhangchuanseo.com/wp-content/uploads/2019/04/Contact-Us-copy.png" />
+    <meta property="og:image" content="http://www.dayweb.online/wp-content/uploads/2019/04/thietkewebsitebanhang-banner-image-1-300x189.png" />
+    <meta property="og:image" content="https://webbanhangchuanseo.com/wp-content/uploads/2019/04/hop-tac-300x240.png" />
+    <meta property="og:image" content="https://webbanhangchuanseo.com/wp-content/uploads/2019/05/quang-cao-google1.gif" />
+    <meta property="DC.date.issued" content="2016-06-13T02:29:57+00:00" />
 
+}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        @foreach (var category in Model.breadscrumb)
+        {
 
+            if (category != Model.breadscrumb.Last())
+            {
+                <li class="breadcrumb-item">
+                    <a href="@Url.Action("Category","Home" , new {  seo_url = category?.seo_url})">
+                        @category.name
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li class="breadcrumb-item active" aria-current="page">
+                    <a href="@Url.Action("Category","Home" , new {  seo_url = category?.seo_url})">
+                        @category.name
+                    </a>
+                </li>
+            }
+        }
+    </ol>
+</nav>
 
 <div class="row">
     <div class="col-md-6 col-sm-12">
@@ -42,9 +82,9 @@
         </div>
     </div>
     <div class="col-md-6 col-sm-12">
-        <h3 class="card-subtitle"> Bút lông mực xanh</h3>
+        <h3 class="card-subtitle"> @Model.product_description.name</h3>
         <hr />
-        <h3 class="card-subtitle">100.000 đ</h3>
+        <h3 class="card-subtitle">@decimal.ToInt32(Model.product.price) đ</h3>
         <hr />
         <div class="col-md-6 col-sm-6">
             <div class="row">

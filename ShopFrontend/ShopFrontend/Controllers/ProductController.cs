@@ -26,8 +26,42 @@ namespace ShopFrontend.Controllers
             {
                 product = product,
                 product_description = product_desc,
-                product_alternative_images = product_alternative_images
+                product_alternative_images = product_alternative_images,
             };
+
+            #region Tạo thanh breadscrumb
+            // targeted->parent_of_targeted ..... ->top_category
+            var root_category_id = db.oc_product_to_category
+                .Where(r => r.product_id == product_desc.product_id)
+                .FirstOrDefault()
+                .category_id;
+            var fist_category_id = root_category_id;
+            var category_tree = new List<oc_category_description>();
+            while (true)
+            {
+                var next_category_id = db.oc_category.SingleOrDefault(r => r.category_id == root_category_id).parent_id;
+                if (next_category_id != 0)
+                {
+                    if (!db.oc_category.Any(r => r.category_id == next_category_id))
+                        break;
+
+                    category_tree.Add(db.oc_category_description.SingleOrDefault(r=>r.category_id == next_category_id));
+                    root_category_id = next_category_id;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            // top_category -> child_of_top -> ... -> targeted
+            category_tree.Reverse();
+            if (db.oc_category_description.Any(r => r.category_id == fist_category_id))
+            {
+                category_tree.Add(db.oc_category_description.SingleOrDefault(r => r.category_id == fist_category_id));
+            }
+            model.breadscrumb = category_tree; 
+            #endregion
             return View(model);
         }
     }

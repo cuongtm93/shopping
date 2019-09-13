@@ -16,7 +16,7 @@ namespace ShopBackend.Controllers
         // GET: Test
         public ActionResult Index()
         {
-            var ds = db.oc_product_description.ToList();
+            var ds = db.oc_category_description.ToList();
             foreach (var item in ds)
             {
                 item.seo_url = item.name.UrlFriendly();

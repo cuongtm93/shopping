@@ -145,6 +145,7 @@
           <Property Name="meta_title" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="meta_description" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="meta_keyword" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="seo_url" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="oc_category_filter">
           <Key>
@@ -1092,7 +1093,7 @@
           <Property Name="meta_title" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="meta_description" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="meta_keyword" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="seo_url" Type="text" />
+          <Property Name="seo_url" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="oc_product_discount">
           <Key>
@@ -2041,6 +2042,7 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <Property Name="meta_title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="meta_description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="meta_keyword" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="seo_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="oc_category_filter">
           <Key>
@@ -2988,7 +2990,7 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <Property Name="meta_title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="meta_description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="meta_keyword" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="seo_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="seo_url" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="oc_product_discount">
           <Key>
@@ -3822,6 +3824,7 @@ warning 6002: The table/view 'shop2.dbo.product_product_desc_view' does not have
           <EntitySetMapping Name="oc_category_description">
             <EntityTypeMapping TypeName="shop2Model.oc_category_description">
               <MappingFragment StoreEntitySet="oc_category_description">
+                <ScalarProperty Name="seo_url" ColumnName="seo_url" />
                 <ScalarProperty Name="category_id" ColumnName="category_id" />
                 <ScalarProperty Name="language_id" ColumnName="language_id" />
                 <ScalarProperty Name="name" ColumnName="name" />

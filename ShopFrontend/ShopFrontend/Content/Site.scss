@@ -5,7 +5,8 @@ $theme-color: #ef5777;
 @import 'product.css';
 body {
     font-family: 'Open Sans', sans-serif;
-    width : 1360px;
+    max-width: 1360px;
+    margin: auto;
 }
 body * {
     font-family: 'tahoma' !important;
@@ -63,8 +64,8 @@ body i {
 
 .productbox {
     margin-top: $vertical-align;
-    margin-left : 0px;
-    margin-right : 0px;
+    /*margin-left : 0px;
+    margin-right : 0px;*/
 }
 .news-products {
     @extend .productbox;
