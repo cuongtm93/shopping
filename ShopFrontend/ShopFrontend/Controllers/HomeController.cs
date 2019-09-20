@@ -13,6 +13,7 @@ namespace ShopFrontend.Controllers
         {
             db = new shop2Entities();
         }
+
         public ActionResult Index()
         {
             var enabled = 1;
@@ -106,5 +107,7 @@ namespace ShopFrontend.Controllers
             };
             return View(model);
         }
+
+
     }
 }

@@ -10,6 +10,10 @@ namespace ShopFrontend.Controllers
         // GET: ShoppingCart
         public ActionResult Index()
         {
+            if(Session["cart"] == null)
+            {
+                //Session.Add("cart", new )
+            }
             return View();
         }
 

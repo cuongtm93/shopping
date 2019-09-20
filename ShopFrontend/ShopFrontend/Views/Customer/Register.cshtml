@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+<div class="row">
+    <div class="col-md-6" style="margin : auto 20%;">
+        <h3>Thông tin đăng nhập</h3>
+        <form action="@Url.Action("Register","Customer")" method="post" class="form">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email</label>
+                <input type="email" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập email">
+                <small id="emailHelp" class="form-text text-muted">Vui lòng nhập email</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Mật khẩu</label>
+                <input type="password" name="password" class="form-control" id="password_1" aria-describedby="emailHelp" placeholder="Nhập mật khẩu">
+                <small id="passwordHelp_1" class="form-text text-muted">Vui lòng nhập mật khẩu</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Mật khẩu</label>
+                <input type="password" name="password" class="form-control" id="password_2" aria-describedby="emailHelp" placeholder="Nhập lại mật khẩu">
+                <small id="passwordHelp_2" class="form-text text-muted">Vui lòng nhập lại mật khẩu</small>
+            </div>
+            <button type="submit" class="btn btn-danger" style="margin : 0 auto" id="_submit_btn">Đăng ký</button>
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger" style="margin-top : 10px;">
+                    <strong>Lỗi !</strong> @ViewBag.Error
+                </div>
+            }
+        </form>
+    </div>
+</div>
+
+<script>
+    $('#_submit_btn').click(function (event) {
+        var _pwd_1 = $('#password_1').val();
+        var _pwd_2 = $('#password_2').val();
+        if (_pwd_1 !== _pwd_2) {
+            event.preventDefault();
+            alert('Mật khẩu không khớp nhau');
+        }
+    });
+</script>
+
+
+
+
