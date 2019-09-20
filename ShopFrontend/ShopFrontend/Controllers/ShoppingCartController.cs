@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopFrontend.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,6 +8,32 @@ namespace ShopFrontend.Controllers
 {
     public class ShoppingCartController : Controller
     {
+        private shop2Entities db = new shop2Entities();
+        protected override void OnActionExecuted(ActionExecutedContext filterContext)
+        {
+            base.OnActionExecuted(filterContext);
+            if (User.Identity.IsAuthenticated)
+            {
+                if (!db.oc_customer_online.Any(r => r.ip == Request.UserHostAddress))
+                {
+                    db.oc_customer_online.Add(new oc_customer_online
+                    {
+                        ip = Request.UserHostAddress,
+                        date_added = DateTime.Now,
+                        referer = Request.UrlReferrer.ToString(),
+                        url = Request.Url.ToString(),
+                        customer_id = db.oc_customer.Where(r => r.email == User.Identity.Name).Single().customer_id
+                    });
+                }
+                else
+                {
+                    var record = db.oc_customer_online.Where(r => r.ip == Request.UserHostAddress).Single();
+                    record.referer = Request.UrlReferrer.ToString();
+                    record.url = Request.Url.ToString();
+                }
+                db.SaveChanges();
+            }
+        }
         // GET: ShoppingCart
         public ActionResult Index()
         {

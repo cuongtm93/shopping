@@ -30,7 +30,7 @@ namespace ShopFrontend.Controllers
         {
             var hash_bytes = new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(password));
             var password_hash = string.Concat(hash_bytes.Select(b => b.ToString("x2")));
-            if(string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
                 try
                 {
@@ -95,7 +95,17 @@ namespace ShopFrontend.Controllers
                 ViewBag.Error = "Kiểm tra lại email và mật khẩu";
                 return View();
             }
-            
+            var customer = db.oc_customer.Where(r => r.email == username).SingleOrDefault();
+            customer.ip = Request.UserHostAddress;
+            db.oc_customer_login.Add(new oc_customer_login()
+            {
+                date_added = DateTime.Now,
+                date_modified = DateTime.Now,
+                email  = username,
+                ip = customer.ip,
+                total = 0
+            });
+            db.SaveChanges();
             FormsAuthentication.SetAuthCookie(username, true);
             return RedirectToAction("Index", "Home");
 

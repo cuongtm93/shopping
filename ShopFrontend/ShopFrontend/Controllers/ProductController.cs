@@ -10,6 +10,32 @@ namespace ShopFrontend.Controllers
 {
     public class ProductController : Controller
     {
+        protected override void OnActionExecuted(ActionExecutedContext filterContext)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                if (!db.oc_customer_online.Any(r => r.ip == Request.UserHostAddress))
+                {
+                    db.oc_customer_online.Add(new oc_customer_online
+                    {
+                        ip = Request.UserHostAddress,
+                        date_added = DateTime.Now,
+                        referer = Request.UrlReferrer.ToString(),
+                        url = Request.Url.ToString(),
+                        customer_id = db.oc_customer.Where(r => r.email == User.Identity.Name).Single().customer_id
+                    });
+                }
+                else
+                {
+                    var record = db.oc_customer_online.Where(r => r.ip == Request.UserHostAddress).Single();
+                    record.referer = Request.UrlReferrer.ToString();
+                    record.url = Request.Url.ToString();
+                }
+                db.SaveChanges();
+            }
+            base.OnActionExecuted(filterContext);
+            
+        }
         private shop2Entities db;
         public ProductController()
         {
