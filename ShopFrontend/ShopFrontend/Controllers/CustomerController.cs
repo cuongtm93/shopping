@@ -105,7 +105,7 @@ namespace ShopFrontend.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return Redirect(Request.UrlReferrer.ToString());
+            return RedirectToAction("Login");
         }
 
         public ActionResult ForgotPassword()

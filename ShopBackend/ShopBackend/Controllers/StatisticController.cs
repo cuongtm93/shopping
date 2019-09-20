@@ -35,7 +35,7 @@ namespace ShopBackend.Controllers
             const int orderstatus_completed = 5;
             const int orderstatus_processing = 2;
             const int returnstatus_complete = 2;
-            order_sale.value = db.Database.SqlQuery<decimal>("select sum(oc_order.total) from shop.oc_order").SingleOrDefault();
+            order_sale.value = db.Database.SqlQuery<decimal>("select COALESCE(sum(oc_order.total),0) from shop.oc_order").SingleOrDefault();
             order_complete.value = db.Database.SqlQuery<int>($"select count(*) from shop.oc_order where oc_order.order_status_id = {orderstatus_completed}").SingleOrDefault();
             order_processing.value = db.Database.SqlQuery<int>($"select count(*) from shop.oc_order where oc_order.order_status_id = {orderstatus_processing}").SingleOrDefault();
             returns.value = db.Database.SqlQuery<int>($"select count(*) from shop.oc_return where oc_return.return_status_id = {returnstatus_complete}").SingleOrDefault();
