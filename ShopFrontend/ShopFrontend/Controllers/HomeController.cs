@@ -63,6 +63,7 @@ namespace ShopFrontend.Controllers
             return View(model);
         }
 
+        [Route("danh-mục/{seo_url}")]
         public ActionResult Category(string seo_url)
         {
             var category_id = db.oc_category_description.Where(r => r.seo_url == seo_url).SingleOrDefault()?.category_id;

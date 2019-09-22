@@ -41,6 +41,8 @@ namespace ShopFrontend.Controllers
         {
             db = new shop2Entities();
         }
+
+        [Route("mua/{seo_url}/giá-rẻ")]
         // GET: Product
         public ActionResult Index(string seo_url)
         {

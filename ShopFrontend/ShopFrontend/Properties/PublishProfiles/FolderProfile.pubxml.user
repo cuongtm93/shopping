@@ -169,10 +169,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/24/2018 13:38:24</publishTime>
     </File>
     <File Include="bin/ShopFrontend.dll">
-      <publishTime>09/21/2019 01:01:50</publishTime>
+      <publishTime>09/22/2019 10:23:14</publishTime>
     </File>
     <File Include="bin/ShopFrontend.pdb">
-      <publishTime>09/21/2019 01:01:50</publishTime>
+      <publishTime>09/22/2019 10:23:14</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>11/28/2018 13:04:24</publishTime>
@@ -346,7 +346,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/10/2019 07:14:55</publishTime>
     </File>
     <File Include="Views/Customer/Login.cshtml">
-      <publishTime>09/20/2019 21:05:33</publishTime>
+      <publishTime>09/22/2019 10:03:25</publishTime>
     </File>
     <File Include="Views/Customer/Profile.cshtml">
       <publishTime>09/20/2019 20:41:13</publishTime>
@@ -355,13 +355,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/20/2019 20:30:50</publishTime>
     </File>
     <File Include="Views/Home/Category.cshtml">
-      <publishTime>09/13/2019 17:58:05</publishTime>
+      <publishTime>09/22/2019 10:16:19</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>09/13/2019 17:58:32</publishTime>
     </File>
     <File Include="Views/Product/Index.cshtml">
-      <publishTime>09/13/2019 16:40:57</publishTime>
+      <publishTime>09/22/2019 09:53:52</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>09/10/2019 07:14:51</publishTime>
