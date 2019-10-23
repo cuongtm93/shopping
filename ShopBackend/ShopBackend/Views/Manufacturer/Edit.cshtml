@@ -1,4 +1,5 @@
-﻿@model ShopBackend.Models.Manufacturer_EditViewmodel
+﻿@using ShopBackend.App_Start
+@model ShopBackend.Models.Manufacturer_EditViewmodel
 @{
     ViewBag.Title = "Cập nhật nhà sản xuất";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -43,7 +44,7 @@
                             <label class="col-sm-2 control-label" for="input-image">Ảnh</label>
                             <div class="col-sm-10" onclick="show_modal('\\', 'input-image');">
                                 <div href="#" id="thumb-image" data-toggle="image" class="img-thumbnail">
-                                    <img src="/image/@Model.image" alt="" title="@Model.image" id="input-image" style="max-width:200px;height:auto;">
+                                    <img src="@Setting.Value["config_image"]/@Model.image" alt="" title="@Model.image" id="input-image" style="max-width:200px;height:auto;">
                                 </div>
                                 <input type="hidden" name="image" value="@Model.image" id="input-image">
                             </div>
@@ -157,7 +158,7 @@
         function on_image_selected(_new_selected_image) {
             selected_image = _new_selected_image;
             var img = $('#' + selecting_id);
-            img.attr("src", `image/${selected_image}`);
+            img.attr("src", `@Setting.Value["config_image"]/${selected_image}`);
             $('input[name="image"]').val(selected_image);
         }
         function file_upload_icon_hover() {

@@ -1,4 +1,5 @@
-﻿@model ShopBackend.Models.Manufacturer_IndexViewmodel
+﻿@using ShopBackend.App_Start;
+@model ShopBackend.Models.Manufacturer_IndexViewmodel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -54,7 +55,7 @@
                                 </td>
                                 <td>
                                     <div class="img-thumbnail">
-                                        <img src="~/image/@manufacturer.Image" style="max-width:50px;height:auto" />
+                                        <img src="@Setting.Value["config_image"]/@manufacturer.Image" style="max-width:50px;height:auto" />
                                     </div>
                                 </td>
                                 <td>@manufacturer.Name</td>

@@ -1,4 +1,5 @@
-﻿@model ShopBackend.Models.Manufacturer_CreateViewmodel
+﻿@using ShopBackend.App_Start
+@model ShopBackend.Models.Manufacturer_CreateViewmodel
 @{
     ViewBag.Title = "Thêm nhà sản xuất";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -42,7 +43,7 @@
                             <label class="col-sm-2 control-label" for="input-image">Ảnh</label>
                             <div class="col-sm-10" onclick="show_modal('\\', 'input-image');">
                                 <div href="#" id="thumb-image" data-toggle="image" class="img-thumbnail">
-                                    <img src="~/image/@Model.image" alt="" title="@Model.image" id="input-image" style="max-width:200px;height:auto;">
+                                    <img src="@Setting.Value["config_image"]/@Model.image" alt="" title="@Model.image" id="input-image" style="max-width:200px;height:auto;">
                                 </div>
                                 <input type="hidden" name="image" value="@Model.image" id="input-image">
                             </div>
@@ -55,32 +56,32 @@
                         </div>
                     </div>
                     @*<div class="tab-pane" id="tab-seo">
-                        <div class="alert alert-info" style="margin-top:10px">
-                            <i class="fa fa-info-circle">                            </i>
-                            Vui lòng không dùng khoảng trống mà hãy thay thế bằng dấu - và đảm bảo rằng SEO URL là duy nhất
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <td class="text-left">Stores</td>
-                                        <td class="text-left">Keyword</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-left">Default</td>
-                                        <td class="text-left">
-                                            <div class="input-group col-sm-12">
-                                                <input type="text" name="manufacturer_seo_url" value="@Model.manufacturer_seo_url" placeholder="Keyword" class="form-control">
-                                            </div>
+                            <div class="alert alert-info" style="margin-top:10px">
+                                <i class="fa fa-info-circle">                            </i>
+                                Vui lòng không dùng khoảng trống mà hãy thay thế bằng dấu - và đảm bảo rằng SEO URL là duy nhất
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td class="text-left">Stores</td>
+                                            <td class="text-left">Keyword</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-left">Default</td>
+                                            <td class="text-left">
+                                                <div class="input-group col-sm-12">
+                                                    <input type="text" name="manufacturer_seo_url" value="@Model.manufacturer_seo_url" placeholder="Keyword" class="form-control">
+                                                </div>
 
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>*@
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>*@
                 </div>
             </form>
         </div>
@@ -156,7 +157,7 @@
         function on_image_selected(_new_selected_image) {
             selected_image = _new_selected_image;
             var img = $('#' + selecting_id);
-            img.attr("src", `image/${selected_image}`);
+            img.attr("src", `@Setting.Value["config_image"]/${selected_image}`);
             $('input[name="image"]').val(selected_image);
         }
         function file_upload_icon_hover() {
