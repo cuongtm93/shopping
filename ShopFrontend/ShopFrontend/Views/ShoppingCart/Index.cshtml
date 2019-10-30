@@ -1,7 +1,117 @@
-﻿
+﻿@using System.Globalization;
 @{
     ViewBag.Title = "ShoppingCart";
 }
+@{
+    string VND(double value)
+    {
+        CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
+        return value.ToString("#,### đ", cul.NumberFormat);
+    }
+}
+<div class="container-fluid">
+    <h3>Giỏ hàng </h3>
+    <div class="row">
+        <div class="col-md-8 col-sm-12">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tên sản phẩm</th>
+                        <th scope="col">Đơn giá</th>
+                        <th scope="col">Số lượng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <button type="button" class="btn btn-default btn-sm">
+                                <i class="fas fa-eraser" title="Xoá sản phẩm"></i>
+                            </button>
+                        </td>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="btn btn-default btn-sm">
+                                <i class="fas fa-eraser"></i>
+                            </button>
+                        </td>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="btn btn-default btn-sm">
+                                <i class="fas fa-eraser"></i>
+                            </button>
+                        </td>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>@@twitter</td>
+                    </tr>
+                </tbody>
+            </table>
 
-<h2>Giỏ hàng</h2>
 
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">
+                            Thông tin đơn hàng
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            Tạm tính <span class="fa-pull-right">@VND(125400002)</span>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Phí giao hàng</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Tổng cộng</th>
+                    </tr>
+
+                    <!--  Địa chỉ khách hàng  -->
+                    @if (true)
+                    {
+                        <tr class="thead-light">
+                            <th scope="row">Địa chỉ giao hàng</th>
+                        </tr>
+                        <tr>
+                            <th scope="row">55 Hoàng quốc việt</th>
+                        </tr>
+                    }
+
+                    <!-- Điều khiển -->
+                    <tr>
+                        <th scope="row">
+                            <div class="row">
+                                <a href="#" class="col-xl-6 col-md-12 col-sm-12 col-12 mb-2">
+                                    <div class="col-12 btn btn-default btn-outline-primary btn-wrap-text" title="Xác nhận đơn hàng" style="font-size : 0.85rem">
+                                        <i class="fa fa-money-bill"></i>
+                                        Xác nhận đơn hàng
+                                    </div>
+                                </a>
+                                <a href="@Url.Action("Index","Home")" class="col-xl-6 col-md-12 col-sm-12 col-12 mb-2">
+                                    <div class="col-12 btn btn-default btn-outline-success btn-wrap-text" title="Quay lại gian hàng" style="font-size : 0.85rem">
+                                        <i class="fa fa-fast-backward"></i>
+                                        Quay lại gian hàng
+                                    </div>
+                                </a>
+                            </div>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

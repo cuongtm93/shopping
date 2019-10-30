@@ -58,10 +58,6 @@
                 <!--ảnh chính-->
                 <div class="carousel-item active">
                     <img class="d-block w-100" data-delayedsrc="@Setting.Value["config_image"]/@Model.product.image" alt="First slide">
-                    @*<div class="carousel-caption d-none d-md-block">
-                            <h5>My Caption Title (1st Image)</h5>
-                            <p>The whole caption will only show up if the screen is at least medium size.</p>
-                        </div>*@
                 </div>
                 <!--Ảnh phụ-->
                 @foreach (var prod_alter_image in Model.product_alternative_images)
@@ -86,35 +82,21 @@
         <hr />
         <h3 class="card-subtitle">@decimal.ToInt32(Model.product.price) đ</h3>
         <hr />
-        <div class="col-md-6 col-sm-6">
-            <div class="row">
-                <div class="col-md-4" style="padding:0;margin-top:5px;">
-                    <h5 style="">Số lượng</h5>
-                </div>
-                <div class="col-md-2">
-                    <div class="btn btn-outline-secondary" id="btndescrese">
-                        <i class="fas fa-minus"></i>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <input class="form-control" style="width:68px; padding-left : 10px; padding-right : 10px;" type="text" value="1" id="quantity" name="quantity" max="10" min="1">
-                </div>
-                <div class="col-md-3" style="">
-                    <div class="btn btn-outline-secondary" id="btnincrease">
-                        <i class="fas fa-plus"></i>
-                    </div>
-                </div>
-            </div>
+        <h3 class="card-subtitle d-inline-block mt-2 mr-2">Số lượng</h3>
+        <div class="btn btn-outline-secondary d-inline-block" id="btndescrese">
+            <i class="fas fa-minus"></i>
         </div>
-        <div class="row" style="margin-top : 30px;">
-            <div class="col-md-6">
-                <div class="btn btn-outline-danger" style="width : 45%">
-                    <i class="fas fa-cart-plus"></i>
-                    <span>Thêm vào giỏ</span>
-                </div>
-                <div class="btn btn-danger" style="width : 50%">Mua ngay</div>
-            </div>
+        <input class="form-control d-inline-block" style="width:68px; text-align: center; margin : 0 0.5rem;position: relative;    top: 2px;" type="text" value="1" id="quantity" name="quantity" max="10" min="1">
+        <div class="btn btn-outline-secondary d-inline-block" id="btnincrease">
+            <i class="fas fa-plus"></i>
+        </div>
 
+        <div class="d-block mt-2">
+            <div class="btn btn-outline-danger mt-2 col-8 col-sm-8 col-md-8 col-xl-4">
+                <i class="fas fa-cart-plus " title="Thêm vào giỏ hàng"></i>
+                Thêm vào giỏ
+            </div>
+            <div class="btn btn-danger mt-2 col-8 col-sm-8 col-md-8 col-xl-4">Mua ngay</div>
         </div>
     </div>
 </div>
@@ -138,15 +120,27 @@
             $(this).attr('src', $(this).data('delayedsrc'));
         });
         $('#btndescrese').click(function () {
-            let quantity = parseInt(document.getElementById('quantity').getAttribute('value'));
+            let quantity = parseInt($('#quantity').val());
+            if (Number.isNaN(quantity)) {
+                quantity = 0;
+            }
             if (quantity > 1) {
-                $('#quantity').attr('value', quantity - 1);
+                $('#quantity').val(quantity - 1);
+            } else {
+                $('#quantity').val(1);
             }
         });
 
         $('#btnincrease').click(function () {
-            let quantity = parseInt(document.getElementById('quantity').getAttribute('value'));
-            $('#quantity').attr('value', quantity + 1);
+            let quantity = parseInt($('#quantity').val());
+            if (Number.isNaN(quantity)) {
+                quantity = 0;
+            }
+            if (quantity >= 1) {
+                $('#quantity').val(quantity + 1);
+            } else {
+                $('#quantity').val(1);
+            }
         });
     </script>
 }

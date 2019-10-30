@@ -7,6 +7,7 @@
     <div class="col-md-4" style="width : 50%; margin : 0 auto; ">
         <h3 class="text-center">Đăng nhập</h3>
         <form action="@Url.Action("Login","Customer")" method="post">
+            <input type="hidden" name="returnUrl" value="@Request["returnUrl"]" />
             <div class="form-group">
                 <i class="fa fa-user" style="position : absolute; top:51px;left:20px"></i>
                 <input type="text" class="form-control" placeholder="Tên đăng nhập" required="required" name="username" style="padding-left : 30px;">

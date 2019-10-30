@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 namespace ShopFrontend.Controllers
 {
+    [Authorize]
     public class ShoppingCartController : Controller
     {
         private shop2Entities db = new shop2Entities();
@@ -34,13 +35,13 @@ namespace ShopFrontend.Controllers
                 db.SaveChanges();
             }
         }
+
+
+        [Route("giỏ-hàng")]
         // GET: ShoppingCart
         public ActionResult Index()
         {
-            if(Session["cart"] == null)
-            {
-                //Session.Add("cart", new )
-            }
+
             return View();
         }
 

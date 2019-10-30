@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\work\shopping\ShopFrontend\ShopFrontend\bin\Release\Publish</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\Du an\shopping\ShopFrontend\ShopFrontend\bin\Release\Publish</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
@@ -169,10 +169,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/24/2018 13:38:24</publishTime>
     </File>
     <File Include="bin/ShopFrontend.dll">
-      <publishTime>09/22/2019 10:23:14</publishTime>
+      <publishTime>10/31/2019 03:20:04</publishTime>
     </File>
     <File Include="bin/ShopFrontend.pdb">
-      <publishTime>09/22/2019 10:23:14</publishTime>
+      <publishTime>10/31/2019 03:20:04</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>11/28/2018 13:04:24</publishTime>
@@ -199,187 +199,190 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/23/2014 13:57:34</publishTime>
     </File>
     <File Include="Content/all.min.css">
-      <publishTime>08/22/2019 19:41:16</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Content/animate.css">
-      <publishTime>09/10/2019 11:10:10</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Content/bootsnav.css">
-      <publishTime>09/10/2019 11:11:39</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.css">
-      <publishTime>09/10/2019 08:53:15</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.css.map">
-      <publishTime>09/10/2019 08:53:15</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.min.css">
-      <publishTime>09/10/2019 08:53:15</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.min.css.map">
-      <publishTime>09/10/2019 08:53:15</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Content/bootstrap-reboot.css">
-      <publishTime>09/10/2019 08:53:15</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Content/bootstrap-reboot.css.map">
-      <publishTime>09/10/2019 08:53:15</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Content/bootstrap-reboot.min.css">
-      <publishTime>09/10/2019 08:53:15</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Content/bootstrap-reboot.min.css.map">
-      <publishTime>09/10/2019 08:53:15</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
-      <publishTime>09/10/2019 08:53:15</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Content/bootstrap.css.map">
-      <publishTime>09/10/2019 08:53:15</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css">
-      <publishTime>09/10/2019 08:53:15</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css.map">
-      <publishTime>09/10/2019 08:53:15</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Content/product.css">
-      <publishTime>09/10/2019 14:16:53</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Content/product.min.css">
-      <publishTime>09/10/2019 14:16:53</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>09/20/2019 20:51:40</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/Site.min.css">
-      <publishTime>09/20/2019 20:51:40</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="favicon.ico">
-      <publishTime>09/10/2019 07:14:51</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.eot">
-      <publishTime>09/10/2019 07:14:53</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.svg">
-      <publishTime>09/10/2019 07:14:53</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.ttf">
-      <publishTime>09/10/2019 07:14:53</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.woff">
-      <publishTime>09/10/2019 07:14:53</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.woff2">
-      <publishTime>09/10/2019 07:14:53</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>09/10/2019 07:14:51</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Images/logo.png">
-      <publishTime>09/10/2019 14:22:02</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Models/Model1.edmx.diagram">
-      <publishTime>09/10/2019 07:25:49</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/all.min.js">
-      <publishTime>09/11/2019 23:19:22</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/bootsnav.js">
-      <publishTime>09/10/2019 11:13:08</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.js">
-      <publishTime>09/10/2019 08:53:00</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.js.map">
-      <publishTime>09/10/2019 08:53:00</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.min.js">
-      <publishTime>09/10/2019 08:53:00</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.min.js.map">
-      <publishTime>09/10/2019 08:53:00</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
-      <publishTime>09/10/2019 08:53:00</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js.map">
-      <publishTime>09/10/2019 08:53:00</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/bootstrap.min.js">
-      <publishTime>09/10/2019 08:53:00</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/bootstrap.min.js.map">
-      <publishTime>09/10/2019 08:53:00</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/jquery-3.3.1.js">
-      <publishTime>09/10/2019 07:14:53</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/jquery-3.3.1.min.js">
-      <publishTime>09/10/2019 07:14:53</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/jquery-3.3.1.min.map">
-      <publishTime>09/10/2019 07:14:53</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/jquery-3.3.1.slim.js">
-      <publishTime>09/10/2019 07:14:53</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/jquery-3.3.1.slim.min.js">
-      <publishTime>09/10/2019 07:14:53</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/jquery-3.3.1.slim.min.map">
-      <publishTime>09/10/2019 07:14:53</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.js">
-      <publishTime>09/10/2019 07:14:55</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.min.js">
-      <publishTime>09/10/2019 07:14:55</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.js">
-      <publishTime>09/10/2019 07:14:55</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.min.js">
-      <publishTime>09/10/2019 07:14:55</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Scripts/modernizr-2.8.3.js">
-      <publishTime>09/10/2019 07:14:55</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Views/Customer/Login.cshtml">
-      <publishTime>09/22/2019 10:03:25</publishTime>
+      <publishTime>10/28/2019 15:06:19</publishTime>
     </File>
     <File Include="Views/Customer/Profile.cshtml">
-      <publishTime>09/20/2019 20:41:13</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Views/Customer/Register.cshtml">
-      <publishTime>09/20/2019 20:30:50</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Views/Home/Category.cshtml">
-      <publishTime>09/22/2019 10:16:19</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>09/13/2019 17:58:32</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
+    </File>
+    <File Include="Views/Order/Index.cshtml">
+      <publishTime>10/28/2019 15:27:08</publishTime>
     </File>
     <File Include="Views/Product/Index.cshtml">
-      <publishTime>09/22/2019 09:53:52</publishTime>
+      <publishTime>10/31/2019 03:18:10</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
-      <publishTime>09/10/2019 07:14:51</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>09/20/2019 20:54:01</publishTime>
+      <publishTime>10/28/2019 14:59:17</publishTime>
     </File>
     <File Include="Views/ShoppingCart/Index.cshtml">
-      <publishTime>09/20/2019 00:22:46</publishTime>
+      <publishTime>10/31/2019 00:21:30</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>09/10/2019 07:14:51</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
-      <publishTime>09/10/2019 07:14:51</publishTime>
+      <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/20/2019 21:06:20</publishTime>
+      <publishTime>10/30/2019 22:02:40</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -21,7 +21,7 @@ namespace ShopFrontend.Controllers
         }
 
         [Authorize]
-        public ActionResult Profile(string email)
+        public new ActionResult Profile(string email)
         {
             return View();
         }
@@ -84,7 +84,7 @@ namespace ShopFrontend.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login(string username, string password)
+        public ActionResult Login(string username, string password, string returnUrl)
         {
             var hash_bytes = new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(password));
             var password_hash = string.Concat(hash_bytes.Select(b => b.ToString("x2")));
@@ -101,14 +101,22 @@ namespace ShopFrontend.Controllers
             {
                 date_added = DateTime.Now,
                 date_modified = DateTime.Now,
-                email  = username,
+                email = username,
                 ip = customer.ip,
                 total = 0
             });
             db.SaveChanges();
             FormsAuthentication.SetAuthCookie(username, true);
-            return RedirectToAction("Index", "Home");
+            //So that the user can be referred back to where they were when they click logon
+            if (string.IsNullOrEmpty(returnUrl) && Request.UrlReferrer != null)
+                returnUrl = "/";
 
+            if (Url.IsLocalUrl(returnUrl) && !string.IsNullOrEmpty(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+
+            return View();
         }
 
         [Authorize]

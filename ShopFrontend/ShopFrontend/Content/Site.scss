@@ -5,11 +5,11 @@ $theme-color: #ef5777;
 @import 'product.css';
 body {
     font-family: 'Open Sans', sans-serif;
-    max-width: 1360px;
     margin: auto;
 }
 body * {
     font-family: 'tahoma' !important;
+    font-size : 1rem;
 }
 
 body i {
@@ -85,4 +85,11 @@ body i {
     color: red;
     text-align: center;
     z-index : 1;
-} 
+}
+
+.btn-wrap-text {
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    text-overflow: ellipsis;
+}
