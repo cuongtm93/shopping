@@ -32,11 +32,12 @@
                     {
                         <tr>
                             <td>
-                                <a href="@Url.Action("Delete", new { product_id = product.product_id })">
-                                    <div type="button" class="btn btn-default btn-sm">
-                                        <i class="fas fa-eraser" title="Xoá sản phẩm"></i>
-                                    </div>
-                                </a>
+
+                                <div type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="right" title="Xoá sản phẩm @product.product_name">
+                                    <a href="@Url.Action("Delete", new { product_id = product.product_id })">
+                                        <i class="fas fa-eraser"></i>
+                                    </a>
+                                </div>
                             </td>
                             <th scope="row">@product.product_name</th>
                             <td>@VND((double)product.product_price)</td>
@@ -106,3 +107,11 @@
         </div>
     </div>
 </div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+}

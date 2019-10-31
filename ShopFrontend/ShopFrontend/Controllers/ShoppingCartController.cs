@@ -67,7 +67,22 @@ namespace ShopFrontend.Controllers
             return View(model);
         }
 
-
+        public int Cart_Count()
+        {
+            int customer_id = db.oc_customer.Where(r => r.email == this.User.Identity.Name).Single().customer_id;
+            var list = from cart in db.oc_cart
+                       join product in db.oc_product on cart.product_id equals product.product_id
+                       join product_des in db.oc_product_description on product.product_id equals product_des.product_id
+                       where cart.customer_id == customer_id
+                       select new
+                       {
+                           product.product_id,
+                           product_name = product_des.name,
+                           product_price = product.price,
+                           cart.quantity
+                       };
+            return list.Count();
+        }
         public ActionResult Clear()
         {
             int customer_id = db.oc_customer.Where(r => r.email == this.User.Identity.Name).Single().customer_id;
@@ -80,7 +95,7 @@ namespace ShopFrontend.Controllers
         public ActionResult Delete(int product_id)
         {
             int customer_id = db.oc_customer.Where(r => r.email == this.User.Identity.Name).Single().customer_id;
-            var items  = db.oc_cart.Where(r => r.customer_id == customer_id && r.product_id == product_id);
+            var items = db.oc_cart.Where(r => r.customer_id == customer_id && r.product_id == product_id);
             db.oc_cart.RemoveRange(items);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -89,6 +104,19 @@ namespace ShopFrontend.Controllers
         public JsonResult Create(int product_id, int quantity)
         {
             int customer_id = db.oc_customer.Where(r => r.email == this.User.Identity.Name).Single().customer_id;
+            var product_is_already_in_cart = db.oc_cart.Any(r => r.customer_id == customer_id && r.product_id == product_id);
+            if (product_is_already_in_cart)
+            {
+                var cart_item = db.oc_cart.Single(r => r.customer_id == customer_id && r.product_id == product_id);
+                cart_item.quantity += quantity;
+                db.SaveChanges();
+                return Json(new
+                {
+                    m = $"Đã thêm sp {product_id} , số lượng {quantity}"
+                });
+            }
+
+            // product not in cart
             db.oc_cart.Add(new oc_cart()
             {
                 api_id = 0,

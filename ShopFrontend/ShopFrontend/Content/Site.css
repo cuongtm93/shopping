@@ -82,3 +82,8 @@ body i {
 
 .breadcrumb-item a:active {
   text-decoration: underline; }
+
+.number_items_shopping_cart {
+  position: relative;
+  top: -3rem;
+  left: 1.6rem; }

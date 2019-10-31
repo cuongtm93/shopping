@@ -169,10 +169,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/24/2018 13:38:24</publishTime>
     </File>
     <File Include="bin/ShopFrontend.dll">
-      <publishTime>10/31/2019 23:50:02</publishTime>
+      <publishTime>11/01/2019 05:38:09</publishTime>
     </File>
     <File Include="bin/ShopFrontend.pdb">
-      <publishTime>10/31/2019 23:50:02</publishTime>
+      <publishTime>11/01/2019 05:38:09</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>11/28/2018 13:04:24</publishTime>
@@ -250,10 +250,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>10/31/2019 18:35:55</publishTime>
+      <publishTime>01/11/2019 00:02:40</publishTime>
     </File>
     <File Include="Content/Site.min.css">
-      <publishTime>10/31/2019 18:35:55</publishTime>
+      <publishTime>01/11/2019 00:02:40</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>10/15/2019 19:45:03</publishTime>
@@ -312,6 +312,30 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/bootstrap.min.js.map">
       <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
+    <File Include="Scripts/esm/popper-utils.js">
+      <publishTime>11/01/2019 05:09:55</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper-utils.js.map">
+      <publishTime>11/01/2019 05:09:55</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper-utils.min.js">
+      <publishTime>11/01/2019 05:09:55</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper-utils.min.js.map">
+      <publishTime>11/01/2019 05:09:55</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper.js">
+      <publishTime>11/01/2019 05:09:55</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper.js.map">
+      <publishTime>11/01/2019 05:09:55</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper.min.js">
+      <publishTime>11/01/2019 05:09:55</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper.min.js.map">
+      <publishTime>11/01/2019 05:09:55</publishTime>
+    </File>
     <File Include="Scripts/jquery-3.3.1.js">
       <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
@@ -348,6 +372,57 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/notify.js">
       <publishTime>10/31/2019 22:59:32</publishTime>
     </File>
+    <File Include="Scripts/popper-utils.js">
+      <publishTime>11/01/2019 05:09:55</publishTime>
+    </File>
+    <File Include="Scripts/popper-utils.js.map">
+      <publishTime>11/01/2019 05:09:55</publishTime>
+    </File>
+    <File Include="Scripts/popper-utils.min.js">
+      <publishTime>11/01/2019 05:09:54</publishTime>
+    </File>
+    <File Include="Scripts/popper-utils.min.js.map">
+      <publishTime>11/01/2019 05:09:54</publishTime>
+    </File>
+    <File Include="Scripts/popper.js">
+      <publishTime>11/01/2019 05:09:54</publishTime>
+    </File>
+    <File Include="Scripts/popper.js.map">
+      <publishTime>11/01/2019 05:09:54</publishTime>
+    </File>
+    <File Include="Scripts/popper.min.js">
+      <publishTime>11/01/2019 05:09:54</publishTime>
+    </File>
+    <File Include="Scripts/popper.min.js.map">
+      <publishTime>11/01/2019 05:09:54</publishTime>
+    </File>
+    <File Include="Scripts/README.md">
+      <publishTime>11/01/2019 05:09:54</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper-utils.js">
+      <publishTime>11/01/2019 05:09:54</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper-utils.js.map">
+      <publishTime>11/01/2019 05:09:54</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper-utils.min.js">
+      <publishTime>11/01/2019 05:09:54</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper-utils.min.js.map">
+      <publishTime>11/01/2019 05:09:54</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper.js">
+      <publishTime>11/01/2019 05:09:54</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper.js.map">
+      <publishTime>11/01/2019 05:09:54</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper.min.js">
+      <publishTime>11/01/2019 05:09:53</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper.min.js.map">
+      <publishTime>11/01/2019 05:09:53</publishTime>
+    </File>
     <File Include="Views/Customer/Login.cshtml">
       <publishTime>10/31/2019 18:24:20</publishTime>
     </File>
@@ -373,10 +448,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/31/2019 23:45:43</publishTime>
+      <publishTime>11/01/2019 05:34:07</publishTime>
     </File>
     <File Include="Views/ShoppingCart/Index.cshtml">
-      <publishTime>10/31/2019 23:43:16</publishTime>
+      <publishTime>11/01/2019 05:34:47</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>10/15/2019 19:45:03</publishTime>
@@ -385,7 +460,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/30/2019 22:02:40</publishTime>
+      <publishTime>11/01/2019 05:38:09</publishTime>
+    </File>
+    <File Include="webfonts/fa-solid-900.woff">
+      <publishTime>01/11/2019 00:14:39</publishTime>
+    </File>
+    <File Include="webfonts/fa-solid-900.woff2">
+      <publishTime>01/11/2019 00:14:29</publishTime>
     </File>
   </ItemGroup>
 </Project>
