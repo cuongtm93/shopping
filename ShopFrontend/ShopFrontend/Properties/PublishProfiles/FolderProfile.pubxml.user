@@ -169,10 +169,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/24/2018 13:38:24</publishTime>
     </File>
     <File Include="bin/ShopFrontend.dll">
-      <publishTime>11/01/2019 05:38:09</publishTime>
+      <publishTime>11/01/2019 05:53:49</publishTime>
     </File>
     <File Include="bin/ShopFrontend.pdb">
-      <publishTime>11/01/2019 05:38:09</publishTime>
+      <publishTime>11/01/2019 05:53:49</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>11/28/2018 13:04:24</publishTime>
@@ -448,7 +448,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/01/2019 05:34:07</publishTime>
+      <publishTime>01/11/2019 05:47:05</publishTime>
     </File>
     <File Include="Views/ShoppingCart/Index.cshtml">
       <publishTime>11/01/2019 05:34:47</publishTime>
@@ -460,7 +460,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/15/2019 19:45:03</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/01/2019 05:38:09</publishTime>
+      <publishTime>01/11/2019 05:49:01</publishTime>
     </File>
     <File Include="webfonts/fa-solid-900.woff">
       <publishTime>01/11/2019 00:14:39</publishTime>

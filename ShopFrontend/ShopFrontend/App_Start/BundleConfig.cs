@@ -19,16 +19,12 @@ namespace ShopFrontend
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/others").Include(
                      "~/Scripts/notify.js"));
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/bootsnav.css",
-                "~/Content/animate.css",
                       "~/Content/site.css"));
         }
     }

@@ -47,8 +47,8 @@
                     <li class="nav-item active">
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <a class="nav-link" href="@Url.Action("Index","ShoppingCart")">
-                                <i class="fa fa-shopping-cart" style="font-size : 20px"></i> <span>Giỏ hàng</span>
+                            <a class="nav-link" href="@Url.Action("Index","ShoppingCart")" >
+                                <i class="fa fa-shopping-cart" style="font-size : 20px ; margin-right: 0.8rem;"></i> <span>Giỏ hàng</span>
                             </a>
                             <span class="badge badge-pill badge-danger number_items_shopping_cart">
                                 @{ Html.RenderAction("Cart_Count", "ShoppingCart"); }
