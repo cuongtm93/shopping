@@ -28,13 +28,15 @@ namespace ShopFrontend.Controllers
                 else
                 {
                     var record = db.oc_customer_online.Where(r => r.ip == Request.UserHostAddress).Single();
-                    record.referer = Request.UrlReferrer.ToString();
+                    if (Request.UrlReferrer != null)
+                        record.referer = Request.UrlReferrer.ToString();
+
                     record.url = Request.Url.ToString();
                 }
                 db.SaveChanges();
             }
             base.OnActionExecuted(filterContext);
-            
+
         }
         private shop2Entities db;
         public ProductController()
@@ -73,7 +75,7 @@ namespace ShopFrontend.Controllers
                     if (!db.oc_category.Any(r => r.category_id == next_category_id))
                         break;
 
-                    category_tree.Add(db.oc_category_description.SingleOrDefault(r=>r.category_id == next_category_id));
+                    category_tree.Add(db.oc_category_description.SingleOrDefault(r => r.category_id == next_category_id));
                     root_category_id = next_category_id;
                 }
                 else
@@ -88,7 +90,7 @@ namespace ShopFrontend.Controllers
             {
                 category_tree.Add(db.oc_category_description.SingleOrDefault(r => r.category_id == fist_category_id));
             }
-            model.breadscrumb = category_tree; 
+            model.breadscrumb = category_tree;
             #endregion
             return View(model);
         }

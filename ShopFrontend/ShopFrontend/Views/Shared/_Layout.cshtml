@@ -54,7 +54,7 @@
                     {
                         <li class="nav-item active">
                             <a class="nav-link" href="@Url.Action("Profile","Customer", new { email = User.Identity.Name })">
-                               <span>Tài khoản</span>
+                                <span>Tài khoản</span>
                             </a>
                         </li>
                         <li class="nav-item active">
@@ -68,17 +68,14 @@
             </div>
         </nav>
         @RenderBody()
-        
+
     </div>
     <div class="card top-menu footer">
-        <div class="card-body text-center">
-            <h5 class="card-title">Công ty THHH Công nghệ Việt Cường</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        </div>
+        <span>Công ty THHH Công nghệ Việt Cường</span>
     </div>
     <script src="~/Scripts/all.min.js"></script>
-    @*@Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")*@
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/others")
     @RenderSection("scripts", required: false)
 </body>
 </html>

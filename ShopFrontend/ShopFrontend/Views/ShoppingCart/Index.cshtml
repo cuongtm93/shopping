@@ -1,10 +1,15 @@
-﻿@using System.Globalization;
+﻿@model ShopFrontend.Models.ShoppingCart_IndexViewmodel
+@using System.Globalization;
 @{
     ViewBag.Title = "ShoppingCart";
 }
 @{
     string VND(double value)
     {
+        if (value == 0)
+        {
+            return "0 đ";
+        }
         CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
         return value.ToString("#,### đ", cul.NumberFormat);
     }
@@ -23,36 +28,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            <button type="button" class="btn btn-default btn-sm">
-                                <i class="fas fa-eraser" title="Xoá sản phẩm"></i>
-                            </button>
-                        </td>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button type="button" class="btn btn-default btn-sm">
-                                <i class="fas fa-eraser"></i>
-                            </button>
-                        </td>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button type="button" class="btn btn-default btn-sm">
-                                <i class="fas fa-eraser"></i>
-                            </button>
-                        </td>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>@@twitter</td>
-                    </tr>
+                    @foreach (var product in Model.List)
+                    {
+                        <tr>
+                            <td>
+                                <a href="@Url.Action("Delete", new { product_id = product.product_id })">
+                                    <div type="button" class="btn btn-default btn-sm">
+                                        <i class="fas fa-eraser" title="Xoá sản phẩm"></i>
+                                    </div>
+                                </a>
+                            </td>
+                            <th scope="row">@product.product_name</th>
+                            <td>@VND((double)product.product_price)</td>
+                            <td>@product.quantity</td>
+                        </tr>
+                    }
+
                 </tbody>
             </table>
 
@@ -70,24 +61,24 @@
                 <tbody>
                     <tr>
                         <th scope="row">
-                            Tạm tính <span class="fa-pull-right">@VND(125400002)</span>
+                            Tạm tính <span class="fa-pull-right">@VND((double)Model.total)</span>
                         </th>
                     </tr>
                     <tr>
-                        <th scope="row">Phí giao hàng</th>
+                        <th scope="row">Phí giao hàng <span class="fa-pull-right">@VND((double)0)</span></th>
                     </tr>
                     <tr>
-                        <th scope="row">Tổng cộng</th>
+                        <th scope="row">Tổng cộng <span class="fa-pull-right">@VND((double)Model.total)</span></th>
                     </tr>
 
                     <!--  Địa chỉ khách hàng  -->
-                    @if (true)
+                    @if (Model.customer_address != null)
                     {
                         <tr class="thead-light">
                             <th scope="row">Địa chỉ giao hàng</th>
                         </tr>
                         <tr>
-                            <th scope="row">55 Hoàng quốc việt</th>
+                            <th scope="row">@Model.customer_address.address_1 , @Model.customer_address.city , @Model.customer_address.country_id</th>
                         </tr>
                     }
 

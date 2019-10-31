@@ -21,7 +21,7 @@ namespace ShopFrontend.Controllers
                     {
                         ip = Request.UserHostAddress,
                         date_added = DateTime.Now,
-                        referer = Request.UrlReferrer.ToString(),
+                        referer = Request.UrlReferrer.ToString() ?? "",
                         url = Request.Url.ToString(),
                         customer_id = db.oc_customer.Where(r => r.email == User.Identity.Name).Single().customer_id
                     });
@@ -29,92 +29,83 @@ namespace ShopFrontend.Controllers
                 else
                 {
                     var record = db.oc_customer_online.Where(r => r.ip == Request.UserHostAddress).Single();
-                    record.referer = Request.UrlReferrer.ToString();
+                    record.referer = Request.UrlReferrer == null ? "" : Request.UrlReferrer.ToString();
                     record.url = Request.Url.ToString();
                 }
                 db.SaveChanges();
             }
         }
-
-
         [Route("giỏ-hàng")]
         // GET: ShoppingCart
         public ActionResult Index()
         {
+            int customer_id = db.oc_customer.Where(r => r.email == this.User.Identity.Name).Single().customer_id;
+            var list = from cart in db.oc_cart
+                       join product in db.oc_product on cart.product_id equals product.product_id
+                       join product_des in db.oc_product_description on product.product_id equals product_des.product_id
+                       where cart.customer_id == customer_id
+                       select new
+                       {
+                           product.product_id,
+                           product_name = product_des.name,
+                           product_price = product.price,
+                           cart.quantity
+                       };
 
-            return View();
+            var model = new ShoppingCart_IndexViewmodel()
+            {
+                List = list.Select(r => new ShoppingCart_Index
+                {
+                    product_id = r.product_id,
+                    product_name = r.product_name,
+                    quantity = r.quantity,
+                    product_price = r.product_price
+                }).ToList()
+            };
+            model.customer_address = db.oc_address.Where(r => r.customer_id == customer_id).SingleOrDefault();
+            model.total = model.List.Sum(r => r.product_price * r.quantity);
+            return View(model);
         }
 
-        // GET: ShoppingCart/Details/5
-        public ActionResult Details(int id)
+
+        public ActionResult Clear()
         {
-            return View();
+            int customer_id = db.oc_customer.Where(r => r.email == this.User.Identity.Name).Single().customer_id;
+            var delete_items = db.oc_cart.Where(r => r.customer_id == customer_id).ToList();
+            db.oc_cart.RemoveRange(delete_items);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
-        // GET: ShoppingCart/Create
-        public ActionResult Create()
+        public ActionResult Delete(int product_id)
         {
-            return View();
+            int customer_id = db.oc_customer.Where(r => r.email == this.User.Identity.Name).Single().customer_id;
+            var items  = db.oc_cart.Where(r => r.customer_id == customer_id && r.product_id == product_id);
+            db.oc_cart.RemoveRange(items);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
-
-        // POST: ShoppingCart/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public JsonResult Create(int product_id, int quantity)
         {
-            try
+            int customer_id = db.oc_customer.Where(r => r.email == this.User.Identity.Name).Single().customer_id;
+            db.oc_cart.Add(new oc_cart()
             {
-                // TODO: Add insert logic here
+                api_id = 0,
+                customer_id = customer_id,
+                product_id = product_id,
+                date_added = DateTime.Now,
+                quantity = quantity,
+                option = string.Empty,
+                recurring_id = 0,
+                session_id = this.Session.SessionID,
 
-                return RedirectToAction("Index");
-            }
-            catch
+            });
+            db.SaveChanges();
+            return Json(new
             {
-                return View();
-            }
-        }
-
-        // GET: ShoppingCart/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: ShoppingCart/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: ShoppingCart/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: ShoppingCart/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+                m = $"Đã thêm sp {product_id} , số lượng {quantity}"
+            });
         }
     }
 }

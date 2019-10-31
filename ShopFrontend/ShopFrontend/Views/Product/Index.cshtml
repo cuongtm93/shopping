@@ -7,7 +7,7 @@
 @section meta{
     <meta name="description" content="@Html.Raw(Model.product_description.meta_description)" />
     <meta name="robots" content="noodp" />
-    <link rel="canonical" href="@Request.Url.ToString()" />
+    @*<link rel="canonical" href="@Request.Url.ToString()" />*@
     <meta property="og:locale" content="vi_VN" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="@HttpUtility.HtmlDecode(Model.product_description.meta_title)" />
@@ -92,7 +92,7 @@
         </div>
 
         <div class="d-block mt-2">
-            <div class="btn btn-outline-danger mt-2 col-8 col-sm-8 col-md-8 col-xl-4">
+            <div class="btn btn-outline-danger mt-2 col-8 col-sm-8 col-md-8 col-xl-4" id="AddToCart" onclick="AddToCart()">
                 <i class="fas fa-cart-plus " title="Thêm vào giỏ hàng"></i>
                 Thêm vào giỏ
             </div>
@@ -116,6 +116,27 @@
 
 @section scripts{
     <script>
+        function AddToCart() {
+            if ($("#AddToCart").hasClass("disabled")) {
+                return;
+            }
+            $("#AddToCart").addClass("disabled");
+            var product_id = @Model.product.product_id;
+            var quantity = parseInt($('#quantity').val());
+            $.ajax({
+                url: "@Url.Action("Create", "ShoppingCart")",
+                type: "POST",
+                data: {
+                    product_id: product_id,
+                    quantity  : quantity
+                },
+                success: function (data) {
+                    $("#AddToCart").notify(data.m, "success");
+                    $("#AddToCart").removeClass("disabled");
+                    window.location.href = "@Url.Action("Index","ShoppingCart")";
+                }
+            });
+        }
         $('img').each(function () {
             $(this).attr('src', $(this).data('delayedsrc'));
         });

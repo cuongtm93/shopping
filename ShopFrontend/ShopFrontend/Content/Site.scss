@@ -3,13 +3,15 @@ $bottom-left-menu-height: 300px;
 $theme-color: #ef5777;
 
 @import 'product.css';
+
 body {
     font-family: 'Open Sans', sans-serif;
     margin: auto;
 }
+
 body * {
     font-family: 'tahoma' !important;
-    font-size : 1rem;
+    font-size: 1rem;
 }
 
 body i {
@@ -18,13 +20,15 @@ body i {
 
 .navbar-light {
     background-color: white !important;
-    color : white;
+    color: white;
 }
+
 .logo {
-    margin-bottom : 5px; // chỉnh lại cho ngay với Việt Cường Shop
+    margin-bottom: 5px; // chỉnh lại cho ngay với Việt Cường Shop
     width: 50px;
     height: auto;
 }
+
 #app {
     padding-right: 15px;
     padding-left: $vertical-align;
@@ -67,6 +71,7 @@ body i {
     /*margin-left : 0px;
     margin-right : 0px;*/
 }
+
 .news-products {
     @extend .productbox;
 }
@@ -84,7 +89,7 @@ body i {
     background-color: white;
     color: red;
     text-align: center;
-    z-index : 1;
+    z-index: 1;
 }
 
 .btn-wrap-text {
@@ -92,4 +97,25 @@ body i {
     white-space: nowrap;
     display: inline-block;
     text-overflow: ellipsis;
+}
+
+.breadcrumb-item {
+    a{
+        color : black;
+    }
+    a:link {
+        text-decoration: none;
+    }
+
+    a:visited {
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    a:active {
+        text-decoration: underline;
+    }
 }
